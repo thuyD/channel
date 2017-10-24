@@ -20,7 +20,7 @@
   "engines": {
     "npm": "3.10.8",
     "node": "6.9.1"
-  }
+  },
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "version": "1.0.0",
   "main": "index.js",
