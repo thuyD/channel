@@ -1,8 +1,4 @@
 class Api::SessionsController < ApplicationController
-  def new
-    render :new
-  end
-
   def create
     @user = User.find_by_credentials(
       params[:user][:username],
@@ -11,7 +7,8 @@ class Api::SessionsController < ApplicationController
 
     if @user
       login(@user)
-      render 'api/posts'
+      render 'api/users/show'
+      # render 'api/posts'
     else
       render json: ['Invalid username/password combination!'], status: 401
     end
@@ -21,10 +18,10 @@ class Api::SessionsController < ApplicationController
     @user = current_user
     if @user
       logout
-      render 'api/posts'
+      render json: {}
+      # render 'api/posts'
     else
       render json: ['No current user'], status: 404
     end
-
   end
 end
