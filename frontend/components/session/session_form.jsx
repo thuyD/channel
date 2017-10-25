@@ -48,43 +48,57 @@ class SessionForm extends React.Component {
   render(){
     const formType = this.props.formType;
     let text;
-    let message;
+    let greeting;
     let signup;
+    let message;
 
      if (formType === "signup") {
        text = "Sign Up";
-       message = "Join Channel.";
-       signup = (<input type='text'
-       onChange={this.handleChange('name')}
-       value={this.state.name}/>);
+       greeting = "Join Channel.";
+       signup = (
+         <label>Full Name
+           <input type='text'
+             onChange={this.handleChange('name')}
+             value={this.state.name}/>
+         </label>
+      );
      } else {
        text = " Log In";
-       message = "Welcome Back.";
+       greeting = "Welcome Back.";
+       message = "Sign in to engage with the authors that you love and read stories that matter to you.";
      }
 
     return (
-      <section>
-        <h3>{message}</h3>
-        {this.renderErrors()}
-        <form onSubmit={this.handleSubmit}>
-          <label>Username
-            <input
-              type='text'
-              onChange={this.handleChange('username')}
-              value={this.state.username} />
-          </label>
-          <br/>
-          <label>Password
-            <input
-              type='text'
-              onChange={this.handleChange('password')}
-              value={this.state.password} />
-          </label>
-          <br/>
-          <button>{text}</button>
-        </form>
-
-        {this.navLink()}
+      <section className="login-form-container">
+        <main className="login-form-box">
+          <section className="login-message">
+            <h3>{greeting}</h3>
+            <div><p>{message}</p></div>
+          </section>
+          {this.renderErrors()}
+          <form onSubmit={this.handleSubmit} className="login-form">
+            {signup}
+            <div className="login-details">
+              <br/>
+              <label for="login-username">Username</label>
+                <input
+                  id="login-username"
+                  type='text'
+                  onChange={this.handleChange('username')}
+                  value={this.state.username} />
+              <br/>
+              <label for="login-password">Password</label>
+              <input
+                id="login-password"
+                type='password'
+                onChange={this.handleChange('password')}
+                value={this.state.password} />
+              <br/>
+              <button className="login-button">{text}</button>
+            </div>
+          </form>
+          {this.navLink()}
+        </main>
       </section>
     );
   }

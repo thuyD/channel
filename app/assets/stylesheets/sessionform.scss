@@ -1,0 +1,53 @@
+@import 'base';
+
+.login-form-container {
+  background-color: $light-grey;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  font-family: $lucida;
+}
+
+.login-form-box {
+  margin-top: 25px;
+  padding: 20px;
+  background-color: $mint;
+  color: $black;
+  height: 550px;
+  width: 900px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 130px;
+  text-align: center;
+  line-height: 150%;
+}
+
+.login-message h3 {
+  font-size: 32px;
+  font-family: $logo-font;
+}
+
+.login-message div {
+  font-size: 18px;
+  width: 400px;
+}
+
+.login-details {
+  color: $grey;
+}
+
+.login-button {
+  background-color: $dark-mint;
+  border-radius: 5px;
+  color: $white;
+  padding: 10px 17px;
+}

@@ -1,0 +1,15 @@
+@import 'base';
+
+.header {
+  display: block;
+  height: 65px;
+}
+
+.main-nav {
+  background-color: $white;
+  font-family: $logo-font;
+  font-size: 35px;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+}

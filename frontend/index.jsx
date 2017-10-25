@@ -4,10 +4,8 @@ import Root from './components/root';
 import ReactDOM from 'react-dom';
 
 document.addEventListener("DOMContentLoaded", () => {
-  const store = configureStore();
   const rootEl = document.getElementById('root');
 
-  /*
   let store;
   if (window.currentUser) {
     const preloadedState = { session: { currentUser: window.currentUser}};
@@ -16,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     store = configureStore();
   }
-  */
+
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   ReactDOM.render(<Root store={ store } />, rootEl);
