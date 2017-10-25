@@ -13,6 +13,10 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.clearSessionErrors();
+  }
+
   handleSubmit(e){
     e.preventDefault();
     const user = Object.assign({}, this.state);
@@ -27,9 +31,9 @@ class SessionForm extends React.Component {
 
   navLink() {
     if (this.props.formType === 'login') {
-      return <p>Are you new to Channel? <Link to="/signup">Sign Up</Link></p>;
+      return <p>Are you new to Channel?  <Link to="/signup">Sign Up</Link></p>;
     } else {
-      return <p>Already have an account? <Link to="/login">Log In</Link></p>;
+      return <p>Already have an account?  <Link to="/login">Log In</Link></p>;
     }
   }
 
@@ -50,22 +54,28 @@ class SessionForm extends React.Component {
     let text;
     let greeting;
     let signup;
-    let message;
+    let loginMessage;
+    let signupMessage;
 
      if (formType === "signup") {
        text = "Sign Up";
        greeting = "Join Channel.";
        signup = (
-         <label>Full Name
-           <input type='text'
+         <div className="login-details">
+           <label htmlFor="login-fullname">Full Name</label>
+           <br />
+           <input
+             id="login-fullname"
+             type='text'
              onChange={this.handleChange('name')}
              value={this.state.name}/>
-         </label>
-      );
+         </div>
+        );
+        signupMessage = "Create an account to applaud your favorite stories, follow authors you love, and share your writing."
      } else {
        text = " Log In";
        greeting = "Welcome Back.";
-       message = "Sign in to engage with the authors that you love and read stories that matter to you.";
+       loginMessage = "Sign in to express yourself, engage with the authors that you love, and read stories that matter to you.";
      }
 
     return (
@@ -73,21 +83,28 @@ class SessionForm extends React.Component {
         <main className="login-form-box">
           <section className="login-message">
             <h3>{greeting}</h3>
-            <div><p>{message}</p></div>
+            <iframe src="https://giphy.com/embed/3ov9jSGHr0FrsJfRgQ"
+              width="150" height="120" frameBorder="0" className="giphy-embed"
+              allowFullScreen></iframe>
+            <p><a href="https://giphy.com/stickers/3ov9jSGHr0FrsJfRgQ"></a></p>
+            <div><p>{loginMessage}</p></div>
+            <div><p>{signupMessage}</p></div>
           </section>
           {this.renderErrors()}
           <form onSubmit={this.handleSubmit} className="login-form">
-            {signup}
             <div className="login-details">
+              {signup}
               <br/>
-              <label for="login-username">Username</label>
+              <label htmlFor="login-username">Username</label>
+              <br/>
                 <input
                   id="login-username"
                   type='text'
                   onChange={this.handleChange('username')}
                   value={this.state.username} />
               <br/>
-              <label for="login-password">Password</label>
+              <label htmlFor="login-password">Password</label>
+              <br/>
               <input
                 id="login-password"
                 type='password'
@@ -97,14 +114,11 @@ class SessionForm extends React.Component {
               <button className="login-button">{text}</button>
             </div>
           </form>
-          {this.navLink()}
+          <div className="login-link">{this.navLink()}</div>
         </main>
       </section>
     );
   }
 }
-
-//need to conditionally render link
-//need to add new input when signing up
 
 export default withRouter(SessionForm);

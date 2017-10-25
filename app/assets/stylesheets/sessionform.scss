@@ -5,12 +5,12 @@
   display: flex;
   justify-content: center;
   height: 100%;
-  font-family: $lucida;
+  font-family: $railway;
 }
 
 .login-form-box {
   margin-top: 25px;
-  padding: 20px;
+  padding: 40px;
   background-color: $mint;
   color: $black;
   height: 550px;
@@ -19,35 +19,57 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
 }
 
 .login-message {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  height: 130px;
+
   text-align: center;
   line-height: 150%;
 }
 
 .login-message h3 {
   font-size: 32px;
-  font-family: $logo-font;
+  font-family: $playfair;
+  font-weight: bold;
 }
 
 .login-message div {
   font-size: 18px;
-  width: 400px;
+  width: 420px;
 }
 
 .login-details {
+  margin-top: 15px;
   color: $grey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-details label {
+  font-size: 15px;
+}
+
+.login-details input{
+  border: none;
+  border-bottom: 1px solid #bac4c3;
+  background-color: $mint;
+  width: 270px;
+  height: 20px;
+  margin-bottom: 12px;
 }
 
 .login-button {
   background-color: $dark-mint;
   border-radius: 5px;
   color: $white;
-  padding: 10px 17px;
+  padding: 12px 25px;
+}
+
+.login-link {
+  margin-top: 20px;
 }
