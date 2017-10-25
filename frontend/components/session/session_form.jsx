@@ -84,13 +84,13 @@ class SessionForm extends React.Component {
           <section className="login-message">
             <h3>{greeting}</h3>
             <iframe src="https://giphy.com/embed/3ov9jSGHr0FrsJfRgQ"
-              width="150" height="120" frameBorder="0" className="giphy-embed"
+              width="110" height="110" frameBorder="0" className="giphy-embed"
               allowFullScreen></iframe>
-            <p><a href="https://giphy.com/stickers/3ov9jSGHr0FrsJfRgQ"></a></p>
             <div><p>{loginMessage}</p></div>
             <div><p>{signupMessage}</p></div>
           </section>
-          {this.renderErrors()}
+          <br/>
+          <div className="errors">{this.renderErrors()}</div>
           <form onSubmit={this.handleSubmit} className="login-form">
             <div className="login-details">
               {signup}

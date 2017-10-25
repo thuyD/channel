@@ -19,16 +19,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
 }
 
 .login-message {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   text-align: center;
   line-height: 150%;
+  position: relative;
 }
 
 .login-message h3 {
@@ -43,7 +42,6 @@
 }
 
 .login-details {
-  margin-top: 15px;
   color: $grey;
   display: flex;
   flex-direction: column;
@@ -71,5 +69,10 @@
 }
 
 .login-link {
-  margin-top: 20px;
+  margin-top: 35px;
+}
+
+.errors {
+  color: $hot-pink;
+  padding: 10px;
 }
