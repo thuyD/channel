@@ -1,4 +1,4 @@
-class Api::SessionsController < ApplicationController
+class Api::PostsController < ApplicationController
   before_action :require_logged_in, :create, :update, :destroy
 
   def create
