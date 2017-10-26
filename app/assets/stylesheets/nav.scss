@@ -1,15 +1,34 @@
 @import 'base';
 
-.header {
-  display: block;
-  height: 65px;
+.main-inner-header {
+  border-bottom: 1px solid $light-grey;
 }
 
-.main-nav {
+.main-logo {
+  display: block;
+  height: 65px;
   background-color: $white;
-  font-family: $logo-font;
-  font-size: 35px;
-  padding: 15px;
+  padding: 17px;
   display: flex;
   justify-content: center;
+}
+
+.main-logo #logo {
+  font-family: $logo-font;
+  font-size: 35px;
+}
+
+.main-logo a {
+  text-decoration: none;
+}
+
+#main-login, .main-signin a {
+  color: $dark-mint;
+  font-family: $railway;
+}
+
+.main-signin {
+  padding: 10px 17px;
+  border: 1px solid $dark-mint;
+  border-radius: 5px;
 }
