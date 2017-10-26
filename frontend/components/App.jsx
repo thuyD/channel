@@ -11,9 +11,10 @@ const App = () => (
   <div className="main-container">
     <header className="main-inner-header">
       <div className="main-logo">
+        <a>Our Story</a>
         <a id="logo" href="/">Channel</a>
+        <HeaderContainer />
       </div>
-      <HeaderContainer />
     </header>
     <Switch>
       <Route exact path="/" component={PostIndexContainer}/>

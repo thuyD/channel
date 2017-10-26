@@ -33,12 +33,14 @@
   text-align: center;
   line-height: 150%;
   position: relative;
+  margin-bottom: 30px;
 }
 
 .login-message h3 {
   font-size: 32px;
   font-family: $playfair;
   font-weight: bold;
+  margin-bottom: 25px;
 }
 
 .login-message div {
@@ -62,8 +64,8 @@
   border-bottom: 1px solid #bac4c3;
   background-color: $mint;
   width: 270px;
-  height: 20px;
-  margin-bottom: 12px;
+  height: 15px;
+  margin-bottom: 10px;
 }
 
 .login-button {
@@ -80,4 +82,13 @@
 .errors {
   color: $hot-pink;
   padding: 10px;
+  font-size: 17px;
+  line-height: normal;
+  text-align: center;
+}
+
+.demo-login {
+  background-color: transparent;
+  padding: 12px;
+  color: $dark-mint;
 }

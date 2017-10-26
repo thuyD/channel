@@ -5,12 +5,12 @@
 }
 
 .main-logo {
-  display: block;
-  height: 65px;
+  height: 50px;
   background-color: $white;
   padding: 17px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .main-logo #logo {
@@ -21,6 +21,9 @@
 
 .main-logo a {
   text-decoration: none;
+  color: $grey;
+  font-family: $railway;
+  font-size: 14px;
 }
 
 #main-login, .main-signin a {
@@ -32,4 +35,21 @@
   padding: 10px 17px;
   border: 1px solid $dark-mint;
   border-radius: 5px;
+}
+
+.login-signup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 170px;
+}
+
+.login-signup div {
+  border-radius: 5px;
+  border: 1px solid $dark-mint;
+  padding: 10px 17px;
+}
+
+.login-signup a, div a {
+  color: $dark-mint;
 }

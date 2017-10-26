@@ -90,14 +90,11 @@ class SessionForm extends React.Component {
         <main className="login-form-box">
           <section className="login-message">
             <h3>{greeting}</h3>
-            <iframe src="https://giphy.com/embed/3ov9jSGHr0FrsJfRgQ"
-              width="110" height="110" frameBorder="0" className="giphy-embed"
-              allowFullScreen></iframe>
             <div><p>{loginMessage}</p></div>
             <div><p>{signupMessage}</p></div>
           </section>
-          <br/>
           <div className="errors">{this.renderErrors()}</div>
+          <br/>
           <form onSubmit={this.handleSubmit} className="login-form">
             <div className="login-details">
               {signup}
@@ -122,7 +119,7 @@ class SessionForm extends React.Component {
             </div>
           </form>
           <div className="login-link">{this.navLink()}</div>
-          <button onClick={this.demoLogin}>Demo Login</button>
+          <button className="demo-login" onClick={this.demoLogin}>Demo Login</button>
         </main>
       </section>
     );
