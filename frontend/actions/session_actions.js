@@ -45,3 +45,9 @@ export const signup = (credentials) => dispatch => {
     (errors) => dispatch(receiveErrors(errors.responseJSON))
   );
 };
+
+export const demoUserInfo = (credentials) => dispatch => {
+  return ApiUtil.login(credentials).then(
+    (user) => dispatch(receiveCurrentUser(user))
+  );
+};

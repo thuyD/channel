@@ -32,7 +32,7 @@ class SessionForm extends React.Component {
 
   demoLogin(e) {
     e.preventDefault();
-    this.props.processForm({username: "Chirps", password: "catnip"}).
+    this.props.demoUserInfo({username: "Chirps", password: "catnip"}).
     then(() => this.props.history.push("/"));
   }
 
