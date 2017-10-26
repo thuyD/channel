@@ -13,8 +13,8 @@ const logOut = (logout) => (
  <button className="header-button" onClick={logout}>Log Out</button>
 );
 
-const topLinks = ({ currentUser, logout }) => (
-  currentUser ? logOut(logout) : sessionLinks()
-);
+const topLinks = ({currentUser, logout}) => {
+  return currentUser ? logOut(logout) : sessionLinks();
+};
 
 export default topLinks;

@@ -21,6 +21,11 @@
   align-items: center;
 }
 
+.login-form-box a {
+  text-decoration: none;
+  color: $dark-mint;
+}
+
 .login-message {
   display: flex;
   flex-direction: column;

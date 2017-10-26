@@ -11,29 +11,36 @@ class SessionForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
   }
 
   componentWillUnmount() {
     this.props.clearSessionErrors();
   }
 
-  handleSubmit(e){
+  handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user);
+    this.props.processForm(user).then(() => this.props.history.push("/"));
   }
 
-  handleChange(field){
+  handleChange(field) {
     return (e) => {
       this.setState({ [field]: e.target.value });
     };
   }
 
+  demoLogin(e) {
+    e.preventDefault();
+    this.props.processForm({username: "Chirps", password: "catnip"}).
+    then(() => this.props.history.push("/"));
+  }
+
   navLink() {
     if (this.props.formType === 'login') {
-      return <p>Are you new to Channel?  <Link to="/signup">Sign Up</Link></p>;
+      return <p>Are you new to Channel?  <a href="/#/signup">Sign Up</a></p>;
     } else {
-      return <p>Already have an account?  <Link to="/login">Log In</Link></p>;
+      return <p>Already have an account?  <a href="/#/login">Log In</a></p>;
     }
   }
 
@@ -115,6 +122,7 @@ class SessionForm extends React.Component {
             </div>
           </form>
           <div className="login-link">{this.navLink()}</div>
+          <button onClick={this.demoLogin}>Demo Login</button>
         </main>
       </section>
     );
