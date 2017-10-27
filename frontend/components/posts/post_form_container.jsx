@@ -6,7 +6,7 @@ const mapStateToProps = (state, ownProps) => {
   let post = { title: "", body: "" };
   let formType = "new";
   if (ownProps.match.path == "/posts/:postId/edit") {
-    post = state.posts[ownProps.match.params.postId];
+    post = state.entities.posts[ownProps.match.params.postId];
     formType = "edit";
   }
   return { post, formType };

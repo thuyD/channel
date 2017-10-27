@@ -6,64 +6,181 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(
+require 'faker'
+
+post_body = 'This document assumes that one is familiar with the workings
+ of a non-connected simple IP network (e.g. a few 4.2 BSD
+ systems on an Ethernet not connected to anywhere else).
+ Appendix A contains remedial information to get one to this
+ point.  Its purpose is to get that person, familiar with a
+ simple net, versed in the "oral tradition" of the Internet
+ to the point that that net can be connected to the Internet
+ with little danger to either.  It is not a tutorial, it
+ consists of pointers to other places, literature, and hints
+ which are not normally documented.  Since the Internet is a
+ dynamic environment, changes to this document will be made
+ regularly.  The author welcomes comments and suggestions.
+ This is especially true of terms for the glossary (definitions
+ are not necessary).
+
+ In the beginning there was the ARPAnet, a wide area
+ experimental network connecting hosts and terminal servers
+ together.  Procedures were set up to regulate the allocation
+ of addresses and to create voluntary standards for the network.
+ As local area networks became more pervasive, many hosts became
+ gateways to local networks.  A network layer to allow the
+ interoperation of these networks was developed and called IP
+ (Internet Protocol).  Over time other groups created long haul
+ IP based networks (NASA, NSF, states...).  These nets, too,
+ interoperate because of IP.  The collection of all of these
+ interoperating networks is the Internet.
+
+ Two groups do much of the research and information work of
+ the Internet (ISI and SRI).  ISI (the Informational Sciences
+ Institute) does much of the research, standardization, and
+ allocation work of the Internet.  SRI International provides
+ information services for the Internet.  In fact, after you
+ are connected to the Internet most of the information in
+ this document can be retrieved from the Network Information
+ Center (NIC) run by SRI.
+
+
+ Operating the Internet
+
+ Each network, be it the ARPAnet, NSFnet or a regional network,
+ has its own operations center.  The ARPAnet is run by
+ BBN, Inc. under contract from DARPA.  Their facility is
+ called the Network Operations Center or NOC.  Cornell
+ University temporarily operates NSFnet (called the Network
+ Information Service Center, NISC).  It goes on to the
+
+ regionals having similar facilities to monitor and keep
+ watch over the goings on of their portion of the Internet.
+ In addition, they all should have some knowledge of what is
+ happening to the Internet in total. If a problem comes up,
+ it is suggested that a campus network liaison should contact
+ the network operator to which he is directly connected. That
+ is, if you are connected to a regional network (which is
+ gatewayed to the NSFnet, which is connected to the
+ ARPAnet...)  and have a problem, you should contact your
+ regional network operations center.
+
+
+ RFCs
+
+ The internal workings of the Internet are defined by a set
+ of documents called RFCs (Request for Comments).  The general
+ process for creating an RFC is for someone wanting something
+ formalized to write a document describing the issue and mailing
+ it to Jon Postel (postel@isi.edu).  He acts as a referee for
+ the proposal.  It is then commented upon by all those wishing
+ to take part in the discussion (electronically of course).
+ It may go through multiple revisions.  Should it be generally
+ accepted as a good idea, it will be assigned a number and
+ filed with the RFCs.
+
+ The RFCs can be divided into five groups: required, suggested,
+ directional, informational and obsolete.  Required RFCs (e.g.
+ RFC-791, The Internet Protocol) must be implemented on any host
+ connected to the Internet.  Suggested RFCs are generally
+ implemented by network hosts.  Lack of them does not preclude
+ access to the Internet, but may impact its usability.  RFC-793
+ (Transmission Control Protocol) is a suggested RFC.  Directional
+ RFCs were discussed and agreed to, but their application has never
+ come into wide use.  This may be due to the lack of wide need for
+ the specific application (RFC-937 The Post Office Protocol) or
+ that, although technically superior, ran against other pervasive
+ approaches (RFC-891 Hello).  It is suggested that should the
+ facility be required by a particular site, animplementation
+ be done in accordance with the RFC.  This insures that, should
+ the idea be one whose time has come, the implementation will be
+ in accordance with some standard and will be generally usable.
+ Informational RFCs contain factual information about the
+ Internet and its operation (RFC-990, Assigned Numbers).
+ Finally, as the Internet and technology have grown, some
+ RFCs have become unnecessary.  These obsolete RFCs cannot
+ be ignored, however.  Frequently when a change is made to
+ some RFC that causes a new one to be issued obsoleting others,
+ the new RFC only contains explanations and motivations for the
+ change.  Understanding the model on which the whole facility
+ is based may involve reading the original and subsequent RFCs
+ on the topic.
+
+ All titles for the articles are taken from the Outline. Please go to their website if you want to learn more.'
+
+first = User.create(
   username: "Chirps",
   password: "catnip",
   name: "Chirps the Zero",
-  bio: "I am a professinal cat blogger with revolutionary ideas. Everyone should follow me and claps at all of my genius creations. You're WELCOME!")
-
-
-Post.create(
-  title: "Lisa on Monday",
-  body: "We left in pretty good time, and came after nightfall to Klausenburgh.
-Here I stopped for the night at the Hotel Royale. I had for dinner, or
-rather supper, a chicken done up some way with red pepper, which was
-very good but thirsty. (_Mem._, get recipe for Mina.) I asked the
-waiter, and he said it was called 'paprika hendl,' and that, as it was a
-national dish, I should be able to get it anywhere along the
-Carpathians. I found my smattering of German very useful here; indeed, I
-don't know how I should be able to get on without it.
-
-Having had some time at my disposal when in London, I had visited the
-British Museum, and made search among the books and maps in the library
-regarding Transylvania; it had struck me that some foreknowledge of the
-country could hardly fail to have some importance in dealing with a
-nobleman of that country. I find that the district he named is in the
-extreme east of the country, just on the borders of three states,
-Transylvania, Moldavia and Bukovina, in the midst of the Carpathian
-mountains; one of the wildest and least known portions of Europe. I was
-not able to light on any map or work giving the exact locality of the
-Castle Dracula, as there are no maps of this country as yet to compare
-with our own Ordnance Survey maps; but I found that Bistritz, the post
-town named by Count Dracula, is a fairly well-known place. I shall enter
-here some of my notes, as they may refresh my memory when I talk over my
-travels with Mina.
-
-In the population of Transylvania there are four distinct nationalities:
-Saxons in the South, and mixed with them the Wallachs, who are the
-descendants of the Dacians; Magyars in the West, and Szekelys in the
-East and North. I am going among the latter, who claim to be descended
-from Attila and the Huns. This may be so, for when the Magyars conquered
-the country in the eleventh century they found the Huns settled in it. I
-read that every known superstition in the world is gathered into the
-horseshoe of the Carpathians, as if it were the centre of some sort of
-imaginative whirlpool; if so my stay may be very interesting. (_Mem._, I
-must ask the Count all about them.)
-
-I did not sleep well, though my bed was comfortable enough, for I had
-all sorts of queer dreams. There was a dog howling all night under my
-window, which may have had something to do with it; or it may have been
-the paprika, for I had to drink up all the water in my carafe, and was
-still thirsty. Towards morning I slept and was wakened by the continuous
-knocking at my door, so I guess I must have been sleeping soundly then.
-I had for breakfast more paprika, and a sort of porridge of maize flour
-which they said was 'mamaliga,' and egg-plant stuffed with forcemeat, a
-very excellent dish, which they call 'impletata.' (_Mem._, get recipe
-for this also.) I had to hurry breakfast, for the train started a little
-before eight, or rather it ought to have done so, for after rushing to
-the station at 7:30 I had to sit in the carriage for more than an hour
-before we began to move. It seems to me that the further east you go the
-more unpunctual are the trains. What ought they to be in China?
-",
-  author_id: 1,
+  bio: "I am a professinal cat blogger with revolutionary ideas. Everyone should follow me and claps at all of my genius creations. You're WELCOME!"
 )
+
+user_ids = []
+
+10.times do
+  character = Faker::DrWho.character
+  new_user = User.create(username: character, password: character, name: character, bio: Faker::DrWho.quote)
+  user_ids << new_user.id
+end
+
+titles = [
+  "When Men Fear Women",
+  "Hypocrisy is Dead",
+  "The Performative Apologies of Very Guilty Men",
+  "What is Active Listening",
+  "Guns and the Left",
+  "The Only Job a Robot Couldn't Do",
+  "Neo Yokio's Rich Universe",
+  "The Correct Way to be a Cannibal",
+  "Tourists in Denial",
+  "The Infinite Awfulness of Conservative Rap",
+  "The Inner Lives of Adult One Direction Fans",
+  "The New MacBook Keyboard is Ruining My Life",
+  "The Algorithm is Innocent",
+  "The IRS is Basically Ignoring Equity Crowdfunding",
+  "The 19 Most Powerful People You Meet in Hell",
+  "Climate Change is Real",
+  "Don't Touch My Hair",
+  "Thinking About You and Your Dog",
+  "We will not be Silent no More",
+  "Resist those Churros",
+  "Lisa on Monday",
+  "No Time Like the Past",
+  "Let Me Tell You ABout my Favorite Sandwich",
+  "Not my President",
+]
+
+images = [
+  "https://s3.amazonaws.com/channel-user-dev/art.jpg",
+  "https://s3.amazonaws.com/channel-user-dev/bricks.jpg",
+  "https://s3.amazonaws.com/channel-user-dev/flow.jpg",
+  "https://s3.amazonaws.com/channel-user-dev/bright-yellow.jpg",
+  "https://s3.amazonaws.com/channel-user-dev/jellyfish.jpg",
+  "https://s3.amazonaws.com/channel-user-dev/buttons.jpg",
+  "https://s3.amazonaws.com/channel-user-dev/pencils.jpg",
+  "https://s3.amazonaws.com/channel-user-dev/pinkjellies.jpg",
+  "https://s3.amazonaws.com/channel-user-dev/rainbow.jpg",
+  "https://s3.amazonaws.com/channel-user-dev/wires.jpg",
+  "https://s3.amazonaws.com/channel-user-dev/lights.jpg",
+  "https://s3.amazonaws.com/channel-user-dev/ceiling.jpg",
+  "https://s3.amazonaws.com/channel-user-dev/yellow.jpg",
+  "https://s3.amazonaws.com/channel-user-dev/bottles.jpg",
+  "https://s3.amazonaws.com/channel-user-dev/red.jpg",
+  "https://s3.amazonaws.com/channel-user-dev/chair.jpg",
+  "https://s3.amazonaws.com/channel-user-dev/blue.jpg",
+  "https://s3.amazonaws.com/channel-user-dev/yellow-ocean.jpg",
+  "https://s3.amazonaws.com/channel-user-dev/robot.jpg",
+  "https://s3.amazonaws.com/channel-user-dev/tunnel.jpg",
+  "https://s3.amazonaws.com/channel-user-dev/pink.jpg",
+  "https://s3.amazonaws.com/channel-user-dev/neon.jpg"
+]
+
+titles.each do |title|
+  image = images.pop
+  Post.create(
+    title: title,
+    body: post_body,
+    author_id: user_ids.sample,
+    image: image
+  )
+end

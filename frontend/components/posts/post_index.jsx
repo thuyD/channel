@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PostIndexItem from './post_index_item';
+import { StickyContainer, Sticky } from 'react-sticky';
 
 class PostIndex extends React.Component {
   constructor(props) {
@@ -20,19 +21,51 @@ class PostIndex extends React.Component {
   }
 
   render() {
-    const posts = this.props.posts.map((post) => (
-      <PostIndexItem key="post.id" post={post} />
-    ));
+    const posts = this.props.posts.map((post) => {
+      return <PostIndexItem key={post.id} post={post} />;
+    });
 
     return (
       <main className="main-body">
-        <section className="hero">
-          <h2>Join a community of writers and doers.</h2>
-          <p>Engage directly with novice to experts from diverse background such as art, politics, tech, and much more.</p>
-            <button onClick={this.handleClick("login")}>Sign in</button>
-            <br/>
-            <button onClick={this.handleClick("signup")}>Get started</button>
-        </section>
+
+        <StickyContainer style={{ height: "auto" }}>
+          <Sticky className="main-nav-box">
+            {
+              ({ style }) => {
+                return (
+                  <nav style={style} className="main-nav">
+                    <a>For you</a>
+                    <a>Popular on Channel</a>
+                    <a>Politics</a>
+                    <a>Power</a>
+                    <a>Poetry</a>
+                    <a>Culture</a>
+                    <a>Technology</a>
+                  </nav>
+                );
+              }
+            }
+          </Sticky>
+
+          <section className="hero">
+
+            <section className="hero-left">
+              <h2>Join a community of writers and doers.</h2>
+              <p>Engage directly with novice to experts from diverse background such as art, politics, tech, and much more.</p>
+              <div className="hero-buttons">
+                <button onClick={this.handleClick("signup")}>Get started</button>
+                <br/>
+                <button onClick={this.handleClick("login")}>Sign in</button>
+              </div>
+            </section>
+
+            <section className="hero-right">
+            </section>
+
+          </section>
+
+          <div className="post-items-container">{posts}</div>
+        </StickyContainer>
       </main>
     );
   }

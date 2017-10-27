@@ -9,7 +9,7 @@ const sessionLinks = () => (
 );
 
 const logOut = (logout) => (
- <button className="header-button" onClick={logout}>Log Out</button>
+ <button className="header-logout" onClick={logout}>Log Out</button>
 );
 
 const topLinks = ({currentUser, logout}) => {

@@ -9,12 +9,18 @@
   background-color: $white;
   padding: 17px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
+.logo-container {
+  width: 220px;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .main-logo #logo {
-  font-family: $logo-font;
+  font-family: $playfair;
   font-size: 35px;
   color: $black;
 }
@@ -22,13 +28,11 @@
 .main-logo a {
   text-decoration: none;
   color: $grey;
-  font-family: $railway;
   font-size: 14px;
 }
 
 #main-login, .main-signin a {
   color: $dark-mint;
-  font-family: $railway;
 }
 
 .main-signin {
@@ -52,4 +56,12 @@
 
 .login-signup a, div a {
   color: $dark-mint;
+}
+
+.header-logout {
+  background-color: transparent;
+  color: $black;
+  border: 1px solid black;
+  padding: 12px 17px;
+  border-radius: 5px;
 }

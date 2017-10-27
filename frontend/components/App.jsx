@@ -12,10 +12,11 @@ const App = () => (
     <header className="main-inner-header">
       <div className="main-logo">
         <a>Our Story</a>
-        <a id="logo" href="/">Channel</a>
+        <div className="logo-container"><a id="logo" href="/">Channel</a></div>
         <HeaderContainer />
       </div>
     </header>
+
     <Switch>
       <Route exact path="/" component={PostIndexContainer}/>
       <Route exact path="/posts/:postId" component={PostShowContainer}/>
@@ -23,6 +24,8 @@ const App = () => (
     </Switch>
     <Route path="/login" component={SessionFormContainer} />
     <Route path="/signup" component={SessionFormContainer} />
+
+
   </div>
 );
 

@@ -1,0 +1,79 @@
+@import 'base';
+
+.hero {
+  display: flex;
+  justify-content: center;
+  flex: 100%;
+}
+
+.hero-left {
+  background-color: white;
+  height: 400px;
+  width: 40%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.hero-left h2, .hero-left p {
+  line-height: 130%;
+}
+
+.hero-left h2 {
+  font-family: $playfair;
+  font-size: 45px;
+  font-weight: bold;
+}
+
+.hero-left p {
+  font-size: 20px;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 210px;
+}
+
+.hero-buttons button {
+  padding: 12px 17px;
+  border-radius: 5px;
+  border: 1px solid $black;
+  background-color: $white;
+}
+
+.hero-buttons > :first-child {
+  background-color: $black;
+  color: white;
+}
+
+.hero-buttons > :first-child:hover {
+  background-color: $grey;
+  border: none;
+}
+
+.hero-right {
+  background-color: red;
+  height: 400px;
+  width: 40%;
+}
+
+.main-nav {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  border-bottom: 1px solid $light-grey;
+}
+
+.main-nav a {
+  color: $grey;
+  margin: 15px;
+}
+
+.test {
+  height: 2000px;
+}
+
+//breakpoint 768px
