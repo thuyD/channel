@@ -1,4 +1,4 @@
-json.extract! post, :title, :body, :author_id, :created_at, :id
+json.extract! post, :title, :body, :author_id, :created_at, :id, :claps
 json.image_url_m asset_path(post.image.url(:medium))
 json.image_url_reg asset_path(post.image.url)
 
