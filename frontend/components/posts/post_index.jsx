@@ -33,7 +33,7 @@ class PostIndex extends React.Component {
             {
               ({ style }) => {
                 return (
-                  <nav style={style} className="main-nav">
+                  <nav style={style} className="main-nav flex-center-hor">
                     <a>For you</a>
                     <a>Popular on Channel</a>
                     <a>Politics</a>
@@ -47,9 +47,9 @@ class PostIndex extends React.Component {
             }
           </Sticky>
 
-          <section className="hero">
+          <section className="hero flex-center-hor">
 
-            <section className="hero-left">
+            <section className="hero-left flex-col">
               <h2>Join a community of writers and doers.</h2>
               <p>Engage directly with novice to experts from diverse background such as art, politics, tech, and much more.</p>
               <div className="hero-buttons">
@@ -65,6 +65,15 @@ class PostIndex extends React.Component {
           </section>
 
           <div className="post-items-container">{posts}</div>
+          <footer className="main-footer main-nav">
+            <a>Help</a>
+            <a>Status</a>
+            <a>Blog</a>
+            <a>Careers</a>
+            <a>Privacy</a>
+            <a>Terms</a>
+            <a>About</a>
+          </footer>
         </StickyContainer>
       </main>
     );

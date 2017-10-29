@@ -1,0 +1,185 @@
+/* line 1, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_reset.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  -webkit-appearance: none;
+  font-family: 'Raleway', sans-serif;
+}
+
+/* HTML5 display-role reset for older browsers */
+/* line 24, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_reset.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 28, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_reset.scss */
+body {
+  line-height: 1;
+}
+
+/* line 31, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_reset.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 34, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_reset.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 37, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_reset.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* line 42, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 4, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_base.scss */
+.main-container {
+  height: 100%;
+}
+
+/* line 8, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_base.scss */
+#root {
+  height: 100%;
+}
+
+/* line 12, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_base.scss */
+body {
+  height: 100%;
+}
+
+/* line 16, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_base.scss */
+html {
+  height: 100%;
+}
+
+/* line 20, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_base.scss */
+.link-route {
+  text-decoration: none;
+  color: #232726;
+}
+
+/* line 25, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_base.scss */
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* line 30, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_base.scss */
+.flex-center-hor {
+  display: flex;
+  justify-content: center;
+}
+
+/* line 3, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_index.scss */
+.hero {
+  display: flex;
+  justify-content: center;
+  flex: 100%;
+}
+
+/* line 9, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_index.scss */
+.hero-left {
+  background-color: white;
+  height: 400px;
+  width: 40%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+/* line 19, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_index.scss */
+.hero-left h2, .hero-left p {
+  line-height: 130%;
+}
+
+/* line 23, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_index.scss */
+.hero-left h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 45px;
+  font-weight: bold;
+}
+
+/* line 29, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_index.scss */
+.hero-left p {
+  font-size: 20px;
+}
+
+/* line 33, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_index.scss */
+.hero-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 210px;
+}
+
+/* line 39, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_index.scss */
+.hero-buttons button {
+  padding: 12px 17px;
+  border-radius: 5px;
+  border: 1px solid #232726;
+  background-color: #ffffff;
+}
+
+/* line 46, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_index.scss */
+.hero-buttons > :first-child {
+  background-color: #232726;
+  color: white;
+}
+
+/* line 51, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_index.scss */
+.hero-buttons > :first-child:hover {
+  background-color: #636e6d;
+  border: none;
+}
+
+/* line 56, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_index.scss */
+.hero-right {
+  background-color: red;
+  height: 400px;
+  width: 40%;
+}
+
+/* line 62, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_index.scss */
+.main-nav {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* line 70, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_index.scss */
+.main-nav a {
+  color: #636e6d;
+  margin: 15px;
+}
+
+/* line 75, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_index.scss */
+.test {
+  height: 2000px;
+}

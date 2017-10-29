@@ -4,21 +4,25 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .post-item-box {
   border: 1px solid $light-grey;
-  margin: 10px;
   display: flex;
+  margin: 15px 15px;
 }
 
 .post-item-photo, .post-item-info {
   height: 230px;
   width: 258px;
+  margin: 0;
 }
 
 .post-item-info {
-  padding: 15px;
+  padding: 15px 10px;
+  justify-content: space-between;
 }
 
 .post-item-summary h3 {
@@ -30,5 +34,26 @@
 
 .post-item-summary p {
   line-height: 120%;
+}
+
+.post-date, .post-item-summary p {
   color: $grey;
+}
+
+.user-avatar {
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.user-avatar img {
+  display: block;
+}
+
+.post-item-details {
+  display: flex;
+}
+
+.post-item-date-time {
+  display: block;
 }

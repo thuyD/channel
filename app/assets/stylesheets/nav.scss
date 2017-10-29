@@ -2,15 +2,15 @@
 
 .main-inner-header {
   border-bottom: 1px solid $light-grey;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .main-logo {
   height: 50px;
   background-color: $white;
   padding: 17px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-between;
 }
 
 .logo-container {
@@ -42,9 +42,7 @@
 }
 
 .login-signup {
-  display: flex;
   justify-content: space-between;
-  align-items: center;
   width: 170px;
 }
 

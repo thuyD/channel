@@ -68,7 +68,7 @@ class SessionForm extends React.Component {
        text = "Sign Up";
        greeting = "Join Channel.";
        signup = (
-         <div className="login-details">
+         <div className="login-details flex-col">
            <label htmlFor="login-fullname">Full Name</label>
            <br />
            <input
@@ -78,7 +78,7 @@ class SessionForm extends React.Component {
              value={this.state.name}/>
          </div>
         );
-        signupMessage = "Create an account to applaud your favorite stories, follow authors you love, and share your writing."
+        signupMessage = "Create an account to applaud your favorite stories, follow authors you love, and share your writing.";
      } else {
        text = " Log In";
        greeting = "Welcome Back.";
@@ -86,9 +86,9 @@ class SessionForm extends React.Component {
      }
 
     return (
-      <section className="login-form-container">
-        <main className="login-form-box">
-          <section className="login-message">
+      <section className="login-form-container flex-center-hor">
+        <main className="login-form-box flex-col">
+          <section className="login-message flex-col">
             <h3>{greeting}</h3>
             <div><p>{loginMessage}</p></div>
             <div><p>{signupMessage}</p></div>
@@ -96,7 +96,7 @@ class SessionForm extends React.Component {
           <div className="errors">{this.renderErrors()}</div>
           <br/>
           <form onSubmit={this.handleSubmit} className="login-form">
-            <div className="login-details">
+            <div className="login-details flex-col">
               {signup}
               <br/>
               <label htmlFor="login-username">Username</label>

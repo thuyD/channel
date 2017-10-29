@@ -1,18 +1,14 @@
 @import 'base';
 
 .hero {
-  display: flex;
-  justify-content: center;
-  flex: 100%;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .hero-left {
   background-color: white;
   height: 400px;
-  width: 40%;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
+  width: 50%;
   justify-content: space-around;
 }
 
@@ -56,13 +52,11 @@
 .hero-right {
   background-color: red;
   height: 400px;
-  width: 40%;
+  width: 50%;
 }
 
 .main-nav {
   background-color: white;
-  display: flex;
-  justify-content: center;
   height: 50px;
   border-bottom: 1px solid $light-grey;
 }
@@ -74,6 +68,24 @@
 
 .test {
   height: 2000px;
+}
+
+.main-footer {
+  font-size: 14px;
+  width: 90%;
+  padding-top: 10px;
+  margin-top: 40px;
+  border-top: 1px solid $light-grey;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.main-nav a{
+  margin-left: 0px;
+}
+
+.main-nav a:hover {
+  text-decoration: underline;
 }
 
 //breakpoint 768px
