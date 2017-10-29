@@ -19,14 +19,22 @@ const PostIndexItem = ({ post }) => {
             <p>{description}</p>
           </div>
         </Link>
-        <div className="post-item-details ">
-          <div className="user-avatar"><img src={post.author_image_t}/></div>
-          <div className="post-item-author"><p>{post.author_name}</p></div>
-          <div className="post-item-date-time">
-            <p className="post-date">
-              {<Moment format="MMM D">{dateToFormat}</Moment>} · 9 min read
-            </p>
+
+        <div className="post-item-details-container flex-row">
+          <div className="flex-row">
+            <div className="post-item-avatar">
+              <div className="user-avatar"><img src={post.author_image_t}/></div>
+            </div>
+            <div className="post-item-details flex-col">
+              <div className="post-item-author"><p>{post.author_name}</p></div>
+              <div className="post-item-date-time">
+                <p className="post-date">
+                  {<Moment format="MMM D">{dateToFormat}</Moment>} · 9 min read
+                </p>
+              </div>
+            </div>
           </div>
+
           <i className="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
         </div>
       </div>

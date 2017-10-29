@@ -1,9 +1,7 @@
 @import 'base';
 
 .post-items-container {
-  display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   width: 90%;
   margin: 0 auto;
 }
@@ -56,4 +54,19 @@
 
 .post-item-date-time {
   display: block;
+}
+
+.post-item-details-container {
+  align-content: center;
+  justify-content: space-between;
+  height: 32px;
+  margin-right: 10px;
+}
+
+.post-item-avatar {
+  padding-right: 10px;
+}
+
+.fa-bookmark-o {
+  color: $grey;
 }

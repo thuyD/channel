@@ -56,10 +56,52 @@
   color: $dark-mint;
 }
 
+
+.header-logged-in {
+  width: 190px;
+  justify-content: space-around;
+  color: $grey;
+}
+
+.header-logged-in i:hover {
+  color: black;
+}
+
+.menu li {
+  margin: 15px;
+}
+
+.menu li:hover, #post-new-link:hover, .header-logout:hover {
+  color: black  
+}
+
 .header-logout {
+  color: $grey;
   background-color: transparent;
-  color: $black;
-  border: 1px solid black;
-  padding: 12px 17px;
+}
+.dropdown-container {
+  display: none;
+}
+
+.dropdown:hover .dropdown-container {
+  padding-top: 20px;
+  display: block;
+  right: 30px;
+  top: 52px;
+  position: absolute;
+  background-color: white;
+  z-index: 10;
+}
+
+.dropdown:hover .menu {
+  width: 210px;
+  padding: 20px;
   border-radius: 5px;
+  font-size: 15px;
+  border: 1px solid $light-grey;
+}
+
+.line {
+  border-top: 1px solid $light-grey;
+  width: 100%;
 }

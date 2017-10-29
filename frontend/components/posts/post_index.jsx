@@ -64,7 +64,7 @@ class PostIndex extends React.Component {
 
           </section>
 
-          <div className="post-items-container">{posts}</div>
+          <div className="post-items-container flex-center-hor">{posts}</div>
           <footer className="main-footer main-nav">
             <a>Help</a>
             <a>Status</a>

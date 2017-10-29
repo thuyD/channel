@@ -18,12 +18,13 @@ const App = () => (
     </header>
 
     <Switch>
+      <ProtectedRoute path="/posts/:postId/edit" component={PostFormContainer}/>
+      <ProtectedRoute path="/posts/new" component={PostFormContainer}/>
       <Route exact path="/" component={PostIndexContainer}/>
       <Route exact path="/posts/:postId" component={PostShowContainer}/>
-      <Route path="/posts/:postId/edit" component={PostFormContainer}/>
     </Switch>
-    <Route path="/login" component={SessionFormContainer} />
-    <Route path="/signup" component={SessionFormContainer} />
+    <AuthRoute path="/login" component={SessionFormContainer} />
+    <AuthRoute path="/signup" component={SessionFormContainer} />
 
 
   </div>
