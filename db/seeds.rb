@@ -110,7 +110,7 @@ post_body = 'This document assumes that one is familiar with the workings
 
  All titles for the articles are taken from the Outline. Please go to their website if you want to learn more.'
 
-first = User.create(
+first = User.create!(
   username: "Chirps",
   password: "catnip",
   name: "Chirps the Zero",
@@ -137,7 +137,7 @@ user_images = [
   character = Faker::DrWho.character
   profile_image = user_images.pop
 
-  new_user = User.create(
+  new_user = User.create!(
     username: character,
     password: character,
     name: character,
@@ -204,7 +204,7 @@ post_images = [
 
 titles.each do |title|
   image = post_images.pop
-  Post.create(
+  Post.create!(
     title: title,
     body: post_body,
     author_id: user_ids.sample,
