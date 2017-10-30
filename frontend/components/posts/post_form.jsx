@@ -4,7 +4,12 @@ import ReactQuill from 'react-quill';
 class PostForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.post;
+    if (this.props.post) {
+      this.state = this.props.post;
+    } else {
+      this.state = { title: "", body: "", imageFile: null, imageUrl: '' };
+    }
+
     this.updateTitle = this.updateTitle.bind(this);
     this.updateBody = this.updateBody.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,7 +34,6 @@ class PostForm extends React.Component {
     if (this.state.imageFile) formData.append("post[image]", this.state.imageFile);
     const redirect = (id) => this.props.history.push(`/posts/${id}`);
     let id = this.props.match.params.postId || null;
-    debugger
     this.props.action(formData, id).then(
       (response) => {
         redirect(response.post.id);

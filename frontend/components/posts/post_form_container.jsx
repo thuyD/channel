@@ -4,7 +4,7 @@ import { fetchPost, createPost, updatePost } from '../../actions/post_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let errors = state.errors.post;
-  let post = { title: "", body: "", imageFile: null, imageUrl: '' };
+  let post = null;
   let formType = "new";
 
   if (ownProps.match.params.postId) {
