@@ -7,7 +7,7 @@ const mapStateToProps = (state, ownProps) => {
   let ownPost = null;
   if (ownProps.match.path === "/posts/:postId") {
     const post = state.entities.posts[ownProps.match.params.postId];
-    if ( currentUser && currentUser.id === post.author_id ) {
+    if ( currentUser && post && currentUser.id === post.author_id ) {
       ownPost = post.id;
     }
   }

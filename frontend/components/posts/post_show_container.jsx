@@ -5,7 +5,7 @@ import { fetchPost } from '../../actions/post_actions';
 const mapStateToProps = (state, ownProps) => {
   return {
   post: state.entities.posts[ownProps.match.params.postId]
-};
+  };
 };
 
 const mapDispatchToProps = (dispatch) => ({
@@ -16,5 +16,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(PostShow);
-
-//delete action may be passed on to post show?
