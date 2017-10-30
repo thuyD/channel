@@ -9,13 +9,10 @@ import HeaderContainer from './header/header_container';
 
 const App = () => (
   <div className="main-container">
-    <header className="main-inner-header">
-      <div className="main-logo flex-center-ver">
-        <a>Our Story</a>
-        <div className="logo-container"><a id="logo" href="/">Channel</a></div>
-        <HeaderContainer />
-      </div>
-    </header>
+    <Switch>
+      <Route path="/posts/:postId" component={HeaderContainer} />
+      <Route path="/" component={HeaderContainer} />
+    </Switch>
 
     <Switch>
       <ProtectedRoute path="/posts/:postId/edit" component={PostFormContainer}/>

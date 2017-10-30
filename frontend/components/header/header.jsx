@@ -8,37 +8,50 @@ const sessionLinks = () => (
   </nav>
 );
 
-const userMenu = (logout, currentUser) => (
-  <section className="header-logged-in flex-center-ver">
-    <i className="fa fa-search fa-lg" aria-hidden="true"></i>
-    <i className="fa fa-bell-o fa-lg" aria-hidden="true"></i>
-    <div className="dropdown">
-      { currentUser.image_url ?
-        <div className="user-avatar"><img src={currentUser.image_url} /></div> :
-        <i className="fa fa-user-circle-o fa-lg" aria-hidden="true"></i>
-      }
-      <div className="dropdown-container">
-        <ul className="menu">
-          <li><Link to="/posts/new" id="post-new-link">New Story</Link></li>
-          <li>Stories</li>
-          <div className="line"></div>
-          <li>Bookmarks</li>
-          <li>Customize your interests</li>
-          <div className="line"></div>
-          <li>Profile</li>
-          <li>Settings</li>
-          <li>Help</li>
-          <li>
-            <button className="header-logout" onClick={logout}>Log Out</button>
-          </li>
-        </ul>
-      </div>
+const userMenu = (logout, currentUser, ownPost) => (
+  <header className="main-inner-header">
+    <div className="main-logo flex-center-ver">
+      <a>Our Story</a>
+      <div className="logo-container"><a id="logo" href="/">Channel</a></div>
+
+      <section className="header-logged-in flex-center-ver">
+        { ownPost ? <Link id="heder-edit" to={`/posts/${ownPost}/edit`}>Edit</Link> : '' }
+        <i className="fa fa-search fa-lg" aria-hidden="true"></i>
+        <i className="fa fa-bell-o fa-lg" aria-hidden="true"></i>
+        <div className="dropdown">
+          { currentUser.image_url ?
+            <div className="user-avatar"><img src={currentUser.image_url} /></div> :
+              <i className="fa fa-user-circle-o fa-lg" aria-hidden="true"></i>
+            }
+            <div className="dropdown-container">
+              <ul className="menu">
+                <li><Link to="/posts/new" id="post-new-link">New Story</Link></li>
+                <li>Stories</li>
+                <div className="line"></div>
+                <li>Bookmarks</li>
+                <li>Customize your interests</li>
+                <div className="line"></div>
+                <li>Profile</li>
+                <li>Settings</li>
+                <li>Help</li>
+                <li>
+                  <button className="header-logout" onClick={logout}>Log Out</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
     </div>
-  </section>
+  </header>
+
 );
 
-const topLinks = ({currentUser, logout}) => {
-  return currentUser ? userMenu(logout, currentUser) : sessionLinks();
+const topLinks = (props) => {
+  const currentUser = props.currentUser;
+  return (
+    currentUser ? userMenu(props.logout, currentUser, props.ownPost) : sessionLinks()
+  );
 };
 
 export default topLinks;
