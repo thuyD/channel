@@ -9,11 +9,12 @@
   margin: 0 auto;
   line-height: 170%;
   font-size: 18px;
+  margin-top: 50px;
 }
 
 .post-show-title {
   flex: 100%;
-  margin: 30px;
+  margin: 40px;
 }
 
 .post-show-title h1{
@@ -36,10 +37,6 @@
 .show-details > :first-child {
   color: $black;
   font-size: 17px;
-}
-
-.post-show-body {
-  margin-top: 50px;
 }
 
 .post-show-menu {

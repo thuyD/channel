@@ -13,7 +13,8 @@ class PostShow extends React.Component {
 
   render() {
     if (this.props.post) {
-      const dateToFormat = this.props.post.created_at
+      const richText = () => ({__html: this.props.post.body});
+      const dateToFormat = this.props.post.created_at;
       return (
         <main className="post-show-container">
           <section className="post-show-details-container flex-center-hor">
@@ -62,7 +63,7 @@ class PostShow extends React.Component {
               }
             </Sticky>
             <section className="post-show-body">
-              <p>{this.props.post.body}</p>
+              <div dangerouslySetInnerHTML={richText()}/>
             </section>
           </StickyContainer>
 

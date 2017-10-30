@@ -1,0 +1,75 @@
+@import 'base';
+
+.post-new-container {
+  align-items: center;
+}
+
+.post-new-container form {
+  padding: 20px;
+  padding-top: 30px;
+  width: 66%
+}
+
+.post-new-title {
+  width: 98%;
+  border: none;
+  border-bottom: 1px solid $mint;
+  margin-top: 30px;
+  margin-bottom: 45px;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.quill {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.post-new-button {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+}
+
+.post-new-submit:hover {
+  color: white;
+  background-color: $dark-mint;
+}
+
+input:focus {
+    outline:none;
+    border-bottom: 2px solid $dark-mint;
+}
+
+.post-new-photo-preview img {
+  width: 100%;
+}
+
+.post-errors {
+  margin-top: 30px;
+  color: #ed8484;
+}
+
+.post-errors li {
+  font-size: 17px;
+  margin: 10px;
+}
+
+.post-new-add-file input {
+  display: none;
+  margin: 10px;
+}
+
+.post-new-add-file {
+  color: $dark-mint;
+  padding:10px;
+  border: 1px solid $dark-mint;
+  border-radius: 5px;
+}
+
+.post-new-add-file:hover {
+  background-color: $dark-mint;
+  color: white;
+}

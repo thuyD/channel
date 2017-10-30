@@ -18,6 +18,3 @@ const SessionErrorsReducer = (state = initialState, action) => {
 };
 
 export default SessionErrorsReducer;
-
-//want to implement clearErrors so that when a user navigates away from
-//the page and then come back that the errors would be unmounted

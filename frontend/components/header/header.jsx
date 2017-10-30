@@ -8,12 +8,15 @@ const sessionLinks = () => (
   </nav>
 );
 
-const userMenu = (logout) => (
+const userMenu = (logout, currentUser) => (
   <section className="header-logged-in flex-center-ver">
     <i className="fa fa-search fa-lg" aria-hidden="true"></i>
     <i className="fa fa-bell-o fa-lg" aria-hidden="true"></i>
     <div className="dropdown">
-      <i className="fa fa-user-circle-o fa-lg" aria-hidden="true"></i>
+      { currentUser.image_url ?
+        <div className="user-avatar"><img src={currentUser.image_url} /></div> :
+        <i className="fa fa-user-circle-o fa-lg" aria-hidden="true"></i>
+      }
       <div className="dropdown-container">
         <ul className="menu">
           <li><Link to="/posts/new" id="post-new-link">New Story</Link></li>
@@ -35,7 +38,7 @@ const userMenu = (logout) => (
 );
 
 const topLinks = ({currentUser, logout}) => {
-  return currentUser ? userMenu(logout) : sessionLinks();
+  return currentUser ? userMenu(logout, currentUser) : sessionLinks();
 };
 
 export default topLinks;

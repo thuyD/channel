@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.destroy_all
+Post.destroy_all
 
 require 'faker'
 
@@ -112,16 +114,39 @@ first = User.create(
   username: "Chirps",
   password: "catnip",
   name: "Chirps the Zero",
-  bio: "I am a professinal cat blogger with revolutionary ideas. Everyone should follow me and claps at all of my genius creations. You're WELCOME!"
+  bio: "I am a professinal cat blogger with revolutionary ideas. Everyone should follow me and claps at all of my genius creations. You're WELCOME!",
+  avatar: "https://s3.amazonaws.com/channel-user-dev/chrips.jpeg"
 )
 
 user_ids = []
 
+user_images = [
+  "https://s3.amazonaws.com/channel-user-dev/user10.jpeg",
+  "https://s3.amazonaws.com/channel-user-dev/user11.jpeg",
+  "https://s3.amazonaws.com/channel-user-dev/user2.jpeg",
+  "https://s3.amazonaws.com/channel-user-dev/user3.jpeg",
+  "https://s3.amazonaws.com/channel-user-dev/user4.jpeg",
+  "https://s3.amazonaws.com/channel-user-dev/user5.jpeg",
+  "https://s3.amazonaws.com/channel-user-dev/user7.jpeg",
+  "https://s3.amazonaws.com/channel-user-dev/user8.jpeg",
+  "https://s3.amazonaws.com/channel-user-dev/user9.jpeg",
+  "https://s3.amazonaws.com/channel-user-dev/user6.jpeg"
+]
+
 10.times do
   character = Faker::DrWho.character
-  new_user = User.create(username: character, password: character, name: character, bio: Faker::DrWho.quote)
+  profile_image = user_images.pop
+
+  new_user = User.create(
+    username: character,
+    password: character,
+    name: character,
+    bio: Faker::DrWho.quote,
+    avatar: profile_image)
   user_ids << new_user.id
 end
+
+
 
 titles = [
   "When Men Fear Women",
@@ -150,8 +175,10 @@ titles = [
   "Not my President",
 ]
 
-images = [
+post_images = [
+  "https://s3.amazonaws.com/channel-user-dev/wave.jpg",
   "https://s3.amazonaws.com/channel-user-dev/art.jpg",
+  "https://s3.amazonaws.com/channel-user-dev/green.jpg",
   "https://s3.amazonaws.com/channel-user-dev/bricks.jpg",
   "https://s3.amazonaws.com/channel-user-dev/flow.jpg",
   "https://s3.amazonaws.com/channel-user-dev/bright-yellow.jpg",
@@ -176,7 +203,7 @@ images = [
 ]
 
 titles.each do |title|
-  image = images.pop
+  image = post_images.pop
   Post.create(
     title: title,
     body: post_body,

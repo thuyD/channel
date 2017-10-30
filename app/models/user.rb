@@ -3,16 +3,16 @@ class User < ApplicationRecord
   validates :password_digest, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
-  has_attached_file :avatar, default_url: "chirps.jpg", styles: { thumb: "32x32#", small: "60x60#" }
+  has_attached_file :avatar, default_url: "user11.jpg", styles: { thumb: "32x32#", medium: "60x60#" }
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   after_initialize :ensure_session_token
 
   #associations here
   has_many :posts,
-    primary_key: :id,
+    class_name: "Post",
     foreign_key: :author_id,
-    class_name: "Posts"
+    primary_key: :id
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

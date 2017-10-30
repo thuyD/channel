@@ -11,7 +11,7 @@ const receiveCurrentUser = (currentUser) => {
   });
 };
 
-const receiveErrors = (errors) => {
+const receiveSessionErrors = (errors) => {
   return ({
     type: RECEIVE_SESSION_ERRORS,
     errors
@@ -28,21 +28,21 @@ export const clearSessionErrors = () => {
 export const login = (credentials) => dispatch => {
   return ApiUtil.login(credentials).then(
     (user) => dispatch(receiveCurrentUser(user)),
-    (errors) => dispatch(receiveErrors(errors.responseJSON))
+    (errors) => dispatch(receiveSessionErrors(errors.responseJSON))
   );
 };
 
 export const logout = () => dispatch => {
   return ApiUtil.logout().then(
     () => dispatch(receiveCurrentUser(null)),
-    (errors) => dispatch(receiveErrors(errors.responseJSON))
+    (errors) => dispatch(receiveSessionErrors(errors.responseJSON))
   );
 };
 
 export const signup = (credentials) => dispatch => {
   return ApiUtil.signup(credentials).then(
     (user) => dispatch(receiveCurrentUser(user)),
-    (errors) => dispatch(receiveErrors(errors.responseJSON))
+    (errors) => dispatch(receiveSessionErrors(errors.responseJSON))
   );
 };
 

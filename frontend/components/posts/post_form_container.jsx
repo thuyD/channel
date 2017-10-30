@@ -3,19 +3,21 @@ import PostForm from './post_form';
 import { fetchPost, createPost, updatePost } from '../../actions/post_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  let post = { title: "", body: "" };
+  let errors = state.errors.post;
+  let post = { title: "", body: "", imageFile: null, imageUrl: '' };
   let formType = "new";
-  if (ownProps.match.path == "/posts/:postId/edit") {
+
+  if (ownProps.match.params.postId) {
     post = state.entities.posts[ownProps.match.params.postId];
     formType = "edit";
   }
-  return { post, formType };
+  return { post, formType, errors };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  const action = ownProps.match.path === "/" ? createPost : updatePost;
+  const action = ownProps.match.params.postId ? updatePost : createPost;
   return {
-    fetchPost: (id) => dispatch(fetchPost(id)),
+    fetchPost: () => dispatch(fetchPost(ownProps.match.params.postId)),
     action: (post) => dispatch(action(post))
   };
 };
