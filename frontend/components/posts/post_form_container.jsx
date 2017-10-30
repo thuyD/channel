@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   const action = ownProps.match.params.postId ? updatePost : createPost;
   return {
     fetchPost: () => dispatch(fetchPost(ownProps.match.params.postId)),
-    action: (post) => dispatch(action(post))
+    action: (post, id) => dispatch(action(post, id))
   };
 };
 

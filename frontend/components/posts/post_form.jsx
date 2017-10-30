@@ -28,7 +28,9 @@ class PostForm extends React.Component {
     formData.append("post[body]", this.state.body);
     if (this.state.imageFile) formData.append("post[image]", this.state.imageFile);
     const redirect = (id) => this.props.history.push(`/posts/${id}`);
-    this.props.action(formData).then(
+    let id = this.props.match.params.postId || null;
+    debugger
+    this.props.action(formData, id).then(
       (response) => {
         redirect(response.post.id);
       }
