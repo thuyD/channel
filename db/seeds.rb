@@ -134,7 +134,7 @@ user_images = [
 ]
 
 10.times do
-  character = Faker::DrWho.character
+  character = Faker::DrWho.unique.character
   profile_image = user_images.pop
 
   new_user = User.create!(
