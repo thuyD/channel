@@ -72,7 +72,7 @@
 }
 
 .menu li:hover, #post-new-link:hover, .header-logout:hover {
-  color: black  
+  color: black
 }
 
 .header-logout {
@@ -104,4 +104,8 @@
 .line {
   border-top: 1px solid $light-grey;
   width: 100%;
+}
+
+#header-edit:hover {
+  color: black;
 }

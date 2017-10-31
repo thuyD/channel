@@ -18,12 +18,12 @@ class Api::PostsController < ApplicationController
 
   def destroy
     post = currentUser.posts.find(params[:id])
-    post.destroy!
+    post.destroy
     render 'api/posts/index'
   end
 
   def index
-    @posts = Post.all.includes(:author)
+    @posts = Post.all.includes(:author, :comments)
     render :index
   end
 

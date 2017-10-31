@@ -1,6 +1,8 @@
 import React from 'react';
 import Moment from 'react-moment';
 import { StickyContainer, Sticky } from 'react-sticky';
+import CommentFormContainer from '../comments/comment_form_container';
+import PostShowCommentItem from  './post_show_comment_item';
 
 class PostShow extends React.Component {
   constructor(props) {
@@ -12,12 +14,16 @@ class PostShow extends React.Component {
   }
 
   render() {
+    const comments = this.props.comments.map((comment) => {
+      return <PostShowCommentItem comment={comment} />
+    });
+
     if (this.props.post) {
       const richText = () => ({__html: this.props.post.body});
       const dateToFormat = this.props.post.created_at;
       return (
         <main className="post-show-container">
-          <section className="post-show-details-container flex-center-hor">
+          <section className="post-show-details-container">
             <div className="post-show-details">
               <div className="user-avatar">
                 <img src={this.props.post.author_image_s} />
@@ -84,7 +90,7 @@ class PostShow extends React.Component {
           </section>
 
           <section className="post-show-details-container flex-center-ver">
-            <div className="post-show-details">
+            <div className="post-show-details post-show-details-last">
               <div className="user-avatar">
                 <img src={this.props.post.author_image_s} />
               </div>
@@ -96,6 +102,13 @@ class PostShow extends React.Component {
             <button className="gen-button">Follow</button>
           </section>
 
+          <section className="comments-container">
+              {this.props.match.params.postId ?
+                <CommentFormContainer
+                  postId={this.props.match.params.postId}/> : ''}
+          </section>
+
+          {comments}
         </main>
       );
     } else {

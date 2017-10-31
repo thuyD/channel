@@ -9,13 +9,8 @@ const sessionLinks = () => (
 );
 
 const userMenu = (logout, currentUser, ownPost) => (
-  <header className="main-inner-header">
-    <div className="main-logo flex-center-ver">
-      <a>Our Story</a>
-      <div className="logo-container"><a id="logo" href="/">Channel</a></div>
-
       <section className="header-logged-in flex-center-ver">
-        { ownPost ? <Link id="heder-edit" to={`/posts/${ownPost}/edit`}>Edit</Link> : '' }
+        { ownPost ? <Link id="header-edit" to={`/posts/${ownPost}/edit`}>Edit</Link> : '' }
         <i className="fa fa-search fa-lg" aria-hidden="true"></i>
         <i className="fa fa-bell-o fa-lg" aria-hidden="true"></i>
         <div className="dropdown">
@@ -41,16 +36,22 @@ const userMenu = (logout, currentUser, ownPost) => (
             </div>
           </div>
         </section>
-
-    </div>
-  </header>
-
 );
 
 const topLinks = (props) => {
   const currentUser = props.currentUser;
   return (
-    currentUser ? userMenu(props.logout, currentUser, props.ownPost) : sessionLinks()
+    <header className="main-inner-header">
+      <div className="main-logo flex-center-ver">
+        <a>Our Story</a>
+        <div className="logo-container"><a id="logo" href="/">Channel</a></div>
+        {
+          currentUser ? 
+          userMenu(props.logout, currentUser, props.ownPost) :
+          sessionLinks()
+        }
+      </div>
+    </header>
   );
 };
 

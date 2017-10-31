@@ -1,0 +1,13 @@
+@import 'base';
+
+.comment-form-container {
+  background: $beige;
+  padding-top: 30px;
+}
+
+.comment-form textarea {
+  width: 60%;
+  max-width: 640px;
+  height: 96px;
+  border: 1px solid #d1d1d1;
+}

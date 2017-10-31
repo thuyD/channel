@@ -7,3 +7,5 @@ json.author_id post.author.id
 json.author_bio post.author.bio
 json.author_image_t asset_path(post.author.avatar.url(:thumb))
 json.author_image_s asset_path(post.author.avatar.url(:medium))
+
+json.commentIds post.comments.map(&:id)

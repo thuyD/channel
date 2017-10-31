@@ -10,7 +10,7 @@ import HeaderContainer from './header/header_container';
 const App = () => (
   <div className="main-container">
     <Switch>
-      <Route path="/posts/:postId" component={HeaderContainer} />
+      <Route exact path="/posts/:postId" component={HeaderContainer} />
       <Route path="/" component={HeaderContainer} />
     </Switch>
 

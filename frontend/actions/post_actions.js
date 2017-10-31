@@ -3,24 +3,18 @@ import * as PostApiUtil from '../util/post_api_util';
 export const RECEIVE_ALL_POSTS = 'RECEIVE_ALL_POSTS';
 export const RECEIVE_POST = "RECEIVE_POST";
 export const REMOVE_POST = "REMOVE_POST";
-export const RECEIVE_NEW_POST = "RECEIVE_NEW_POST";
 export const RECEIVE_POST_ERRORS = "RECEIVE_ERRORS";
 
-const receiveAllPosts = posts => {
+const receiveAllPosts = ({ posts }) => {
   return {
     type: RECEIVE_ALL_POSTS,
     posts
   };
 };
 
-const receivePost = post => ({
+const receivePost = payload => ({
   type: RECEIVE_POST,
-  post
-});
-
-const receiveNewPost = post => ({
-  type: RECEIVE_NEW_POST,
-  post
+  payload
 });
 
 const removePost = postId => ({
@@ -33,34 +27,35 @@ const receivePostErrors = errors => ({
   errors
 });
 
-export const fetchPosts = () => dispatch => (
+export const fetchPosts = () => (dispatch) => (
   PostApiUtil.fetchPosts().then(
     (posts) => dispatch(receiveAllPosts(posts))
   )
 );
 
-export const fetchPost = id => dispatch => (
+export const fetchPost = (id) => (dispatch) => (
   PostApiUtil.fetchPost(id).then(
-    (post) => dispatch(receivePost(post))
+    (payload) => dispatch(receivePost(payload))
   )
 );
 
-export const createPost = newPost => dispatch => (
+export const createPost = (newPost) => (dispatch) => (
   PostApiUtil.createPost(newPost).then(
-    (post) => dispatch(receivePost(post)),
+    (payload) => dispatch(receivePost(payload)),
     (errors) => dispatch(receivePostErrors(errors.responseJSON))
   )
 );
 
-export const updatePost = (post, id) => dispatch => (
+export const updatePost = (post, id) => (dispatch) => (
   PostApiUtil.updatePost(post, id).then(
-    (updatedPost) => dispatch(receivePost(updatedPost)),
-    (errors) => dispatch(receivePostErrors(errors))
+    (payload) => dispatch(receivePost(payload)),
+    (errors) => dispatch(receivePostErrors(errors.responseJSON))
   )
 );
 
-export const deletePost = postId => dispatch => (
+export const deletePost = (postId) => (dispatch) => (
   PostApiUtil.deletePost(postId).then(
-    (post) => dispatch(removePost(postId))
+    () => dispatch(removePost(postId)),
+    (errors) => dispatch(receivePostErrors(errors.responseJSON))
   )
 );

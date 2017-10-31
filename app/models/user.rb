@@ -10,7 +10,12 @@ class User < ApplicationRecord
 
   #associations here
   has_many :posts,
-    class_name: "Post",
+    class_name: :Post,
+    foreign_key: :author_id,
+    primary_key: :id
+
+  has_many :comments,
+    class_name: :Comment,
     foreign_key: :author_id,
     primary_key: :id
 

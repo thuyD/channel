@@ -31,6 +31,7 @@ class PostForm extends React.Component {
     const formData = new FormData();
     formData.append("post[title]", this.state.title);
     formData.append("post[body]", this.state.body);
+
     if (this.state.imageFile) formData.append("post[image]", this.state.imageFile);
     const redirect = (id) => this.props.history.push(`/posts/${id}`);
     let id = this.props.match.params.postId || null;
@@ -93,7 +94,9 @@ class PostForm extends React.Component {
             onChange={this.updateBody}
             placeholder="Tell your story..."/>
           <div className="post-new-button">
-            <button className="post-new-submit gen-button">Publish</button>
+            <button className="post-new-submit gen-button">
+              {this.props.formType === "new" ? "Submit" : "Update"}
+            </button>
           </div>
         </form>
       </div>

@@ -13,7 +13,7 @@
 }
 
 .post-show-title {
-  flex: 100%;
+  flex: 60%;
   margin: 40px;
 }
 
@@ -23,8 +23,6 @@
 }
 
 .post-show-details {
-  display: flex;
-  flex-direction: row;
   margin-top: 30px;
 }
 
@@ -32,6 +30,12 @@
   color: $grey;
   font-size: 15px;
   margin: 5px;
+}
+
+.show-details {
+  display: inline-block;
+  width: calc(100% - 70px);
+  vertical-align: middle;
 }
 
 .show-details > :first-child {
@@ -60,7 +64,7 @@
 }
 
 .post-show-details-container {
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
   justify-content: space-between;
 }
@@ -112,6 +116,10 @@
 .post-show-claps-container2 p {
   padding-bottom: 8px;
   font-size: 17px;
+}
+
+.post-show-details-last {
+  margin-bottom: 30px;
 }
 
 
