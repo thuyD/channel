@@ -88,7 +88,6 @@ class CommentForm extends React.Component {
             >
 
             <p>Hello</p>
-            <button onClick={this.closeModal.bind(this)}>Close</button>
           </ReactModal>
         </section>
       );

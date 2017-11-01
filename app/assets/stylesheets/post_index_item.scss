@@ -52,18 +52,6 @@
   color: $grey;
 }
 
-.user-avatar {
-  border-radius: 50%;
-  overflow: hidden;
-  display: inline-block;
-  margin: 5px;
-  vertical-align: middle;
-}
-
-.user-avatar img {
-  display: block;
-}
-
 .post-item-details {
   display: flex;
   justify-content: center;

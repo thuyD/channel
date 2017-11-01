@@ -68,3 +68,19 @@ html {
   box-sizing: border-box;
   padding: 17px;
 }
+
+.user-avatar {
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+  margin: 5px;
+  vertical-align: middle;
+  height: 32px;
+  width: 32px;
+}
+
+.user-avatar img {
+  display: block;
+  height: 100%;
+  width: 100%;
+}

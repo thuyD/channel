@@ -20,7 +20,7 @@
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
-    "striptags": "^3.1.0",
+    "striptags": "^2.x.x",
     "webpack": "^3.8.1"
   },
   "engines": {

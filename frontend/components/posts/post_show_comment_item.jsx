@@ -18,14 +18,3 @@ const PostShowCommentItem = ({ comment, author }) => {
 };
 
 export default PostShowCommentItem;
-
-
-
-
-
-//
-// <img src={ author.image_url_t } />
-// <p>{ author.name }</p>
-// <p className="post-date">
-//   {<Moment format="MMM D">{dateToFormat}</Moment>}  ·  1 min read
-// </p>
