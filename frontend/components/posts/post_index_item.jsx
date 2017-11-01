@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
-import striptags from 'striptags';
+// import striptags from 'striptags';
 
 const PostIndexItem = ({ post }) => {
-  const text = striptags(post.body, [], '\n');
-  const description = (`${text.slice(0, 140)}...`);
+  // const text = striptags(post.body, [], '\n');
+  const description = (`${post.body.slice(0, 140)}...`);
   const dateToFormat = post.created_at;
   return (
     <div className="post-item-box">
