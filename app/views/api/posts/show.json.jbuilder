@@ -4,6 +4,7 @@ end
 
 if @post.comments.empty?
   json.comments({})
+  json.commentUsers({})
 else
   json.comments do
     @post.comments.each do |comment|

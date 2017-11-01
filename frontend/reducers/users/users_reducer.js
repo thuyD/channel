@@ -3,9 +3,11 @@ import merge from 'lodash/merge';
 
 const UsersReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
+  let newState;
   switch (action.type) {
     case RECEIVE_POST:
-      return action.payload.commentUsers;
+      newState = merge({}, oldState, action.payload.commentUsers);
+      return newState;
     default:
       return oldState;
   }
