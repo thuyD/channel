@@ -1,23 +1,11 @@
 @import 'base';
 
 .comment-form-container {
-  background: $beige;
   padding-top: 50px;
 }
 
-.comment-form textarea, #comment-form-fake {
-  width: 60%;
-  max-width: 640px;
-  height: 96px;
-  border: 1px solid #d1d1d1;
-  border-radius: 3px;
-  background-color: white;
-  color: $grey;
-  font-size: 14px;
-}
-
-#comment-form-fake {
-  padding-left: 20px;
+#comment-form-fake p {
+  margin-left: 20px;
 }
 
 .comment-tag p {
@@ -32,4 +20,18 @@
   display: block;
   width: 60%;
   margin: 0 auto;
+}
+
+.post-show-comment-items-container {
+  margin: 20px;
+}
+
+.comments-container {
+  background-color: $beige;
+  padding-bottom: 50px;
+}
+
+.comment-body {
+  margin-top: 12px;
+  color: black;
 }

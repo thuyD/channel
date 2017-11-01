@@ -51,3 +51,16 @@ html {
   color: $dark-mint;
   font-size: 14px;
 }
+
+.comment-input {
+  width: 60%;
+  max-width: 640px;
+  height: 96px;
+  border: 1px solid #d1d1d1;
+  border-radius: 3px;
+  background-color: white;
+  color: $grey;
+  font-size: 14px;
+  box-sizing: border-box;
+  padding: 17px;
+}

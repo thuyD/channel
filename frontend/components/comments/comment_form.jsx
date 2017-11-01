@@ -1,17 +1,6 @@
 import React from 'react';
 import ReactModal from 'react-modal';
 
-const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
-  }
-};
-
 class CommentForm extends React.Component {
   constructor(props) {
     super(props);
@@ -23,7 +12,9 @@ class CommentForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createComment(this.props.postId, this.state);
+    this.props.createComment(this.props.postId, this.state).then(() => {
+      this.setState = { body: '' };
+    });
   }
 
   handleChange(e) {
@@ -43,13 +34,16 @@ class CommentForm extends React.Component {
       return (
         <section className='comment-form-container'>
           <p className="comment-tag">Responses</p>
-          <form className='comment-form' onSubmit={this.handleSubmit}>
-            <textarea type='text'
-              onChange={this.handleChange}
-              value={this.state.body}
-              placeholder="Write a response..."/>
-            <button>Publish</button>
-          </form>
+          <div>
+            <form className='comment-form' onSubmit={this.handleSubmit}>
+              <textarea type='text'
+                onChange={this.handleChange}
+                value={this.state.body}
+                placeholder="Write a response..."
+                className="comment-input"/>
+              <button>Publish</button>
+            </form>
+          </div>
         </section>
       );
     } else {
@@ -57,7 +51,7 @@ class CommentForm extends React.Component {
         <section className='comment-form-container'>
           <div className="comment-tag"><p>Responses</p></div>
           <section className='comment-form flex-center-hor'>
-            <div id="comment-form-fake" className="flex-center-ver" onClick={this.openModal}>
+            <div id="comment-form-fake" className="flex-center-ver comment-input" onClick={this.openModal}>
               <p><i className="fa fa-comment-o fa-lg" aria-hidden="true"></i>  Write a response...</p>
             </div>
           </section>
@@ -65,9 +59,8 @@ class CommentForm extends React.Component {
           <ReactModal
             isOpen={this.state.openModal}
             onRequestClose={this.closeModal.bind(this)}
-            className="Modal"
-            overlayClassName="Overlay"
             >
+
             <p>Hello</p>
             <button onClick={this.closeModal.bind(this)}>Close</button>
           </ReactModal>

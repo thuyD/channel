@@ -13,10 +13,20 @@ class PostShow extends React.Component {
     this.props.fetchPost(this.props.match.params.postId);
   }
 
+  componentWillReceiveProps(newProps) {
+    const oldPropsPostId = this.props.match.params.postId;
+    if (newProps.match.params.postId !== oldPropsPostId) {
+      this.props.fetchPost(newProps.match.params.postId);
+    }
+  }
+
   render() {
-    const comments = this.props.comments.map((comment) => {
-      return <PostShowCommentItem comment={comment} key={comment.id}/>
-    });
+    let comments = '';
+    if (this.props.comments.length) {
+      comments = this.props.comments.map((comment) => {
+        return <PostShowCommentItem comment={comment} key={comment.id}/>;
+      });
+    }
 
     if (this.props.post) {
       const richText = () => ({__html: this.props.post.body});
@@ -106,9 +116,9 @@ class PostShow extends React.Component {
               {this.props.match.params.postId ?
                 <CommentFormContainer
                   postId={this.props.match.params.postId}/> : ''}
+              {comments}
           </section>
 
-          {comments}
         </main>
       );
     } else {

@@ -8,8 +8,16 @@ const mapStateToProps = (state, ownProps) => {
   let comments = [];
 
   if (commentIds.length) {
-    comments = commentIds.map((id) => state.entities.comments[id]);
+    comments = commentIds.map((id) => {
+      return state.entities.comments[id];
+    });
   }
+
+  comments.forEach((el) => {
+    if (typeof el === 'undefined') {
+      comments = [];
+    }
+  });
 
   return { post, comments };
 };
