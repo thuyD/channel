@@ -15,7 +15,7 @@ class PostShow extends React.Component {
 
   render() {
     const comments = this.props.comments.map((comment) => {
-      return <PostShowCommentItem comment={comment} />
+      return <PostShowCommentItem comment={comment} key={comment.id}/>
     });
 
     if (this.props.post) {

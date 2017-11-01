@@ -1,5 +1,5 @@
 import React from 'react';
-import Modal from 'react-modal';
+import ReactModal from 'react-modal';
 
 const customStyles = {
   content : {
@@ -15,15 +15,13 @@ const customStyles = {
 class CommentForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { body: '', modalIsOpen: false };
+    this.state = { body: '', openModal: false };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
   }
 
   handleSubmit(e) {
-    debugger
     e.preventDefault();
     this.props.createComment(this.props.postId, this.state);
   }
@@ -33,18 +31,19 @@ class CommentForm extends React.Component {
   }
 
   openModal() {
-    this.setState({ modalIsOpen: true });
+    this.setState({ openModal: true });
   }
 
-  closeModal() {
-    this.setState({ modalIsClose: false });
+  closeModal(e) {
+    this.setState({ openModal: false });
   }
 
   render() {
     if (this.props.currentUser) {
       return (
         <section className='comment-form-container'>
-          <form className='comment-form flex-center-hor' onSubmit={this.handleSubmit}>
+          <p className="comment-tag">Responses</p>
+          <form className='comment-form' onSubmit={this.handleSubmit}>
             <textarea type='text'
               onChange={this.handleChange}
               value={this.state.body}
@@ -56,9 +55,22 @@ class CommentForm extends React.Component {
     } else {
       return (
         <section className='comment-form-container'>
-          <form className='comment-form flex-center-hor' onSubmit={this.handleSubmit}>
-            <textarea type='text'/>
-          </form>
+          <div className="comment-tag"><p>Responses</p></div>
+          <section className='comment-form flex-center-hor'>
+            <div id="comment-form-fake" className="flex-center-ver" onClick={this.openModal}>
+              <p><i className="fa fa-comment-o fa-lg" aria-hidden="true"></i>  Write a response...</p>
+            </div>
+          </section>
+
+          <ReactModal
+            isOpen={this.state.openModal}
+            onRequestClose={this.closeModal.bind(this)}
+            className="Modal"
+            overlayClassName="Overlay"
+            >
+            <p>Hello</p>
+            <button onClick={this.closeModal.bind(this)}>Close</button>
+          </ReactModal>
         </section>
       );
     }
