@@ -4,8 +4,8 @@
   padding-top: 50px;
 }
 
-#comment-form-fake p {
-  margin-left: 20px;
+.comment-form-fake p {
+  margin: 17px;
 }
 
 .comment-tag p {
@@ -60,4 +60,23 @@
 .comment-form-user p {
   color: $dark-mint;
   margin-left: 10px;
+}
+
+
+.Modal {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+  background-color: papayawhip;
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rebeccapurple;
 }

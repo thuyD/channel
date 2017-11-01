@@ -75,7 +75,7 @@ class CommentForm extends React.Component {
         <section className='comment-form-container'>
           <div className="comment-tag"><p>Responses</p></div>
           <section className='comment-form flex-center-hor'>
-            <div id="comment-form-fake" className="flex-center-ver comment-input" onClick={this.openModal}>
+            <div className="flex-center-ver comment-input comment-form-fake" onClick={this.openModal}>
               <p><i className="fa fa-comment-o fa-lg" aria-hidden="true"></i>  Write a response...</p>
             </div>
           </section>
@@ -83,6 +83,8 @@ class CommentForm extends React.Component {
           <ReactModal
             isOpen={this.state.openModal}
             onRequestClose={this.closeModal.bind(this)}
+            className="Modal"
+            overlayClassName="Overlay"
             >
 
             <p>Hello</p>
