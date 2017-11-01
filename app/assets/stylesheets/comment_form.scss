@@ -20,6 +20,7 @@
   display: block;
   width: 60%;
   margin: 0 auto;
+  margin-bottom: 10px;
 }
 
 .post-show-comment-items-container {
@@ -32,6 +33,31 @@
 }
 
 .comment-body {
-  margin-top: 12px;
+  margin-top: 20px;
   color: black;
+}
+
+.comment-form-wrapper {
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+#comment-submit {
+  width: 75px;
+}
+
+.comment-textarea {
+  border: none;
+  font-size: 15px;
+  height: 130px;
+  margin: 20px 0px;
+}
+
+.comment-textarea:focus {
+  outline:none;
+}
+
+.comment-form-user p {
+  color: $dark-mint;
+  margin-left: 10px;
 }

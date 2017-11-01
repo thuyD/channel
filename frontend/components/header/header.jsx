@@ -14,8 +14,8 @@ const userMenu = (logout, currentUser, ownPost) => (
         <i className="fa fa-search fa-lg" aria-hidden="true"></i>
         <i className="fa fa-bell-o fa-lg" aria-hidden="true"></i>
         <div className="dropdown">
-          { currentUser.image_url ?
-            <div className="user-avatar"><img src={currentUser.image_url} /></div> :
+          { currentUser.image_url_t ?
+            <div className="user-avatar"><img src={currentUser.image_url_t} /></div> :
               <i className="fa fa-user-circle-o fa-lg" aria-hidden="true"></i>
             }
             <div className="dropdown-container">
@@ -46,7 +46,7 @@ const topLinks = (props) => {
         <a>Our Story</a>
         <div className="logo-container"><a id="logo" href="/">Channel</a></div>
         {
-          currentUser ? 
+          currentUser ?
           userMenu(props.logout, currentUser, props.ownPost) :
           sessionLinks()
         }

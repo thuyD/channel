@@ -85,7 +85,7 @@ class PostForm extends React.Component {
             placeholder="Title"
             className="post-new-title"/>
           <div className="post-new-photo-preview">
-            <label className="post-new-add-file">Upload a photo
+            <label id= "post-new-add-file" className="gen-button">Upload a photo
               <input type="file" onChange={this.updateFile}/>
             </label>
             <img src={this.state.imageUrl} />
@@ -94,7 +94,7 @@ class PostForm extends React.Component {
             onChange={this.updateBody}
             placeholder="Tell your story..."/>
           <div className="post-new-button">
-            <button className="post-new-submit gen-button">
+            <button className="gen-button">
               {this.props.formType === "new" ? "Submit" : "Update"}
             </button>
           </div>

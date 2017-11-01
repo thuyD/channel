@@ -12,4 +12,11 @@ else
       end
     end
   end
+  json.commentUsers do
+    @post.comments.each do |comment|
+      json.set! comment.author_id do
+        json.partial! 'api/users/user', user: comment.author
+      end
+    end
+  end
 end

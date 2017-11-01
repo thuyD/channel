@@ -52,16 +52,20 @@
 
 .post-item-details {
   display: flex;
+  justify-content: center;
 }
 
 .post-item-date-time {
   display: block;
 }
+.post-date {
+  margin-top: 5px;
+}
 
 .post-item-details-container {
   align-content: center;
   justify-content: space-between;
-  height: 32px;
+  height: 40px;
   margin-right: 10px;
   position: relative;
 }

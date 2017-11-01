@@ -33,11 +33,6 @@
   margin-top: 30px;
 }
 
-.post-new-submit:hover {
-  color: white;
-  background-color: $dark-mint;
-}
-
 input:focus {
     outline:none;
     border-bottom: 2px solid $dark-mint;
@@ -58,19 +53,11 @@ input:focus {
   margin: 10px;
 }
 
-.post-new-add-file input {
+#post-new-add-file input {
   display: none;
   margin: 10px;
 }
 
-.post-new-add-file {
-  color: $dark-mint;
+#post-new-add-file {
   padding:10px;
-  border: 1px solid $dark-mint;
-  border-radius: 5px;
-}
-
-.post-new-add-file:hover {
-  background-color: $dark-mint;
-  color: white;
 }

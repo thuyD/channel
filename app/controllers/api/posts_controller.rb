@@ -12,7 +12,7 @@ class Api::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.includes(comments: :author).find(params[:id])
     render 'api/posts/show'
   end
 

@@ -19,7 +19,15 @@ const mapStateToProps = (state, ownProps) => {
     }
   });
 
-  return { post, comments };
+  let commentUsers = {};
+
+  if (comments.length) {
+    comments.forEach((comment) => {
+      const authorId = comment.author_id;
+      commentUsers[authorId] = state.entities.users[authorId];
+    });
+  }
+  return { post, comments, commentUsers };
 };
 
 const mapDispatchToProps = (dispatch) => ({

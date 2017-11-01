@@ -1,0 +1,364 @@
+/* line 1, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_reset.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  -webkit-appearance: none;
+  font-family: 'Raleway', sans-serif;
+}
+
+/* HTML5 display-role reset for older browsers */
+/* line 24, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_reset.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 28, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_reset.scss */
+body {
+  line-height: 1;
+}
+
+/* line 31, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_reset.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 34, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_reset.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 37, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_reset.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* line 42, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 4, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_base.scss */
+.main-container {
+  height: 100%;
+}
+
+/* line 8, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_base.scss */
+#root {
+  height: 100%;
+}
+
+/* line 12, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_base.scss */
+body {
+  height: 100%;
+}
+
+/* line 16, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_base.scss */
+html {
+  height: 100%;
+}
+
+/* line 20, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_base.scss */
+.link-route {
+  text-decoration: none;
+  color: #232726;
+}
+
+/* line 25, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_base.scss */
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* line 30, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_base.scss */
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+/* line 35, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_base.scss */
+.flex-center-hor {
+  display: flex;
+  justify-content: center;
+}
+
+/* line 40, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_base.scss */
+.flex-center-ver {
+  display: flex;
+  align-items: center;
+}
+
+/* line 45, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_base.scss */
+.gen-button {
+  height: 36px;
+  padding: 0px 12px;
+  border-radius: 5px;
+  background-color: transparent;
+  border: 1px solid #20b693;
+  color: #20b693;
+  font-size: 14px;
+}
+
+/* line 55, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_base.scss */
+.gen-button:hover {
+  color: #ffffff;
+  background-color: #20b693;
+}
+
+/* line 60, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/_base.scss */
+.comment-input {
+  width: 60%;
+  max-width: 640px;
+  border: 1px solid #d1d1d1;
+  border-radius: 3px;
+  background-color: white;
+  color: #636e6d;
+  font-size: 14px;
+  box-sizing: border-box;
+  padding: 17px;
+}
+
+/* line 3, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_show.scss */
+.post-show-hero img {
+  width: 100%;
+}
+
+/* line 7, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_show.scss */
+.post-show-body {
+  width: 75%;
+  margin: 0 auto;
+  line-height: 170%;
+  font-size: 18px;
+  margin-top: 50px;
+}
+
+/* line 15, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_show.scss */
+.post-show-title {
+  flex: 60%;
+  margin: 40px;
+}
+
+/* line 20, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_show.scss */
+.post-show-title h1 {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+/* line 25, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_show.scss */
+.post-show-details {
+  margin-top: 30px;
+}
+
+/* line 29, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_show.scss */
+.show-details p {
+  color: #636e6d;
+  font-size: 15px;
+  margin: 5px;
+}
+
+/* line 35, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_show.scss */
+.show-details {
+  display: inline-block;
+  width: calc(100% - 70px);
+  vertical-align: middle;
+}
+
+/* line 41, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_show.scss */
+.show-details > :first-child {
+  color: #232726;
+  font-size: 17px;
+}
+
+/* line 46, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_show.scss */
+.post-show-menu {
+  justify-content: space-between;
+  color: #595959;
+  width: 80%;
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+  margin: 0 auto;
+  margin-top: 35px;
+  padding: 20px;
+}
+
+/* line 57, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_show.scss */
+.post-show-connect {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* line 62, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_show.scss */
+.post-show-connect i {
+  margin: 10px;
+}
+
+/* line 66, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_show.scss */
+.post-show-details-container {
+  width: 60%;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+/* line 72, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_show.scss */
+.show-details div {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+/* line 78, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_show.scss */
+.post-show-claps-container {
+  width: 80px;
+  justify-content: space-between;
+}
+
+/* line 83, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_show.scss */
+.claps {
+  border: 1px solid #595959;
+  border-radius: 50%;
+  display: inline-block;
+  padding: 10px;
+  color: #20b693;
+}
+
+/* line 91, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_show.scss */
+.post-show-container {
+  position: relative;
+}
+
+/* line 95, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_show.scss */
+.post-show-sidebar {
+  color: #595959;
+  padding: 0px 25px;
+  position: absolute;
+}
+
+/* line 101, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_show.scss */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 180px;
+  width: 48px;
+}
+
+/* line 110, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_show.scss */
+.post-show-claps-container2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* line 116, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_show.scss */
+.post-show-claps-container2 p {
+  padding-bottom: 8px;
+  font-size: 17px;
+}
+
+/* line 121, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_show.scss */
+.post-show-details-last {
+  margin-bottom: 30px;
+}
+
+/* line 169, /Users/ThuyDao/Desktop/channel/app/assets/stylesheets/post_show.scss */
+.loader {
+  color: #20b693;
+  font-size: 90px;
+  text-indent: -9999em;
+  overflow: hidden;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  margin: 72px auto;
+  position: relative;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load6 1.7s infinite ease, round 1.7s infinite ease;
+  animation: load6 1.7s infinite ease, round 1.7s infinite ease;
+}
+
+@-webkit-keyframes load6 {
+  0% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  5%,
+  95% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  10%,
+  59% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+  }
+  20% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+  }
+  38% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+  }
+  100% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+}
+@keyframes load6 {
+  0% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  5%,
+  95% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  10%,
+  59% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+  }
+  20% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+  }
+  38% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+  }
+  100% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+}
+@-webkit-keyframes round {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes round {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
