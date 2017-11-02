@@ -80,6 +80,7 @@ class SessionForm extends React.Component {
     let signup;
     let loginMessage;
     let signupMessage;
+    let padding = "login-form-container";
 
      if (mode === "signup") {
        text = "Sign Up";
@@ -101,7 +102,19 @@ class SessionForm extends React.Component {
        greeting = "Welcome Back.";
        loginMessage = "Sign in to express yourself, engage with the authors that you love, and read stories that matter to you.";
      }
-     const padding = this.props.padding ? "login-form-container" : "login-form-container-no-padding"
+
+
+     if (!this.props.shouldNavigate) {
+       padding = "login-form-container-no-padding";
+       if (mode === "signup") {
+         greeting = "Create an account to write a response."
+         signupMessage = "Build on this story’s ideas with your own – responses keep the conversation moving."
+       } else if (mode === 'login') {
+         greeting = "Welcome back."
+         loginMessage = "Sign in to keep the conversation moving with a response."
+       }
+     }
+
     return (
       <section className={padding}>
         <main className="login-form-box flex-col">

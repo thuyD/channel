@@ -21,3 +21,11 @@ else
     end
   end
 end
+
+if @post.likes.empty?
+  json.totalLikes(0)
+else
+  json.totalLikes do
+    @post.likes.length
+  end
+end
