@@ -7,6 +7,8 @@ import PostShowCommentItem from  './post_show_comment_item';
 class PostShow extends React.Component {
   constructor(props) {
     super(props);
+
+    this.handleLikes = this.handleLikes.bind(this);
   }
 
   componentDidMount() {
@@ -18,6 +20,10 @@ class PostShow extends React.Component {
     if (newProps.match.params.postId !== oldPropsPostId) {
       this.props.fetchPost(newProps.match.params.postId);
     }
+  }
+
+  handleLikes() {
+    this.props.createLike(this.props.match.params.postId);
   }
 
   render() {
@@ -67,9 +73,9 @@ class PostShow extends React.Component {
                     <span style={style} className="post-show-sidebar">
                       <div className="sidebar">
                         <div className="post-show-claps-container2">
-                          <p>{this.props.post.claps}</p>
-                          <div className="claps">
-                            <i className="fa fa-heart fa-lg" aria-hidden="true"></i>
+                          <p>{this.props.totalLikes}</p>
+                          <div className="claps" onClick={this.handleLikes}>
+                            <i className="fa fa-heart-o fa-lg" aria-hidden="true"></i>
                           </div>
                         </div>
                         <i className="fa fa-twitter fa-lg" aria-hidden="true"></i>
@@ -77,7 +83,7 @@ class PostShow extends React.Component {
                         <i className="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
                       </div>
                     </span>
-                  )
+                  );
                 }
               }
             </Sticky>
@@ -88,10 +94,10 @@ class PostShow extends React.Component {
 
           <section className="post-show-menu flex-center-ver">
             <div className="post-show-claps-container flex-center-ver">
-              <div className="claps">
-                <i className="fa fa-heart fa-lg" aria-hidden="true"></i>
+              <div className="claps" onClick={this.handleLikes}>
+                <i className="fa fa-heart-o fa-lg" aria-hidden="true"></i>
               </div>
-              <p>{this.props.post.claps}</p>
+              <p>{this.props.totalLikes}</p>
             </div>
             <div className="post-show-connect">
               <i className="fa fa-comment fa-lg" aria-hidden="true"></i>

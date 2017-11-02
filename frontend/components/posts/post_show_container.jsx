@@ -1,10 +1,17 @@
 import { connect } from 'react-redux';
 import PostShow from './post_show';
 import { fetchPost } from '../../actions/post_actions';
+import { createLike, deleteLike } from '../../actions/like_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const post = state.entities.posts[ownProps.match.params.postId];
   const commentIds = post ? post.commentIds : [];
+  let totalLikes = 0;
+
+  if (post) {
+    totalLikes = post.totalLikes;
+  }
+
   let comments = [];
 
   if (commentIds.length) {
@@ -27,11 +34,18 @@ const mapStateToProps = (state, ownProps) => {
       commentUsers[authorId] = state.entities.users[authorId];
     });
   }
-  return { post, comments, commentUsers };
+
+  let currentUser = false;
+
+  if (state.session.currentUser) { currentUser = true; }
+
+  return { post, comments, commentUsers, totalLikes, currentUser };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchPost: (id) => dispatch(fetchPost(id))
+  fetchPost: (id) => dispatch(fetchPost(id)),
+  createLike: (id) => dispatch(createLike(id)),
+  deleteLike: (id) => dispatch(deleteLike(id)),
 });
 
 export default connect(
