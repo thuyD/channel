@@ -8,6 +8,7 @@ class SessionForm extends React.Component {
       username: "",
       password: "",
       name: "",
+      mode: props.formType,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -36,11 +37,27 @@ class SessionForm extends React.Component {
     then(() => this.props.history.push("/"));
   }
 
-  navLink() {
-    if (this.props.formType === 'login') {
-      return <p>Are you new to Channel?  <a href="/#/signup">Sign Up</a></p>;
+  navigateToSignUp() {
+    if (this.props.shouldNavigate) {
+      this.props.history.push("/signup");
     } else {
-      return <p>Already have an account?  <a href="/#/login">Log In</a></p>;
+      this.setState({ mode: 'signup' });
+    }
+  }
+
+  navigateToSignIn() {
+    if (this.props.shouldNavigate) {
+      this.props.history.push("/login");
+    } else {
+      this.setState({ mode: 'login' });
+    }
+  }
+
+  navLink() {
+    if (this.state.mode === 'login') {
+      return <p>Are you new to Channel? <a onClick={this.navigateToSignUp.bind(this)}>Sign Up</a></p>;
+    } else {
+      return <p>Already have an account? <a onClick={this.navigateToSignIn.bind(this)}>Log In</a></p>;
     }
   }
 
@@ -57,14 +74,14 @@ class SessionForm extends React.Component {
   }
 
   render(){
-    const formType = this.props.formType;
+    const { mode } = this.state;
     let text;
     let greeting;
     let signup;
     let loginMessage;
     let signupMessage;
 
-     if (formType === "signup") {
+     if (mode === "signup") {
        text = "Sign Up";
        greeting = "Join Channel.";
        signup = (
@@ -84,9 +101,9 @@ class SessionForm extends React.Component {
        greeting = "Welcome Back.";
        loginMessage = "Sign in to express yourself, engage with the authors that you love, and read stories that matter to you.";
      }
-
+     const padding = this.props.padding ? "login-form-container" : "login-form-container-no-padding"
     return (
-      <section className="login-form-container flex-center-hor">
+      <section className={padding}>
         <main className="login-form-box flex-col">
           <section className="login-message flex-col">
             <h3>{greeting}</h3>

@@ -1,12 +1,21 @@
 @import 'base';
 
-.login-form-container {
+
+.login-form-container, .login-form-container-no-padding {
   background-color: $light-grey;
-  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.login-form-container {
+  padding-top: 35px;
+}
+
+.login-form-container-no-padding {
+  padding: 0px;
 }
 
 .login-form-box {
-  margin-top: 25px;
   padding: 40px;
   background-color: $mint;
   color: $black;

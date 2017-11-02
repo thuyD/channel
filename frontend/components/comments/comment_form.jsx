@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactModal from 'react-modal';
+import SessionFormContainer from '../session/session_form_container';
 
 class CommentForm extends React.Component {
   constructor(props) {
@@ -9,12 +10,13 @@ class CommentForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.openModal = this.openModal.bind(this);
     this.expand = this.expand.bind(this);
+    this.outOfFocus = this.outOfFocus.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
     this.props.createComment(this.props.postId, this.state).then(() => {
-      this.setState = { body: '' };
+      this.setState({ body: '' });
     });
   }
 
@@ -32,53 +34,64 @@ class CommentForm extends React.Component {
 
   expand() {
     this.setState({ openTextBox: true });
+    this.commentInput.focus();
+  }
+
+  outOfFocus() {
+    if (this.state.body.length < 1) {
+      this.setState({ openTextBox: false });
+    }
   }
 
   render() {
-
     if (this.props.currentUser) {
       const user = (
         <div className="user-avatar">
           <img src={this.props.currentUser.image_url_t}/>
         </div>
-      )
+      );
+      const userName = this.state.openTextBox ? <p>{this.props.currentUser.name}</p> : '';
+      const textAreaBody = this.state.openTextBox ? '' : (<p>Write a response...</p>);
+      const submitButton = this.state.openTextBox ?
+      (<button id="comment-submit" className="gen-button">Publish</button>): null;
+      const commentClassName = this.state.openTextBox ? 'comment-textarea' : 'comment-form-standin';
       return (
         <section className='comment-form-container'>
-          <p className="comment-tag">Responses</p>
-          <div className="comment-form-wrapper comment-input" onClick={this.expand}>
-            {this.state.openTextBox ? (
+          <div className='comment-form-responses'>
+            <p className="comment-tag">Responses</p>
+            <div className="comment-form-wrapper" >
               <div>
                 <div className="comment-form-user flex-center-ver">
                   {user}
-                  <p>{this.props.currentUser.name}</p>
+                  {userName}
                 </div>
                 <form className='comment-form flex-col' onSubmit={this.handleSubmit}>
                   <textarea type='text'
                     onChange={this.handleChange}
                     value={this.state.body}
+                    onFocus={this.expand}
                     placeholder="Write a response..."
-                    className="comment-textarea"/>
-                  <button id="comment-submit" className="gen-button">Publish</button>
+                    className={commentClassName}
+                    ref={((input) => { this.commentInput = input; }).bind(this)}
+                    onBlur={this.outOfFocus}>{textAreaBody}</textarea>
+                  {submitButton}
                 </form>
               </div>
-            ) : (
-            <div className="comment-standin flex-center-ver">
-              {user}
-              <p>  Write a response...</p>
-            </div>)
-          }
+            </div>
           </div>
         </section>
       );
     } else {
       return (
         <section className='comment-form-container'>
-          <div className="comment-tag"><p>Responses</p></div>
-          <section className='comment-form flex-center-hor'>
-            <div className="flex-center-ver comment-input comment-form-fake" onClick={this.openModal}>
-              <p><i className="fa fa-comment-o fa-lg" aria-hidden="true"></i>  Write a response...</p>
-            </div>
-          </section>
+          <div className='comment-form-responses'>
+            <p className="comment-tag">Responses</p>
+            <section className='comment-form-wrapper'>
+              <div className="flex-center-ver comment-form-fake" onClick={this.openModal}>
+                <p><i className="fa fa-comment-o fa-lg" aria-hidden="true"></i>  Write a response...</p>
+              </div>
+            </section>
+          </div>
 
           <ReactModal
             isOpen={this.state.openModal}
@@ -87,7 +100,7 @@ class CommentForm extends React.Component {
             overlayClassName="Overlay"
             >
 
-            <p>Hello</p>
+            <SessionFormContainer />
           </ReactModal>
         </section>
       );

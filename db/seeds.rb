@@ -202,12 +202,24 @@ post_images = [
   "https://s3.amazonaws.com/channel-user-dev/neon.jpg"
 ]
 
+post_ids = []
+
 titles.each do |title|
   image = post_images.pop
-  Post.create!(
+  new_post = Post.create!(
     title: title,
     body: post_body,
     author_id: user_ids.sample,
-    image: image
-  )
+    image: image)
+  post_ids << new_post.id
+end
+
+post_ids.each do |id|
+  Random.new.rand(10).times do
+    Comment.create!(
+      author_id: user_ids.sample,
+      body: Faker::HitchhikersGuideToTheGalaxy.quote,
+      post_id: id
+    )
+  end
 end

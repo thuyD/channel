@@ -37,7 +37,8 @@ class PostForm extends React.Component {
     let id = this.props.match.params.postId || null;
     this.props.action(formData, id).then(
       (response) => {
-        redirect(response.post.id);
+        debugger
+        redirect(response.payload.post.id);
       }
     );
   }

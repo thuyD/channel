@@ -4,17 +4,27 @@ import { login, signup, clearSessionErrors, demoUserInfo } from '../../actions/s
 
 const mapStateToProps = (state) => {
   return ({
-  loggedIn: Boolean(state.session.currentUser),
-  errors: state.errors.session
+    errors: state.errors.session
   });
 };
 
 const mapDispatchToProps = (dispatch, { location }) => {
-  const formType = location.pathname.slice(1);
-  const processForm = (formType === "signup") ? signup : login;
+  let formType = "signup";
+  let processForm = signup;
+  let shouldNavigate = false;
+  let padding = false;
 
+  if (location) {
+    formType = location.pathname.slice(1);
+    processForm = (formType === "signup") ? signup : login;
+    shouldNavigate = true;
+    padding = true;
+  }
+  console.log(padding, '!!!!!!!!!!!!')
   return ({
     formType,
+    shouldNavigate,
+    padding,
     processForm: (user) => dispatch(processForm(user)),
     clearSessionErrors: () => dispatch(clearSessionErrors()),
     demoUserInfo: (user) => dispatch(demoUserInfo(user)),
