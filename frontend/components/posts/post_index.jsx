@@ -27,7 +27,6 @@ class PostIndex extends React.Component {
 
     return (
       <main className="main-body">
-
         <StickyContainer style={{ height: "auto" }}>
           <Sticky className="main-nav-box">
             {

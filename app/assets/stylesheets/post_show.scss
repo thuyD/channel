@@ -88,6 +88,10 @@
   color: $dark-mint;
 }
 
+.claps:hover {
+  border: 1px solid $dark-mint;
+}
+
 .post-show-container {
   position: relative;
 }
@@ -122,6 +126,36 @@
   margin-bottom: 30px;
 }
 
+//claps
+
+.claps-container {
+  position: relative;
+  display: inline-block;
+}
+
+.unclap {
+  background-color: #E8F3EC;
+  position: absolute;
+  box-sizing: border-box;
+  border-radius: 0px 30px 30px 0px;
+  padding: 6px;
+  width: 31px;
+  height: 26px;
+  top: 6px;
+  right: -32px;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.4s;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.claps-container:hover .unclap {
+  opacity: 1;
+}
+.claps {
+  z-index: 2;
+}
 
 
 

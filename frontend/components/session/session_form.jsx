@@ -107,11 +107,11 @@ class SessionForm extends React.Component {
      if (!this.props.shouldNavigate) {
        padding = "login-form-container-no-padding";
        if (mode === "signup") {
-         greeting = "Create an account to write a response."
-         signupMessage = "Build on this story’s ideas with your own – responses keep the conversation moving."
+         greeting = "Create an account to response to your favorite post."
+         signupMessage = "Build on this story’s ideas with your own or show the author your support."
        } else if (mode === 'login') {
          greeting = "Welcome back."
-         loginMessage = "Sign in to keep the conversation moving with a response."
+         loginMessage = "Sign in to keep the conversation moving with a response or show the author how much your love their story."
        }
      }
 

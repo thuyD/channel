@@ -12,8 +12,8 @@ const removeLikes = () => (
   { type: REMOVE_LIKES }
 );
 
-const receiveLikeErrors = () => (
-  { type: RECEIVE_LIKE_ERRORS }
+const receiveLikeErrors = (errors) => (
+  { type: RECEIVE_LIKE_ERRORS, errors }
 );
 
 export const createLike = (postId) => (dispatch) => {
@@ -23,7 +23,7 @@ export const createLike = (postId) => (dispatch) => {
   );
 };
 
-export const deteleLike = (postId) => (dispatch) => {
+export const deleteLike = (postId) => (dispatch) => {
   return ApiLikeUtil.deleteLike(postId).then(
     () => dispatch(removeLikes()),
     (errors) => dispatch(receiveLikeErrors(errors.responseJSON))

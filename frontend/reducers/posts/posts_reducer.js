@@ -2,12 +2,13 @@ import { RECEIVE_ALL_POSTS,
          RECEIVE_POST,
          REMOVE_POST } from '../../actions/post_actions';
 import { RECEIVE_COMMENT } from '../../actions/comment_actions';
-import { RECEIVE_LIKE } from '../../actions/like_actions';
+import { RECEIVE_LIKE, REMOVE_LIKES } from '../../actions/like_actions';
 import merge from 'lodash/merge';
 
 const PostsReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   let newState = merge({}, oldState);
+  let postId;
   switch (action.type) {
     case RECEIVE_ALL_POSTS:
       return merge({}, action.posts);
@@ -24,7 +25,7 @@ const PostsReducer = (oldState = {}, action) => {
       post.commentIds.push(comment.id);
       return newState;
     case RECEIVE_LIKE:
-      const postId = action.like.post_id;
+      postId = action.like.post_id;
       newState[postId].totalLikes += 1;
       return newState;
     default:

@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 const sessionLinks = () => (
   <nav className="login-signup flex-center-ver">
-    <a href="/#/login">Sign in</a>
-    <div><a href="/#/signup">Get started</a></div>
+    <Link to="/login">Sign in</Link>
+    <div><Link to="signup">Get started</Link></div>
   </nav>
 );
 
@@ -44,7 +44,7 @@ const topLinks = (props) => {
     <header className="main-inner-header">
       <div className="main-logo flex-center-ver">
         <a>Our Story</a>
-        <div className="logo-container"><a id="logo" href="/">Channel</a></div>
+        <div className="logo-container"><Link id="logo" to="/">Channel</Link></div>
         {
           currentUser ?
           userMenu(props.logout, currentUser, props.ownPost) :

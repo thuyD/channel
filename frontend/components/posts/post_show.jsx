@@ -3,12 +3,16 @@ import Moment from 'react-moment';
 import { StickyContainer, Sticky } from 'react-sticky';
 import CommentFormContainer from '../comments/comment_form_container';
 import PostShowCommentItem from  './post_show_comment_item';
+import ReactModal from 'react-modal';
+import SessionFormContainer from '../session/session_form_container';
 
 class PostShow extends React.Component {
   constructor(props) {
     super(props);
-
+    this.state = { openModal: false, liked: false, hover: false };
+    this.openModal = this.openModal.bind(this);
     this.handleLikes = this.handleLikes.bind(this);
+    this.handleUnlikes = this.handleUnlikes.bind(this);
   }
 
   componentDidMount() {
@@ -24,6 +28,22 @@ class PostShow extends React.Component {
 
   handleLikes() {
     this.props.createLike(this.props.match.params.postId);
+    this.setState({ liked: true });
+  }
+
+  handleUnlikes() {
+    this.props.deleteLike(this.props.match.params.postId).then(
+      () => this.props.fetchPost(this.props.match.params.postId)
+    );
+    this.setState({ liked: false });
+  }
+
+  openModal() {
+    this.setState({ openModal: true });
+  }
+
+  closeModal(e) {
+    this.setState({ openModal: false });
   }
 
   render() {
@@ -37,9 +57,30 @@ class PostShow extends React.Component {
       });
     }
 
+    //like
+    let likeIcon = this.state.liked ? "fa fa-heart fa-lg" : "fa fa-heart-o fa-lg";
+    let like;
+    if (this.props.currentUser) {
+      like = (
+        <div className="claps-container">
+          <div className="claps" onClick={this.handleLikes}>
+            <i className={likeIcon} aria-hidden="true"></i>
+          </div>
+          <div className="unclap" onClick={this.handleUnlikes}>✕</div>
+        </div>
+      );
+    } else {
+      like = (
+        <div className="claps" onClick={this.openModal}>
+          <i className={likeIcon} aria-hidden="true"></i>
+        </div>
+      );
+    }
+
     if (this.props.post) {
       const richText = () => ({__html: this.props.post.body});
       const dateToFormat = this.props.post.created_at;
+
       return (
         <main className="post-show-container">
           <section className="post-show-details-container">
@@ -74,9 +115,7 @@ class PostShow extends React.Component {
                       <div className="sidebar">
                         <div className="post-show-claps-container2">
                           <p>{this.props.totalLikes}</p>
-                          <div className="claps" onClick={this.handleLikes}>
-                            <i className="fa fa-heart-o fa-lg" aria-hidden="true"></i>
-                          </div>
+                          {like}
                         </div>
                         <i className="fa fa-twitter fa-lg" aria-hidden="true"></i>
                         <i className="fa fa-facebook fa-lg" aria-hidden="true"></i>
@@ -94,10 +133,18 @@ class PostShow extends React.Component {
 
           <section className="post-show-menu flex-center-ver">
             <div className="post-show-claps-container flex-center-ver">
-              <div className="claps" onClick={this.handleLikes}>
-                <i className="fa fa-heart-o fa-lg" aria-hidden="true"></i>
-              </div>
+              {like}
               <p>{this.props.totalLikes}</p>
+
+              <ReactModal
+                isOpen={this.state.openModal}
+                onRequestClose={this.closeModal.bind(this)}
+                className="Modal"
+                overlayClassName="Overlay"
+                >
+
+                <SessionFormContainer />
+              </ReactModal>
             </div>
             <div className="post-show-connect">
               <i className="fa fa-comment fa-lg" aria-hidden="true"></i>

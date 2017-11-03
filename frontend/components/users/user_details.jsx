@@ -2,6 +2,9 @@ import React from 'react';
 import Moment from 'react-moment';
 
 const UserDetails = ({ author, dateToFormat, bookmark }) => {
+  if (!author) {
+    return <div>wtf</div>;
+  }
   return (
     <div className="post-item-details-container flex-row">
       <div className="flex-row">

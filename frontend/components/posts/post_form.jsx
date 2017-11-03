@@ -6,6 +6,7 @@ class PostForm extends React.Component {
     super(props);
     if (this.props.post) {
       this.state = this.props.post;
+      this.state.imageUrl = this.props.post.image_url_reg;
     } else {
       this.state = { title: "", body: "", imageFile: null, imageUrl: '' };
     }
@@ -37,7 +38,6 @@ class PostForm extends React.Component {
     let id = this.props.match.params.postId || null;
     this.props.action(formData, id).then(
       (response) => {
-        debugger
         redirect(response.payload.post.id);
       }
     );

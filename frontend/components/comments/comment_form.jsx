@@ -28,7 +28,7 @@ class CommentForm extends React.Component {
     this.setState({ openModal: true });
   }
 
-  closeModal(e) {
+  closeModal() {
     this.setState({ openModal: false });
   }
 
@@ -55,6 +55,7 @@ class CommentForm extends React.Component {
       const submitButton = this.state.openTextBox ?
       (<button id="comment-submit" className="gen-button">Publish</button>): null;
       const commentClassName = this.state.openTextBox ? 'comment-textarea' : 'comment-form-standin';
+
       return (
         <section className='comment-form-container'>
           <div className='comment-form-responses'>
