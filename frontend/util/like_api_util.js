@@ -11,3 +11,10 @@ export const deleteLike = (postId) => (
     url: `api/posts/${postId}/likes`
   })
 );
+
+export const likedPost = (postId) => (
+  $.ajax({
+    method: 'get',
+    url: `api/posts/${postId}/likes`
+  })
+);

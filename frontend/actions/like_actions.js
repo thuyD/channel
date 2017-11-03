@@ -3,6 +3,7 @@ import * as ApiLikeUtil from '../util/like_api_util';
 export const RECEIVE_LIKE = 'RECEIVE_LIKE';
 export const REMOVE_LIKES = 'REMOVE_LIKES';
 export const RECEIVE_LIKE_ERRORS = 'RECEIVE_LIKE_ERRORS';
+export const RECEIVE_LIKE_CONFIRM = 'RECEIVE_LIKE_CONFIRM';
 
 const receiveLike = (like) => (
   { type: RECEIVE_LIKE, like }
@@ -16,6 +17,10 @@ const receiveLikeErrors = (errors) => (
   { type: RECEIVE_LIKE_ERRORS, errors }
 );
 
+const receiveLikeConfirm = (bool) => (
+  { type: RECEIVE_LIKE_CONFIRM, likedPost: bool }
+);
+
 export const createLike = (postId) => (dispatch) => {
   return ApiLikeUtil.createLike(postId).then(
     (like) => dispatch(receiveLike(like)),
@@ -27,5 +32,11 @@ export const deleteLike = (postId) => (dispatch) => {
   return ApiLikeUtil.deleteLike(postId).then(
     () => dispatch(removeLikes()),
     (errors) => dispatch(receiveLikeErrors(errors.responseJSON))
+  );
+};
+
+export const likedPost = (postId) => (dispatch) => {
+  return ApiLikeUtil.likedPost(postId).then(
+    (bool) => dispatch(receiveLikeConfirm(bool))
   );
 };

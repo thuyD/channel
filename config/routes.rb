@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
 
   namespace :api, defaults: { format: 'JSON' } do
-    delete "/posts/:post_id/likes", to: "likes#destroy", as: 'post_likes'
+    delete "/posts/:post_id/likes", to: "likes#destroy"
+    get "/posts/:post_id/likes", to: "likes#liked_post"
     resources :users, only: [:create]
     resource :session, only: [:create, :destroy]
     resources :follows, only: [:create, :destroy]

@@ -8,19 +8,14 @@
   margin: 17px;
 }
 
-.comment-tag p {
-  font-weight: bold;
-  font-size: 15px;
-  color: $grey;
-  margin: 0 auto;
-  margin-bottom: 17px;
-}
-
 .comment-tag {
   display: block;
   width: 100%;
   margin: 0 auto;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  max-width: 640px;
+  color: $grey;
+  font-weight: bold;
 }
 
 .post-show-comment-items-container {

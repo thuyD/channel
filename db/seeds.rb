@@ -223,3 +223,13 @@ post_ids.each do |id|
     )
   end
 end
+
+
+post_id.each do |id|
+  Random.new.rand(15).times do
+    Like.create!(
+      post_id: id,
+      user_id: user_ids.sample
+    )
+  end
+end

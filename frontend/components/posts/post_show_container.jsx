@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import PostShow from './post_show';
 import { fetchPost } from '../../actions/post_actions';
-import { createLike, deleteLike } from '../../actions/like_actions';
+import { createLike, deleteLike, likedPost } from '../../actions/like_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const post = state.entities.posts[ownProps.match.params.postId];
@@ -46,6 +46,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchPost: (id) => dispatch(fetchPost(id)),
   createLike: (id) => dispatch(createLike(id)),
   deleteLike: (id) => dispatch(deleteLike(id)),
+  likedPost: (id) => dispatch(likedPost(id)),
 });
 
 export default connect(
