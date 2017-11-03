@@ -3,6 +3,7 @@
 .hero {
   width: 90%;
   margin: 0 auto;
+  max-width: 1050px;
 }
 
 .hero-left {
@@ -50,9 +51,10 @@
 }
 
 .hero-right {
-  background-color: red;
+  background-image: url("https://cdn-images-1.medium.com/max/1200/1*NV54YLXyvmeUtCXSPHJq5g.png");
   height: 400px;
   width: 50%;
+  background-size: contain;
 }
 
 .main-nav {

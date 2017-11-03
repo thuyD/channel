@@ -225,7 +225,7 @@ post_ids.each do |id|
 end
 
 
-post_id.each do |id|
+post_ids.each do |id|
   Random.new.rand(15).times do
     Like.create!(
       post_id: id,
