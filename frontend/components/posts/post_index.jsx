@@ -25,6 +25,31 @@ class PostIndex extends React.Component {
       return <PostIndexItem key={post.id} post={post} />;
     });
 
+    let hero;
+
+    if (this.props.currentUser) {
+      hero = <div></div>;
+    } else {
+      hero = (
+        <section className="hero flex-center-hor">
+
+          <section className="hero-left flex-col">
+            <h2>Join a community of writers and doers.</h2>
+            <p>Engage directly with novice to experts from diverse background such as art, politics, tech, and much more.</p>
+            <div className="hero-buttons">
+              <button onClick={this.handleClick("signup")}>Get started</button>
+              <br/>
+              <button onClick={this.handleClick("login")}>Sign in</button>
+            </div>
+          </section>
+
+          <section className="hero-right">
+          </section>
+
+        </section>
+      )
+    }
+
     return (
       <main className="main-body">
         <StickyContainer style={{ height: "auto" }}>
@@ -46,22 +71,7 @@ class PostIndex extends React.Component {
             }
           </Sticky>
 
-          <section className="hero flex-center-hor">
-
-            <section className="hero-left flex-col">
-              <h2>Join a community of writers and doers.</h2>
-              <p>Engage directly with novice to experts from diverse background such as art, politics, tech, and much more.</p>
-              <div className="hero-buttons">
-                <button onClick={this.handleClick("signup")}>Get started</button>
-                <br/>
-                <button onClick={this.handleClick("login")}>Sign in</button>
-              </div>
-            </section>
-
-            <section className="hero-right">
-            </section>
-
-          </section>
+          {hero}
 
           <div className="post-items-container flex-center-hor">{posts}</div>
           <footer className="main-footer main-nav">
