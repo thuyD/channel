@@ -47,3 +47,7 @@ table {
 button:focus, input:focus {
 	outline: none;
 }
+
+button, input, textarea, a {
+	cursor: pointer;
+}

@@ -24,6 +24,26 @@ class User < ApplicationRecord
     foreign_key: :user_id,
     primary_key: :id
 
+#find all follow record where we are the followee
+  has_many :in_follows,
+    foreign_key: :followee_id,
+    class_name: :Follow
+
+#find all follow record where we are the followers
+  has_many :out_follows,
+    foreign_key: :follower_id,
+    class_name: :Follow
+
+#give users objects of all of the followers that follow us
+  has_many :followers,
+    through: :in_follows,
+    source: :follower
+
+#give users objects of all of the followees that we follow
+  has_many :followees,
+    through: :out_follows,
+    source: :followee
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     user && user.is_password?(password) ? user : nil

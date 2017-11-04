@@ -1,5 +1,6 @@
 import { RECEIVE_POST } from '../../actions/post_actions';
 import { RECEIVE_CURRENT_USER } from '../../actions/session_actions';
+import { RECEIVE_FOLLOWING } from '../../actions/user_actions';
 import merge from 'lodash/merge';
 
 const UsersReducer = (oldState = {}, action) => {
@@ -12,8 +13,17 @@ const UsersReducer = (oldState = {}, action) => {
     // add current user to the users store
     case RECEIVE_CURRENT_USER:
       if (action.currentUser) {
-        newState = merge({}, oldState, { [action.currentUser.id]: action.currentUser });
+        newState = merge({}, oldState,
+          { [action.currentUser.id]: action.currentUser }
+        );
       }
+      return newState;
+    case RECEIVE_FOLLOWING:
+      const users = action.users.users;
+      const usersIds = Object.keys(users);
+      usersIds.forEach((id) => {
+        newState[id].followeeIds = users[id].followeeIds;
+      });
       return newState;
     default:
       return oldState;

@@ -1,5 +1,5 @@
 class Api::LikesController < ApplicationController
-  before_action :require_logged_in
+  before_action :require_logged_in, only: [:create, :destroy]
 
   def create
     @like = Like.new
@@ -14,9 +14,13 @@ class Api::LikesController < ApplicationController
   end
 
   def liked_post
-    liked = current_user.likes.where(post_id: params[:post_id])
-    if (liked.length > 0)
-      render json: true
+    if current_user
+      liked = current_user.likes.where(post_id: params[:post_id])
+      if !liked.empty?
+        render json: true
+      else
+        render json: false
+      end
     else
       render json: false
     end

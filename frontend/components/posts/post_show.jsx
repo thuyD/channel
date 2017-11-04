@@ -5,6 +5,7 @@ import CommentFormContainer from '../comments/comment_form_container';
 import PostShowCommentItem from  './post_show_comment_item';
 import ReactModal from 'react-modal';
 import SessionFormContainer from '../session/session_form_container';
+import ToggleFollowContainer from '../users/toggle_follow_container';
 
 class PostShow extends React.Component {
   constructor(props) {
@@ -100,6 +101,7 @@ class PostShow extends React.Component {
                   {<Moment format="MMM D">{dateToFormat}</Moment>}  ·  9 min read
                 </p>
               </div>
+              <ToggleFollowContainer followeeId={this.props.post.author_id}/>
             </div>
           </section>
 

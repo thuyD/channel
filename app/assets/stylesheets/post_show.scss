@@ -24,6 +24,7 @@
 
 .post-show-details {
   margin-top: 30px;
+  display: flex;
 }
 
 .show-details p {
@@ -81,6 +82,7 @@
 }
 
 .claps {
+  cursor: pointer;
   border: 1px solid #595959;
   border-radius: 50%;
   display: inline-block;

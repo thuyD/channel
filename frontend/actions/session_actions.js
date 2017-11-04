@@ -5,9 +5,15 @@ export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const CLEAR_SESSION_ERRORS = 'CLEAR_SESSION_ERRORS';
 
 const receiveCurrentUser = (currentUser) => {
+  let user = currentUser;
+
+  if (currentUser) {
+    user = currentUser.user;
+  }
+  
   return ({
     type: RECEIVE_CURRENT_USER,
-    currentUser
+    currentUser: user
   });
 };
 
