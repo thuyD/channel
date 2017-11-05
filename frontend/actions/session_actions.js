@@ -1,4 +1,5 @@
 import * as ApiUtil from '../util/session_api_util';
+import * as ApiUserUtil from '../util/user_api_util';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
@@ -10,7 +11,7 @@ const receiveCurrentUser = (currentUser) => {
   if (currentUser) {
     user = currentUser.user;
   }
-  
+
   return ({
     type: RECEIVE_CURRENT_USER,
     currentUser: user
@@ -55,5 +56,12 @@ export const signup = (credentials) => dispatch => {
 export const demoUserInfo = (credentials) => dispatch => {
   return ApiUtil.login(credentials).then(
     (user) => dispatch(receiveCurrentUser(user))
+  );
+};
+
+export const updateUser = (formData) => (dispatch) => {
+  return ApiUserUtil.updateUser(formData).then(
+    (user) => dispatch(receiveCurrentUser(user)),
+    (errors) => dispatch(receiveSessionErrors(errors.responseJSON))
   );
 };

@@ -70,19 +70,27 @@ html {
   padding: 17px;
 }
 
-.user-avatar {
+.user-avatar, .user-avatar-m{
   cursor: pointer;
   border-radius: 50%;
   overflow: hidden;
   display: inline-block;
   margin: 5px;
   vertical-align: middle;
+}
+
+.user-avatar {
   height: 32px;
   width: 32px;
 }
 
-.user-avatar img {
+.user-avatar img, .user-avatar-m img {
   display: block;
   height: 100%;
   width: 100%;
+}
+
+.user-avatar-m {
+  height: 60px;
+  width: 60px;
 }

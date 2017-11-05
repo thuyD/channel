@@ -1,0 +1,36 @@
+@import 'base';
+
+.user-profile-header {
+  min-width: 60%;
+  max-width: 80%;
+  margin-top: 35px;
+}
+
+.user-profile-details {
+  display: flex;
+  justify-content: space-between;
+  min-height: 140px;
+}
+
+.user-profile-header h2 {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 17px;
+}
+
+.user-name-bio {
+  max-width: 70%;
+}
+
+.user-profile-edit {
+  border: 1px solid $grey;
+  color: $grey;
+  max-width: 60px;
+  margin: 17px 0;
+}
+
+.user-profile-edit:hover {
+  background-color: transparent;
+  border: 1px solid $black;
+  color: black;
+}

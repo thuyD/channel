@@ -1,6 +1,7 @@
 import { RECEIVE_POST } from '../../actions/post_actions';
 import { RECEIVE_CURRENT_USER } from '../../actions/session_actions';
 import { RECEIVE_FOLLOWING } from '../../actions/user_actions';
+
 import merge from 'lodash/merge';
 
 const UsersReducer = (oldState = {}, action) => {

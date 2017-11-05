@@ -6,6 +6,7 @@ import PostIndexContainer from './posts/post_index_container';
 import PostShowContainer from './posts/post_show_container';
 import PostFormContainer from './posts/post_form_container';
 import HeaderContainer from './header/header_container';
+import UserProfileContainer from './users/user_profile_container';
 
 const App = () => (
   <div className="main-container">
@@ -15,6 +16,7 @@ const App = () => (
     </Switch>
 
     <Switch>
+      <ProtectedRoute exact path="/:userName" component={UserProfileContainer} />
       <ProtectedRoute path="/posts/:postId/edit" component={PostFormContainer}/>
       <ProtectedRoute path="/posts/new" component={PostFormContainer}/>
       <Route exact path="/" component={PostIndexContainer}/>
@@ -23,6 +25,7 @@ const App = () => (
 
     <AuthRoute path="/login" component={SessionFormContainer} />
     <AuthRoute path="/signup" component={SessionFormContainer} />
+
   </div>
 );
 

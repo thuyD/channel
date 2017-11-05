@@ -26,7 +26,7 @@ const userMenu = (logout, currentUser, ownPost) => (
                 <li>Bookmarks</li>
                 <li>Customize your interests</li>
                 <div className="line"></div>
-                <li>Profile</li>
+                <li><Link to={`/${currentUser.userName}`}>Profile</Link></li>
                 <li>Settings</li>
                 <li>Help</li>
                 <li>

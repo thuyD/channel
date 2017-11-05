@@ -11,3 +11,13 @@ export const unfollowUser = (id) => (
     url: `/api/users/${id}/unfollow`
   })
 );
+
+export const updateUser = (formData) => (
+  $.ajax({
+    method: 'patch',
+    url: 'api/users',
+    contentType: false,
+    processData: false,
+    data: formData
+  })
+);

@@ -91,7 +91,7 @@ class PostShow extends React.Component {
         <main className="post-show-container">
           <section className="post-show-details-container">
             <div className="post-show-details">
-              <div className="user-avatar">
+              <div className="user-avatar-m">
                 <img src={this.props.post.author_image_s} />
               </div>
               <div className="show-details">
@@ -164,7 +164,7 @@ class PostShow extends React.Component {
 
           <section className="post-show-details-container flex-center-ver">
             <div className="post-show-details post-show-details-last">
-              <div className="user-avatar">
+              <div className="user-avatar-m">
                 <img src={this.props.post.author_image_s} />
               </div>
               <div className="show-details">
