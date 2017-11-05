@@ -6,7 +6,14 @@ import { deleteLike } from '../../actions/like_actions';
 import { updateUser } from '../../actions/session_actions';
 
 const mapStateToProps = (state) => {
-  let currentUser = { name: '', bio: '', imageFile: null, image_url_m: '', formType: 'norm' };
+  let currentUser = {
+    name: '',
+    bio: '',
+    imageFile: null,
+    image_url_m: '',
+    formType: 'norm',
+    component: "stories"};
+
   if (state.session.currentUser) {
     currentUser = state.entities.users[state.session.currentUser.id];
   }

@@ -12,7 +12,7 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(currentUser.id)
+    @user = User.find(current_user.id)
     if @user.update(user_params)
       render 'api/users/show'
     else
@@ -27,6 +27,7 @@ class Api::UsersController < ApplicationController
       @users = [current_user, followee]
       render :index
     else
+      debugger
       render json: follow.errors.full_messages, status: 422
     end
   end

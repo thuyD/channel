@@ -23,7 +23,7 @@ const UsersReducer = (oldState = {}, action) => {
       const users = action.users.users;
       const usersIds = Object.keys(users);
       usersIds.forEach((id) => {
-        newState[id].followeeIds = users[id].followeeIds;
+        newState[id] = users[id];
       });
       return newState;
     default:

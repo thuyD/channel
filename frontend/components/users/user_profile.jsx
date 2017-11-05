@@ -4,16 +4,25 @@ class UserProfile extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.currentUser;
+    this.state.formType = 'norm';
+    this.state.component = 'stories';
 
     this.handleCancel = this.handleCancel.bind(this);
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateFile = this.updateFile.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
+    this.handleNav = this.handleNav.bind(this);
   }
 
   handleEdit() {
     this.setState({ formType: "edit" });
+  }
+
+  handleNav(field) {
+    return () => {
+      this.setState({ [field]: field });
+    };
   }
 
   update(field) {
@@ -51,6 +60,20 @@ class UserProfile extends React.Component {
   }
 
   render() {
+
+    const nav = (
+      <section>
+        <div className="user-profile-nav">
+          <p onClick={this.handleNav("stories")}>Stories</p>
+          <p onClick={this.handleNav("responses")}>Responses</p>
+          <p onClick={this.handleNav("claps")}>Claps</p>
+        </div>
+        <section className="user-profile-content">
+    
+        </section>
+      </section>
+    );
+
     if (this.state.formType === "norm") {
       return (
         <main className="user-profile-container flex-center-hor">
@@ -62,7 +85,7 @@ class UserProfile extends React.Component {
               </div>
               <div className="user-avatar-m"><img src={this.props.currentUser.image_url_m} /></div>
             </div>
-            <p>Following</p>
+            <p>{this.state.followeeIds.length} Following</p>
             <button className="gen-button user-profile-edit" onClick={this.handleEdit}>Edit</button>
           </section>
         </main>
@@ -75,22 +98,29 @@ class UserProfile extends React.Component {
               <div className="user-name-bio">
                 <input type="text"
                   value={this.state.name}
-                  onChange={this.update('name')} />
-                <input type="text"
+                  onChange={this.update('name')}
+                  className="user-name"/>
+                <textarea type="text"
                   value={this.state.bio}
-                  onChange={this.update('bio')} />
+                  onChange={this.update('bio')}
+                  className="user-bio"/>
               </div>
-              <div>
-                <label id= "post-new-add-file" className="gen-button">Upload a photo
+              <div className="user-profile-edit-photo">
+                <label className="user-avatar-m user-profile-add-file">
+                  <i className="fa fa-camera" aria-hidden="true"></i>
                   <input type="file" onChange={this.updateFile}/>
                 </label>
-                <img src={this.state.image_url_m} />
+                <div className="user-avatar-m">
+                  <img src={this.state.image_url_m} />
+                </div>
               </div>
             </div>
-            <p>Following</p>
-            <button className="gen-button user-profile-edit">Save</button>
+            <p>{this.state.followeeIds.length} Following</p>
+            <div>
+              <button className="gen-button">Save</button>
+              <button className="gen-button user-profile-cancel" onClick={this.handleCancel}>Cancel</button>
+            </div>
           </form>
-          <button className="gen-button user-profile-edit" onClick={this.handleCancel}>Cancel</button>
         </main>
       );
     }

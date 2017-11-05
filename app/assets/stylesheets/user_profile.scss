@@ -12,7 +12,7 @@
   min-height: 140px;
 }
 
-.user-profile-header h2 {
+.user-profile-header h2, .user-name {
   font-size: 30px;
   font-weight: bold;
   margin-bottom: 17px;
@@ -22,15 +22,63 @@
   max-width: 70%;
 }
 
-.user-profile-edit {
+.user-name-bio input, textarea {
+  border: none;
+}
+
+.user-name-bio textarea {
+  width: 90%;
+  min-height: 55px;
+  font-size: 15px;
+}
+
+.user-profile-edit, .user-profile-cancel {
   border: 1px solid $grey;
   color: $grey;
   max-width: 60px;
   margin: 17px 0;
 }
 
-.user-profile-edit:hover {
+.user-profile-cancel {
+  margin-left: 15px;
+  max-width: 75px;
+}
+
+.user-profile-edit:hover, .user-profile-cancel:hover {
   background-color: transparent;
   border: 1px solid $black;
   color: black;
+}
+
+.user-profile-edit-photo {
+  position: relative;
+}
+
+.user-profile-edit-photo label {
+  position: absolute;
+  width: 100%;
+}
+
+.fa-camera {
+  color: $light-grey;
+}
+
+.user-profile-add-file {
+  text-align: center;
+  max-width: 60px;
+  max-height: 60px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-profile-add-file > .fa-camera:hover {
+  color: white;
+}
+
+.user-profile-add-file input {
+  display: none;
+  margin: 10px;
 }
