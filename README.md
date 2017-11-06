@@ -36,18 +36,17 @@ Channel uses:
 
 # Screen Shots
 
-[Home page](assets/images/home_page)
+![Home page](app/assets/images/home_page.png)
 
+![Sign up page](app/assets/images/signup.png)
 
-[Sign up page](assets/images/signup)
+![Post show page where you can like the post and follow/unfollow the author](app/assets/images/like_and_follow.png)
 
-[Post show page where you can like the post and follow/unfollow the author](assets/images/like_and_follow)
+![Post show page where you can comment on the post](app/assets/images/comments.png)
 
-[Post show page where you can comment on the post](assets/images/comments)
+![Update user profile](app/assets/images/user_profile.png)
 
-[Update user profile](assets/images/user_profile)
-
-## New Features Queue
+# New Features Queue
 
 Some features that are pending for implementation include:
 * Allow users to reply to a comment
