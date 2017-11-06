@@ -6,6 +6,7 @@ import PostShowCommentItem from  './post_show_comment_item';
 import ReactModal from 'react-modal';
 import SessionFormContainer from '../session/session_form_container';
 import ToggleFollowContainer from '../users/toggle_follow_container';
+import { Link } from 'react-router-dom';
 
 class PostShow extends React.Component {
   constructor(props) {
@@ -92,10 +93,14 @@ class PostShow extends React.Component {
           <section className="post-show-details-container">
             <div className="post-show-details">
               <div className="user-avatar-m">
-                <img src={this.props.post.author_image_s} />
+                <Link to={`/${this.props.post.author_id}`}>
+                  <img src={this.props.post.author_image_s} />
+                </Link>
               </div>
               <div className="show-details">
-                <p>{this.props.post.author_name}</p>
+                <Link to={`/${this.props.post.author_id}`} className="author-link">
+                  <p>{this.props.post.author_name}</p>
+                </Link>
                 <p id="2nd">{this.props.post.author_bio}</p>
                 <p className="post-date">
                   {<Moment format="MMM D">{dateToFormat}</Moment>}  ·  9 min read
@@ -165,10 +170,14 @@ class PostShow extends React.Component {
           <section className="post-show-details-container flex-center-ver">
             <div className="post-show-details post-show-details-last">
               <div className="user-avatar-m">
-                <img src={this.props.post.author_image_s} />
+                <Link to={`/${this.props.post.author_id}`}>
+                  <img src={this.props.post.author_image_s} />
+                </Link>
               </div>
               <div className="show-details">
-                <p>{this.props.post.author_name}</p>
+                <Link to={`/${this.props.post.author_id}`} className="author-link">
+                  <p>{this.props.post.author_name}</p>
+                </Link>
                 <p id="2nd">{this.props.post.author_bio}</p>
               </div>
             </div>

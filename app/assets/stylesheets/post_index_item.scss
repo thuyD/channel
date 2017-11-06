@@ -82,3 +82,23 @@
   top: 10px;
   right: 0px;
 }
+
+//author name link
+
+.author-link p:hover {
+  text-decoration: underline;
+}
+
+.author-link {
+  text-decoration: none;
+  color: $grey;
+}
+
+.author-link-color {
+  text-decoration: none;
+  color: $dark-mint;
+}
+
+.author-link-color p:hover {
+  color: #0d9b7a;
+}

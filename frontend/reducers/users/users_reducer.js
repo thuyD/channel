@@ -1,6 +1,6 @@
 import { RECEIVE_POST } from '../../actions/post_actions';
 import { RECEIVE_CURRENT_USER } from '../../actions/session_actions';
-import { RECEIVE_FOLLOWING } from '../../actions/user_actions';
+import { RECEIVE_FOLLOWING, RECEIVE_USER } from '../../actions/user_actions';
 
 import merge from 'lodash/merge';
 
@@ -19,6 +19,8 @@ const UsersReducer = (oldState = {}, action) => {
         );
       }
       return newState;
+    case RECEIVE_USER:
+      return merge({}, oldState, { [action.user.id]: action.user });
     case RECEIVE_FOLLOWING:
       const users = action.users.users;
       const usersIds = Object.keys(users);

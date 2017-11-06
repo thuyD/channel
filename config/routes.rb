@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     delete "/posts/:post_id/likes", to: "likes#destroy"
     get "/posts/:post_id/likes", to: "likes#liked_post"
     patch "/users", to: "users#update"
-    resources :users, only: [:create] do
+    resources :users, only: [:create, :show] do
       # resources :follows, only: [:create, :destroy]
       patch 'follow', on: :member
       patch 'unfollow', on: :member

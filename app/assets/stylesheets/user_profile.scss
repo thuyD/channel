@@ -1,15 +1,29 @@
 @import 'base';
 
+.user-profile-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
 .user-profile-header {
   min-width: 60%;
-  max-width: 80%;
   margin-top: 35px;
+  margin-bottom: 20px;
 }
 
 .user-profile-details {
   display: flex;
   justify-content: space-between;
   min-height: 140px;
+}
+
+.user-profile-following {
+  color: $grey;
+}
+
+.user-profile-following:hover {
+  color: black;
+  cursor: pointer;
 }
 
 .user-profile-header h2, .user-name {
@@ -26,10 +40,11 @@
   border: none;
 }
 
-.user-name-bio textarea {
+.user-name-bio textarea, .user-name-bio p {
   width: 90%;
   min-height: 55px;
   font-size: 15px;
+  line-height: 125%;
 }
 
 .user-profile-edit, .user-profile-cancel {
@@ -81,4 +96,24 @@
 .user-profile-add-file input {
   display: none;
   margin: 10px;
+}
+
+.user-profile-nav-list {
+  display: flex;
+}
+
+.user-profile-nav-list p {
+  color: $grey;
+  margin-right: 17px;
+  padding-bottom: 10px;
+}
+
+.user-profile-nav-list p:hover {
+  border-bottom: 1px solid $grey;
+  color: black;
+  cursor: pointer;
+}
+
+.user-profile-nav-list {
+  border-bottom: 1px solid $light-grey;
 }

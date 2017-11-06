@@ -1,11 +1,15 @@
 import React from 'react';
+import UserProfileNavContainer from './user_profile_nav_container';
+import ReactModal from 'react-modal';
+import UserFolloweeDetails from './user_followee_details.jsx';
 
 class UserProfile extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.currentUser;
     this.state.formType = 'norm';
-    this.state.component = 'stories';
+    this.state.content = 'stories';
+    this.state.openModal = false;
 
     this.handleCancel = this.handleCancel.bind(this);
     this.update = this.update.bind(this);
@@ -13,6 +17,20 @@ class UserProfile extends React.Component {
     this.updateFile = this.updateFile.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     this.handleNav = this.handleNav.bind(this);
+    this.openModal = this.openModal.bind(this);
+  }
+
+  //componentDidMount for users that was not fetched yet by post show
+  componentDidMount() {
+    this.props.fetchUser(this.props.match.params.userId);
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (this.props.match.params.userId !== newProps.match.params.userId) {
+      this.props.fetchUser(newProps.match.params.userId).then((user) => {
+        this.setState(user);
+      });
+    }
   }
 
   handleEdit() {
@@ -21,7 +39,7 @@ class UserProfile extends React.Component {
 
   handleNav(field) {
     return () => {
-      this.setState({ [field]: field });
+      this.setState({ content: field });
     };
   }
 
@@ -44,7 +62,7 @@ class UserProfile extends React.Component {
   }
 
   handleCancel() {
-    this.setState({ formType: "norm"});
+    this.setState({ formType: "norm" });
   }
 
   updateFile(e) {
@@ -59,24 +77,49 @@ class UserProfile extends React.Component {
     }
   }
 
-  render() {
+  openModal() {
+    this.setState({ openModal: true });
+  }
 
+  closeModal(e) {
+    this.setState({ openModal: false });
+  }
+
+  render() {
     const nav = (
-      <section>
-        <div className="user-profile-nav">
+      <section className="user-profile-nav-container">
+        <div className="user-profile-nav-list">
           <p onClick={this.handleNav("stories")}>Stories</p>
           <p onClick={this.handleNav("responses")}>Responses</p>
-          <p onClick={this.handleNav("claps")}>Claps</p>
+          <p onClick={this.handleNav("likes")}>Claps</p>
         </div>
         <section className="user-profile-content">
-    
+          <UserProfileNavContainer type={this.state.content} />
         </section>
       </section>
     );
 
+    const following = (
+      <div>
+        <p className="user-profile-following" onClick={this.openModal}>
+          {this.state.followeeIds.length} Following
+        </p>
+        <ReactModal
+          isOpen={this.state.openModal}
+          onRequestClose={this.closeModal.bind(this)}
+          className="Modal"
+          overlayClassName="Overlay"
+          >
+
+          <h3>{this.props.currentUser.name} follows</h3>
+
+        </ReactModal>
+      </div>
+    );
+
     if (this.state.formType === "norm") {
       return (
-        <main className="user-profile-container flex-center-hor">
+        <main className="user-profile-container">
           <section className="user-profile-header flex-col">
             <div className="user-profile-details">
               <div className="user-name-bio">
@@ -85,14 +128,16 @@ class UserProfile extends React.Component {
               </div>
               <div className="user-avatar-m"><img src={this.props.currentUser.image_url_m} /></div>
             </div>
-            <p>{this.state.followeeIds.length} Following</p>
+            {following}
             <button className="gen-button user-profile-edit" onClick={this.handleEdit}>Edit</button>
           </section>
+          {nav}
         </main>
       );
     } else {
+      console.log(this.state);
       return (
-        <main className="user-profile-container flex-center-hor">
+        <main className="user-profile-container">
           <form className="user-profile-header flex-col" onSubmit={this.handleSubmit}>
             <div className="user-profile-details">
               <div className="user-name-bio">
@@ -115,12 +160,13 @@ class UserProfile extends React.Component {
                 </div>
               </div>
             </div>
-            <p>{this.state.followeeIds.length} Following</p>
+            {following}
             <div>
               <button className="gen-button">Save</button>
               <button className="gen-button user-profile-cancel" onClick={this.handleCancel}>Cancel</button>
             </div>
           </form>
+          {nav}
         </main>
       );
     }

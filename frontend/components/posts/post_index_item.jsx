@@ -25,10 +25,18 @@ const PostIndexItem = ({ post }) => {
         <div className="post-item-details-container flex-row">
           <div className="flex-row">
             <div className="post-item-avatar">
-              <div className="user-avatar"><img src={post.author_image_t}/></div>
+              <div className="user-avatar">
+                <Link to={`/${post.author_id}`}>
+                  <img src={post.author_image_t}/>
+                </Link>
+              </div>
             </div>
             <div className="post-item-details flex-col">
-              <div className="post-item-author"><p>{post.author_name}</p></div>
+              <div className="post-item-author">
+                <Link to={`/${post.author_id}`} className="author-link">
+                  <p>{post.author_name}</p>
+                </Link>
+              </div>
               <div className="post-item-date-time">
                 <p className="post-date">
                   {<Moment format="MMM D">{dateToFormat}</Moment>} · 9 min read

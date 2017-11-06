@@ -1,32 +1,36 @@
 import { connect } from 'react-redux';
 import UserProfile from './user_profile';
-import { deletePost } from '../../actions/post_actions';
-import { deleteComment } from '../../actions/comment_actions';
-import { deleteLike } from '../../actions/like_actions';
 import { updateUser } from '../../actions/session_actions';
+import { fetchUser } from '../../actions/user_actions';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   let currentUser = {
     name: '',
     bio: '',
+    followeeIds: [],
     imageFile: null,
-    image_url_m: '',
-    formType: 'norm',
-    component: "stories"};
+    image_url_m: '' };
 
-  if (state.session.currentUser) {
-    currentUser = state.entities.users[state.session.currentUser.id];
+  let followeeIds = [];
+  const userId = ownProps.match.params.userId;
+
+  if (state.entities.users[userId]) {
+    currentUser = state.entities.users[userId];
+    followeeIds = currentUser.followeeIds;
   }
 
-  return { currentUser };
+  let followees = [];
+  followeeIds.forEach((id) => {
+    followees.push(state.entities.users[id]);
+  });
+
+  return { currentUser, followees };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    deletePost: (postId) => dispatch(deletePost(postId)),
-    deleteComment: (commentId) => dispatch(deleteComment(commentId)),
-    deleteLike: (postId) => dispatch(deleteLike(postId)),
     updateUser: (formData) => dispatch(updateUser(formData)),
+    fetchUser: (id) => dispatch(fetchUser(id))
   };
 };
 
