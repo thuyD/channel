@@ -36,14 +36,19 @@ Channel uses:
 
 # Screen Shots
 
+Home page:
 ![Home page](app/assets/images/home_page.png)
 
+Sign up page:
 ![Sign up page](app/assets/images/signup.png)
 
+Post show page where you can like the post and follow/unfollow the author:
 ![Post show page where you can like the post and follow/unfollow the author](app/assets/images/like_and_follow.png)
 
+Post show page where you can comment on the post:
 ![Post show page where you can comment on the post](app/assets/images/comments.png)
 
+User profile page where you can update user information:
 ![Update user profile](app/assets/images/user_profile.png)
 
 # New Features Queue
