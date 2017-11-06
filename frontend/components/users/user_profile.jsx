@@ -2,11 +2,12 @@ import React from 'react';
 import UserProfileNavContainer from './user_profile_nav_container';
 import ReactModal from 'react-modal';
 import UserFolloweeDetails from './user_followee_details.jsx';
+import ToggleFollowContainer from './toggle_follow_container';
 
 class UserProfile extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.currentUser;
+    this.state = this.props.user;
     this.state.formType = 'norm';
     this.state.content = 'stories';
     this.state.openModal = false;
@@ -111,31 +112,34 @@ class UserProfile extends React.Component {
           overlayClassName="Overlay"
           >
 
-          <h3>{this.props.currentUser.name} follows</h3>
+          <h3>{this.props.user.name} follows</h3>
 
         </ReactModal>
       </div>
     );
 
     if (this.state.formType === "norm") {
+      const normButton = this.props.currentUserId === this.props.user.id ?
+        (<button className="gen-button user-profile-edit" onClick={this.handleEdit}>Edit</button>) :
+        (<ToggleFollowContainer followeeId={this.props.user.id} />);
+
       return (
         <main className="user-profile-container">
           <section className="user-profile-header flex-col">
             <div className="user-profile-details">
               <div className="user-name-bio">
-                <h2>{this.props.currentUser.name}</h2>
-                <p>{this.props.currentUser.bio}</p>
+                <h2>{this.props.user.name}</h2>
+                <p>{this.props.user.bio}</p>
               </div>
-              <div className="user-avatar-m"><img src={this.props.currentUser.image_url_m} /></div>
+              <div className="user-avatar-m"><img src={this.props.user.image_url_m} /></div>
             </div>
             {following}
-            <button className="gen-button user-profile-edit" onClick={this.handleEdit}>Edit</button>
+            {normButton}
           </section>
           {nav}
         </main>
       );
     } else {
-      console.log(this.state);
       return (
         <main className="user-profile-container">
           <form className="user-profile-header flex-col" onSubmit={this.handleSubmit}>

@@ -4,7 +4,7 @@ import { updateUser } from '../../actions/session_actions';
 import { fetchUser } from '../../actions/user_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  let currentUser = {
+  let user = {
     name: '',
     bio: '',
     followeeIds: [],
@@ -15,8 +15,8 @@ const mapStateToProps = (state, ownProps) => {
   const userId = ownProps.match.params.userId;
 
   if (state.entities.users[userId]) {
-    currentUser = state.entities.users[userId];
-    followeeIds = currentUser.followeeIds;
+    user = state.entities.users[userId];
+    followeeIds = user.followeeIds;
   }
 
   let followees = [];
@@ -24,7 +24,13 @@ const mapStateToProps = (state, ownProps) => {
     followees.push(state.entities.users[id]);
   });
 
-  return { currentUser, followees };
+  let currentUserId = null;
+
+  if(state.session.currentUser) {
+    currentUserId = state.session.currentUser.id;
+  }
+
+  return { currentUserId, user, followees };
 };
 
 const mapDispatchToProps = (dispatch) => {

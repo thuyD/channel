@@ -87,6 +87,7 @@ class PostShow extends React.Component {
     if (this.props.post) {
       const richText = () => ({__html: this.props.post.body});
       const dateToFormat = this.props.post.created_at;
+      const followButton = <ToggleFollowContainer followeeId={this.props.post.author_id}/>;
 
       return (
         <main className="post-show-container">
@@ -106,7 +107,7 @@ class PostShow extends React.Component {
                   {<Moment format="MMM D">{dateToFormat}</Moment>}  ·  9 min read
                 </p>
               </div>
-              <ToggleFollowContainer followeeId={this.props.post.author_id}/>
+              {followButton}
             </div>
           </section>
 
@@ -181,7 +182,7 @@ class PostShow extends React.Component {
                 <p id="2nd">{this.props.post.author_bio}</p>
               </div>
             </div>
-            <button className="gen-button">Follow</button>
+            {followButton}
           </section>
 
           <section className="comments-container">

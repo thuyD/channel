@@ -28,7 +28,7 @@ class ToggleFollow extends React.Component {
     const followState = this.state.following ? "Unfollow" : "Follow";
 
     return (
-      <div onClick={this.handleFollowing} className="gen-button flex-center-ver">
+      <div onClick={this.handleFollowing} className="gen-button flex-center-ver follow-button">
         {followState}
       </div>
     );

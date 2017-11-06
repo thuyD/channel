@@ -15,6 +15,9 @@ const App = () => (
       <Route path="/" component={HeaderContainer} />
     </Switch>
 
+    <AuthRoute path="/login" component={SessionFormContainer} />
+    <AuthRoute path="/signup" component={SessionFormContainer} />
+
     <Switch>
       <ProtectedRoute exact path="/:userId" component={UserProfileContainer} />
       <ProtectedRoute path="/posts/:postId/edit" component={PostFormContainer}/>
@@ -22,9 +25,6 @@ const App = () => (
       <Route exact path="/" component={PostIndexContainer}/>
       <Route exact path="/posts/:postId" component={PostShowContainer}/>
     </Switch>
-
-    <AuthRoute path="/login" component={SessionFormContainer} />
-    <AuthRoute path="/signup" component={SessionFormContainer} />
 
   </div>
 );
