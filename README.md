@@ -13,13 +13,13 @@ Channel is single page web application inspired by the blogging platform called 
 * Comment on a post
 * Follow and unfollow users
 
-#Structure
+# Structure
 
 Channel is built using Ruby on Rails with a postgresSQL database. The backend routes are RESTful and they respond to asynchronous requests from the front end with JSON. By utilizing associations to prefetch data in the controller actions, queries to the database were minimalized.
 
 All of front end rendering is done through React, which implements the flex architecture. React's virtual DOM efficiently handles diffing, resulting in fast updates of the DOM. Data in the Redux store is in a normalized form where errors, session, users, comments, and posts get their own slice of state, which makes managing relational data simpler and easier.
 
-###Libraries
+### Libraries
 
 Channel uses:
 
@@ -34,24 +34,20 @@ Channel uses:
 * [react-modal](https://github.com/reactjs/react-modal) to create modals
 * [react-sticky](https://github.com/captivationsoftware/react-sticky) to allow the nav bar to stick to the page when scrolling
 
-#Screen Shots
+# Screen Shots
 
-![Home page](assets/images/home_page)
-Format: ![Alt Text](url)
+[Home page](assets/images/home_page)
 
-![Sign up page](assets/images/signup)
-Format: ![Alt Text](url)
 
-![Post show page where you can like the post and follow/unfollow the author](assets/images/like_and_follow)
-Format: ![Alt Text](url)
+[Sign up page](assets/images/signup)
 
-![Post show page where you can comment on the post](assets/images/comments)
-Format: ![Alt Text](url)
+[Post show page where you can like the post and follow/unfollow the author](assets/images/like_and_follow)
 
-![Update user profile](assets/images/user_profile)
-Format: ![Alt Text](url)
+[Post show page where you can comment on the post](assets/images/comments)
 
-##New Features Queue
+[Update user profile](assets/images/user_profile)
+
+## New Features Queue
 
 Some features that are pending for implementation include:
 * Allow users to reply to a comment
