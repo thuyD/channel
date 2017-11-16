@@ -148,11 +148,13 @@ class UserProfile extends React.Component {
                 <input type="text"
                   value={this.state.name}
                   onChange={this.update('name')}
-                  className="user-name"/>
+                  className="user-name"
+                  placeholder="Full name"/>
                 <textarea type="text"
                   value={this.state.bio}
                   onChange={this.update('bio')}
-                  className="user-bio"/>
+                  className="user-bio"
+                  placeholder="Background information..."/>
               </div>
               <div className="user-profile-edit-photo">
                 <label className="user-avatar-m user-profile-add-file">

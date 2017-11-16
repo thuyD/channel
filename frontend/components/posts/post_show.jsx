@@ -87,7 +87,7 @@ class PostShow extends React.Component {
     if (this.props.post) {
       const richText = () => ({__html: this.props.post.body});
       const dateToFormat = this.props.post.created_at;
-      const followButton = <ToggleFollowContainer followeeId={this.props.post.author_id}/>;
+      const followButton = <ToggleFollowContainer followeeId={this.props.post.author_id} closeModal={this.closeModal}/>;
 
       return (
         <main className="post-show-container">

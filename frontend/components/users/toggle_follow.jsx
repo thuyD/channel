@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactModal from 'react-modal';
+import SessionFormContainer from '../session/session_form_container';
 
 class ToggleFollow extends React.Component {
   constructor(props) {
@@ -7,11 +9,12 @@ class ToggleFollow extends React.Component {
     if (followeeIds && followeeIds.some(
       (el) => el === this.props.followeeId)
     ) {
-      this.state = { following: true };
+      this.state = { following: true, openModal: false };
     } else {
-      this.state = { following: false };
+      this.state = { following: false, openModal: false };
     }
     this.handleFollowing = this.handleFollowing.bind(this);
+    this.openModal = this.openModal.bind(this);
   }
 
   handleFollowing() {
@@ -24,14 +27,39 @@ class ToggleFollow extends React.Component {
     }
   }
 
+  openModal() {
+    this.setState({ openModal: true });
+  }
+
+  closeModal(e) {
+    this.setState({ openModal: false });
+  }
+
   render() {
     const followState = this.state.following ? "Unfollow" : "Follow";
+    if (Object.keys(this.props.currentUser).length === 0) {
+      return (
+        <div onClick={this.openModal} className="gen-button flex-center-ver follow-button">
+          <p>Follow</p>
+          <ReactModal
+            isOpen={this.state.openModal}
+            onRequestClose={this.closeModal.bind(this)}
+            className="Modal"
+            overlayClassName="Overlay"
+            >
 
-    return (
-      <div onClick={this.handleFollowing} className="gen-button flex-center-ver follow-button">
-        {followState}
-      </div>
-    );
+            <SessionFormContainer />
+          </ReactModal>
+        </div>
+      );
+    } else {
+      return (
+        <div onClick={this.handleFollowing} className="gen-button flex-center-ver follow-button">
+          {followState}
+        </div>
+      );
+    }
+
   }
 }
 
