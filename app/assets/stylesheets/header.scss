@@ -28,7 +28,7 @@
 .main-logo a {
   text-decoration: none;
   color: $grey;
-  font-size: 14px;
+  font-size: 17px;
 }
 
 #main-login, .main-signin a {
@@ -43,7 +43,7 @@
 
 .login-signup {
   justify-content: space-between;
-  width: 170px;
+  width: 185px;
 }
 
 .login-signup div {
@@ -58,7 +58,7 @@
 
 
 .header-logged-in {
-  width: 190px;
+  width: 60px;
   justify-content: space-around;
   color: $grey;
 }
@@ -78,7 +78,9 @@
 .header-logout {
   color: $grey;
   background-color: transparent;
+  font-size: 17px;
 }
+
 .dropdown-container {
   display: none;
 }

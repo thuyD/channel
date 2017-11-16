@@ -11,8 +11,6 @@ const sessionLinks = () => (
 const userMenu = (logout, currentUser, ownPost) => (
       <section className="header-logged-in flex-center-ver">
         { ownPost ? <Link id="header-edit" to={`/posts/${ownPost}/edit`}>Edit</Link> : '' }
-        <i className="fa fa-search fa-lg" aria-hidden="true"></i>
-        <i className="fa fa-bell-o fa-lg" aria-hidden="true"></i>
         <div className="dropdown">
           { currentUser.image_url_t ?
             <div className="user-avatar"><img src={currentUser.image_url_t} /></div> :
@@ -21,14 +19,8 @@ const userMenu = (logout, currentUser, ownPost) => (
             <div className="dropdown-container">
               <ul className="menu">
                 <li><Link to="/posts/new" id="post-new-link">New Story</Link></li>
-                <li>Stories</li>
-                <div className="line"></div>
-                <li>Bookmarks</li>
-                <li>Customize your interests</li>
                 <div className="line"></div>
                 <li><Link to={`/${currentUser.id}`}>Profile</Link></li>
-                <li>Settings</li>
-                <li>Help</li>
                 <li>
                   <button className="header-logout" onClick={logout}>Log Out</button>
                 </li>
@@ -43,7 +35,7 @@ const topLinks = (props) => {
   return (
     <header className="main-inner-header">
       <div className="main-logo flex-center-ver">
-        <a>Our Story</a>
+        <Link to="/about">About</Link>
         <div className="logo-container"><Link id="logo" to="/">Channel</Link></div>
         {
           currentUser ?

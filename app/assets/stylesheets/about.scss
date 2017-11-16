@@ -1,0 +1,23 @@
+@import 'base';
+
+.about {
+  font-size: 20px;
+  max-width: 690px;
+  margin: 0 auto;
+}
+
+.about p {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  line-height: 150%;
+}
+
+.about ul {
+  display: flex;
+  justify-content: center;
+}
+
+.about li {
+  margin: 15px;
+  font-size: 35px;
+}
