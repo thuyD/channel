@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import CommentForm from './comment_form';
 import { createComment } from '../../actions/comment_actions';
+import { toggleModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state) => {
   let currentUser = false;
@@ -13,7 +14,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createComment: (postId, comment) => dispatch(createComment(postId, comment))
+    createComment: (postId, comment) => dispatch(createComment(postId, comment)),
+    toggleModal: (state) => dispatch(toggleModal(state)),
   };
 };
 

@@ -1,30 +1,33 @@
 import { connect } from 'react-redux';
 import SessionForm from './session_form';
 import { login, signup, clearSessionErrors, demoUserInfo } from '../../actions/session_actions';
+import { toggleModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state) => {
+  const modalState = state.ui;
   return ({
-    errors: state.errors.session
+    errors: state.errors.session,
+    modalState
   });
 };
 
 const mapDispatchToProps = (dispatch, { location }) => {
   let formType = "signup";
-  let processForm = signup;
   let shouldNavigate = false;
 
   if (location) {
     formType = location.pathname.slice(1);
-    processForm = (formType === "signup") ? signup : login;
     shouldNavigate = true;
   }
 
   return ({
     formType,
     shouldNavigate,
-    processForm: (user) => dispatch(processForm(user)),
+    signup: (user) => dispatch(signup(user)),
+    login: (user) => dispatch(login(user)),
     clearSessionErrors: () => dispatch(clearSessionErrors()),
     demoUserInfo: (user) => dispatch(demoUserInfo(user)),
+    toggleModal: (state) => dispatch(toggleModal(state)),
   });
 };
 

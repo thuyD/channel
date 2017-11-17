@@ -5,7 +5,7 @@ import SessionFormContainer from '../session/session_form_container';
 class CommentForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { body: '', openModal: false, openTextBox: false };
+    this.state = { body: '', openTextBox: false };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.openModal = this.openModal.bind(this);
@@ -25,11 +25,11 @@ class CommentForm extends React.Component {
   }
 
   openModal() {
-    this.setState({ openModal: true });
+    this.props.toggleModal(true);
   }
 
   closeModal() {
-    this.setState({ openModal: false });
+    this.props.toggleModal(false);
   }
 
   expand() {

@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import PostShow from './post_show';
 import { fetchPost } from '../../actions/post_actions';
 import { createLike, deleteLike, likedPost } from '../../actions/like_actions';
+import { toggleModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const post = state.entities.posts[ownProps.match.params.postId];
@@ -47,6 +48,7 @@ const mapDispatchToProps = (dispatch) => ({
   createLike: (id) => dispatch(createLike(id)),
   deleteLike: (id) => dispatch(deleteLike(id)),
   likedPost: (id) => dispatch(likedPost(id)),
+  toggleModal: (state) => dispatch(toggleModal(state)),
 });
 
 export default connect(

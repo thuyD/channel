@@ -22,7 +22,15 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user);
+    if (this.state.mode === "signup") {
+      this.props.signup(user).then(
+        () => { this.props.toggleModal(false); }
+      );
+    } else {
+      this.props.login(user).then(
+        () => { this.props.toggleModal(false); }
+      );
+    }
   }
 
   handleChange(field) {
@@ -33,7 +41,11 @@ class SessionForm extends React.Component {
 
   demoLogin(e) {
     e.preventDefault();
-    this.props.demoUserInfo({username: "Chirps", password: "catnip"});
+    this.props.demoUserInfo(
+      {username: "Chirps", password: "catnip"}
+    ).then(
+      () => { this.props.toggleModal(false); }
+    );
   }
 
   navigateToSignUp() {
@@ -97,7 +109,7 @@ class SessionForm extends React.Component {
         );
         signupMessage = "Create an account to applaud your favorite stories, follow authors you love, and share your writing.";
      } else {
-       text = " Log In";
+       text = "Log In";
        greeting = "Welcome Back.";
        loginMessage = "Sign in to express yourself, engage with the authors that you love, and read stories that matter to you.";
      }
@@ -106,11 +118,11 @@ class SessionForm extends React.Component {
      if (!this.props.shouldNavigate) {
        padding = "login-form-container-no-padding";
        if (mode === "signup") {
-         greeting = "Create an account to response to your favorite post."
+         greeting = "Create an account."
          signupMessage = "Build on this story’s ideas with your own or show the author your support."
        } else if (mode === 'login') {
          greeting = "Welcome back."
-         loginMessage = "Sign in to keep the conversation moving with a response or show the author how much your love their story."
+         loginMessage = "Sign in to keep the conversation moving with a response or follow your favorite authors."
        }
      }
 

@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 class PostShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { openModal: false, liked: false, hover: false };
+    this.state = { liked: false, hover: false };
     this.openModal = this.openModal.bind(this);
     this.handleLikes = this.handleLikes.bind(this);
     this.handleUnlikes = this.handleUnlikes.bind(this);
@@ -46,11 +46,11 @@ class PostShow extends React.Component {
   }
 
   openModal() {
-    this.setState({ openModal: true });
+    this.props.toggleModal(true);
   }
 
-  closeModal(e) {
-    this.setState({ openModal: false });
+  closeModal() {
+    this.props.toggleModal(false);
   }
 
   render() {
@@ -87,7 +87,7 @@ class PostShow extends React.Component {
     if (this.props.post) {
       const richText = () => ({__html: this.props.post.body});
       const dateToFormat = this.props.post.created_at;
-      const followButton = <ToggleFollowContainer followeeId={this.props.post.author_id} closeModal={this.closeModal}/>;
+      const followButton = <ToggleFollowContainer followeeId={this.props.post.author_id}/>;
 
       return (
         <main className="post-show-container">
