@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const sessionLinks = () => (
   <nav className="login-signup flex-center-ver">
-    <Link to="/login">Sign in</Link>
+    <Link to="login">Sign in</Link>
     <div><Link to="signup">Get started</Link></div>
   </nav>
 );

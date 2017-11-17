@@ -27,10 +27,13 @@ class UserProfile extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
+    debugger
     if (this.props.match.params.userId !== newProps.match.params.userId) {
       this.props.fetchUser(newProps.match.params.userId).then((user) => {
         this.setState(user);
       });
+    } else {
+      this.setState(newProps.user);
     }
   }
 
@@ -122,7 +125,6 @@ class UserProfile extends React.Component {
       const normButton = this.props.currentUserId === this.props.user.id ?
         (<button className="gen-button user-profile-edit" onClick={this.handleEdit}>Edit</button>) :
         (<ToggleFollowContainer followeeId={this.props.user.id} />);
-
       return (
         <main className="user-profile-container">
           <section className="user-profile-header flex-col">

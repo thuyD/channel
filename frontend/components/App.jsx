@@ -21,7 +21,7 @@ const App = () => (
 
     <Switch>
       <Route exact path='/about' component={About} />
-      <ProtectedRoute exact path="/:userId" component={UserProfileContainer} />
+      <Route exact path="/:userId" component={UserProfileContainer} />
       <ProtectedRoute path="/posts/:postId/edit" component={PostFormContainer}/>
       <ProtectedRoute path="/posts/new" component={PostFormContainer}/>
       <Route exact path="/" component={PostIndexContainer}/>
