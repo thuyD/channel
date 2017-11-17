@@ -27,7 +27,6 @@ class UserProfile extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    debugger
     if (this.props.match.params.userId !== newProps.match.params.userId) {
       this.props.fetchUser(newProps.match.params.userId).then((user) => {
         this.setState(user);
@@ -106,7 +105,7 @@ class UserProfile extends React.Component {
     const following = (
       <div>
         <p className="user-profile-following" onClick={this.openModal}>
-          {this.state.followeeIds.length} Following
+          {this.state.followeeIds.length} Following · {this.state.followerIds.length} Followers
         </p>
         <ReactModal
           isOpen={this.state.openModal}

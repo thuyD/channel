@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import striptags from 'striptags';
+import PostReadingTime from './post_reading_time.jsx';
 
 const PostIndexItem = ({ post }) => {
   const text = striptags(post.body, [], '\n');
@@ -39,7 +40,7 @@ const PostIndexItem = ({ post }) => {
               </div>
               <div className="post-item-date-time">
                 <p className="post-date">
-                  {<Moment format="MMM D">{dateToFormat}</Moment>} · 9 min read
+                  {<Moment format="MMM D">{dateToFormat}</Moment>} · <PostReadingTime postBody={post.body} />
                 </p>
               </div>
             </div>

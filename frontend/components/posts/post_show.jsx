@@ -7,6 +7,7 @@ import ReactModal from 'react-modal';
 import SessionFormContainer from '../session/session_form_container';
 import ToggleFollowContainer from '../users/toggle_follow_container';
 import { Link } from 'react-router-dom';
+import PostReadingTime from './post_reading_time.jsx';
 
 class PostShow extends React.Component {
   constructor(props) {
@@ -104,7 +105,7 @@ class PostShow extends React.Component {
                 </Link>
                 <p id="2nd">{this.props.post.author_bio}</p>
                 <p className="post-date">
-                  {<Moment format="MMM D">{dateToFormat}</Moment>}  ·  9 min read
+                  {<Moment format="MMM D">{dateToFormat}</Moment>}  ·  <PostReadingTime postBody={this.props.post.body} />
                 </p>
               </div>
               {followButton}
