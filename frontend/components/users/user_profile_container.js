@@ -8,6 +8,7 @@ const mapStateToProps = (state, ownProps) => {
     name: '',
     bio: '',
     followeeIds: [],
+    followerIds: [],
     imageFile: null,
     image_url_m: '' };
 

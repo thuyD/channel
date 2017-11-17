@@ -8,9 +8,11 @@ const PostShowCommentItem = ({ comment, author }) => {
     <div className="post-show-comment-items-container flex-center-hor">
       <div className="comment-input">
         <UserDetails
-          author={author}
+          user={author}
           dateToFormat={dateToFormat}
-          bookmark={false}/>
+          bookmark={false}
+          bio={false}
+          image="small" />
         <p className="comment-body">{comment.body}</p>
       </div>
     </div>

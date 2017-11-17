@@ -105,7 +105,7 @@ class UserProfile extends React.Component {
     const following = (
       <div>
         <p className="user-profile-following" onClick={this.openModal}>
-          {this.state.followeeIds.length} Following · {this.state.followerIds.length} Followers
+          {this.state.followeeIds.length} Following
         </p>
         <ReactModal
           isOpen={this.state.openModal}
@@ -119,6 +119,25 @@ class UserProfile extends React.Component {
         </ReactModal>
       </div>
     );
+
+    const followers = (
+      <div>
+        <p className="user-profile-following" onClick={this.openModal}>
+          {this.state.followerIds.length} Followers
+        </p>
+        <ReactModal
+          isOpen={this.state.openModal}
+          onRequestClose={this.closeModal.bind(this)}
+          className="Modal"
+          overlayClassName="Overlay"
+          >
+
+          <h3>{this.props.user.name} is followed by</h3>
+
+        </ReactModal>
+      </div>
+    );
+    
 
     if (this.state.formType === "norm") {
       const normButton = this.props.currentUserId === this.props.user.id ?
@@ -134,7 +153,7 @@ class UserProfile extends React.Component {
               </div>
               <div className="user-avatar-m"><img src={this.props.user.image_url_m} /></div>
             </div>
-            {following}
+            <div>{following}  ·  {followers}</div>
             {normButton}
           </section>
           {nav}
@@ -167,7 +186,7 @@ class UserProfile extends React.Component {
                 </div>
               </div>
             </div>
-            {following}
+            <div>{following}  ·  {followers}</div>
             <div>
               <button className="gen-button">Save</button>
               <button className="gen-button user-profile-cancel" onClick={this.handleCancel}>Cancel</button>
