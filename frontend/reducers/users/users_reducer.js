@@ -22,7 +22,7 @@ const UsersReducer = (oldState = {}, action) => {
     case RECEIVE_USER:
       return merge({}, oldState, { [action.user.id]: action.user });
     case RECEIVE_FOLLOWING:
-      const users = action.users.users;
+      const users = action.users.users || {};
       const usersIds = Object.keys(users);
       usersIds.forEach((id) => {
         newState[id] = users[id];

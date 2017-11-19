@@ -1,8 +1,8 @@
 import React from 'react';
 import UserProfileNavContainer from './user_profile_nav_container';
-import ReactModal from 'react-modal';
 import UserFolloweeDetails from './user_followee_details.jsx';
 import ToggleFollowContainer from './toggle_follow_container';
+import FollowModalContainer from './follow_modal_container.js';
 
 class UserProfile extends React.Component {
   constructor(props) {
@@ -10,7 +10,6 @@ class UserProfile extends React.Component {
     this.state = this.props.user;
     this.state.formType = 'norm';
     this.state.content = 'stories';
-    this.state.openModal = false;
 
     this.handleCancel = this.handleCancel.bind(this);
     this.update = this.update.bind(this);
@@ -18,7 +17,6 @@ class UserProfile extends React.Component {
     this.updateFile = this.updateFile.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     this.handleNav = this.handleNav.bind(this);
-    this.openModal = this.openModal.bind(this);
   }
 
   //componentDidMount for users that was not fetched yet by post show
@@ -80,14 +78,6 @@ class UserProfile extends React.Component {
     }
   }
 
-  openModal() {
-    this.setState({ openModal: true });
-  }
-
-  closeModal(e) {
-    this.setState({ openModal: false });
-  }
-
   render() {
     const nav = (
       <section className="user-profile-nav-container">
@@ -101,43 +91,6 @@ class UserProfile extends React.Component {
         </section>
       </section>
     );
-
-    const following = (
-      <div>
-        <p className="user-profile-following" onClick={this.openModal}>
-          {this.state.followeeIds.length} Following
-        </p>
-        <ReactModal
-          isOpen={this.state.openModal}
-          onRequestClose={this.closeModal.bind(this)}
-          className="Modal"
-          overlayClassName="Overlay"
-          >
-
-          <h3>{this.props.user.name} follows</h3>
-
-        </ReactModal>
-      </div>
-    );
-
-    const followers = (
-      <div>
-        <p className="user-profile-following" onClick={this.openModal}>
-          {this.state.followerIds.length} Followers
-        </p>
-        <ReactModal
-          isOpen={this.state.openModal}
-          onRequestClose={this.closeModal.bind(this)}
-          className="Modal"
-          overlayClassName="Overlay"
-          >
-
-          <h3>{this.props.user.name} is followed by</h3>
-
-        </ReactModal>
-      </div>
-    );
-    
 
     if (this.state.formType === "norm") {
       const normButton = this.props.currentUserId === this.props.user.id ?
@@ -153,7 +106,10 @@ class UserProfile extends React.Component {
               </div>
               <div className="user-avatar-m"><img src={this.props.user.image_url_m} /></div>
             </div>
-            <div>{following}  ·  {followers}</div>
+            <div className="follows">
+              <FollowModalContainer follow="following" userId={this.props.match.params.userId} />  ·
+              <FollowModalContainer follow="followers" userId={this.props.match.params.userId}/>
+            </div>
             {normButton}
           </section>
           {nav}
@@ -186,10 +142,15 @@ class UserProfile extends React.Component {
                 </div>
               </div>
             </div>
-            <div>{following}  ·  {followers}</div>
+            <div className="follows">
+              <FollowModalContainer follow="following" userId={this.props.match.params.userId} />  ·
+              <FollowModalContainer follow="followers" userId={this.props.match.params.userId}/>
+            </div>
             <div>
               <button className="gen-button">Save</button>
-              <button className="gen-button user-profile-cancel" onClick={this.handleCancel}>Cancel</button>
+              <button
+                className="gen-button user-profile-cancel"
+                onClick={this.handleCancel}>Cancel</button>
             </div>
           </form>
           {nav}

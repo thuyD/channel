@@ -28,3 +28,17 @@ export const fetchUser = (id) => (
     url: `api/users/${id}`
   })
 );
+
+export const fetchFollowers = (id) => (
+  $.ajax({
+    method: 'get',
+    url: `api/users/${id}/followers`
+  })
+);
+
+export const fetchFollowees = (id) => (
+  $.ajax({
+    method: 'get',
+    url: `api/users/${id}/followees`
+  })
+);

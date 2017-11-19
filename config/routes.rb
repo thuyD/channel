@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       # resources :follows, only: [:create, :destroy]
       patch 'follow', on: :member
       patch 'unfollow', on: :member
+      get 'followers', on: :member
+      get 'followees', on: :member
     end
     resource :session, only: [:create, :destroy]
     resources :posts, only: [:create, :show, :index, :destroy, :update] do

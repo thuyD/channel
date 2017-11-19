@@ -30,3 +30,15 @@ export const fetchUser = (id) => (dispatch) =>  {
     (user) => dispatch(receiveUser(user))
   );
 };
+
+export const fetchFollowers = (id) => (dispatch) => {
+  return ApiUserUtil.fetchFollowers(id).then(
+    (users) => dispatch(receiveFollowing(users))
+  );
+};
+
+export const fetchFollowees = (id) => (dispatch) => {
+  return ApiUserUtil.fetchFollowees(id).then(
+    (users) => dispatch(receiveFollowing(users))
+  );
+};

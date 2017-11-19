@@ -1,0 +1,50 @@
+@import 'base';
+
+.follow-modal {
+  height: 100%;
+  padding: 30px;
+}
+
+.follow-modal-title {
+  font-size: 30px;
+  font-weight: bold;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.follow-users {
+  height: 100%;
+}
+
+.follow-user {
+  margin-top: 30px;
+}
+
+.user-detail-bio {
+  margin-top: 7px;
+}
+
+.FollowModal {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  right: 10%;
+  bottom: 25%;
+  margin: 0 auto;
+  max-width: 500px;
+  max-height: 750px;
+}
+
+.FollowModal:focus {
+  outline: none;
+}
+
+.FollowModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 10;
+}

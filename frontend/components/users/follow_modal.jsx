@@ -1,97 +1,98 @@
 import React from 'react';
-import { fetchUser } from '../../actions/user_actions';
-import { connect } from 'react-redux';
 import UserDetails from './user_details.jsx';
 import ToggleFollowContainer from './toggle_follow_container.js';
+import ReactModal from 'react-modal';
 
-//the user id we are on should be passed in called userId
-
+// the user id we are on should be passed in called userId
 class FollowModal extends React.Component {
   constructor(props) {
     super(props);
-    const userId = this.props.userId;
-    const user = this.props.users[userId];
-    const users = this.props.users;
-
-    let followees = user.followeeIds;
-    if (followees.length > 0) {
-      followees = followees.map((id) => {
-        return users[id];
-      });
-    }
-
-    let followers = user.followerIds;
-    if (followers.length > 0) {
-      followers = followers.map((id) => {
-        return users[id];
-      });
-    }
-
-    const mode = this.props.follow;
-
     this.state = {
-      mode: mode,
-      user: user,
-      followees: followees,
-      followers: followers,
+      openModal: false,
     };
+    this.openModal = this.openModal.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.fetchFollowees(this.props.userId);
+    this.props.fetchFollowers(this.props.userId);
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.userId !== this.props.userId) {
+      this.setState({ openModal: false });
+    }
+  }
+
+  openModal() {
+    this.setState({ openModal: true });
   }
 
   render() {
-    const title = this.mode === "following" ?
-      title = "follows" :
-      title = "is_followed_by";
+    let title;
+    let count;
+    if (this.props.mode === "following") {
+      title = "follows";
+      count = `${this.props.followees.length} Following`;
+    } else {
+      title = "is followed by";
+      count = `${this.props.followers.length} Followers`;
+    }
 
-    const followees = this.state.followees.map((user) => {
-      return (
-        <div>
-          <UserDetails user={user}
-            dateToFormat={null}
-            bookmark={false}
-            bio={true}
-            image="medium" />
-          <ToggleFollowContainer />
-        </div>
-      );
-    });
+    let followees = "";
+    if (this.props.followees.length > 0) {
+      followees = this.props.followees.map((user) => {
+        return (
+          <div key={user.id} className="follow-user">
+            <UserDetails user={user}
+              dateToFormat={null}
+              bookmark={false}
+              bio={true}
+              image="medium"
+               />
+          </div>
+        );
+      });
+    }
 
-    const followers = this.state.followers.map((user) => {
-      return (
-        <div>
-          <UserDetails user={user}
-            dateToFormat={null}
-            bookmark={false}
-            bio={true}
-            image="medium" />
-          <ToggleFollowContainer />
-        </div>
-      );
-    });
+    let followers = "";
+    if(this.props.followers.length > 0) {
+      followers = this.props.followers.map((user) => {
+        return (
+          <div key={user.id} className="follow-user">
+            <UserDetails user={user}
+              dateToFormat={null}
+              bookmark={false}
+              bio={true}
+              image="medium" />
+          </div>
+        );
+      });
+    }
 
-    const follows = this.mode === "following" ? followees : followers;
+    const follows = this.props.mode === "following" ? followees : followers;
 
     return (
-      <section>
-        <h3>{this.user.name} {title}</h3>
-        <div>
-          {follows}
-        </div>
-      </section>
+      <div>
+        <p className="user-profile-following" onClick={this.openModal}>
+          {count}
+        </p>
+        <ReactModal
+          isOpen={this.state.openModal}
+          onRequestClose={() => this.setState({ openModal: false })}
+          className="FollowModal"
+          overlayClassName="FollowModalOverlay"
+          >
+          <section className="follow-modal flex-col">
+            <div className="follow-modal-title flex-center-hor"><h3 >{this.props.user.name} {title}</h3></div>
+            <div className="follow-users flex-col">
+              {follows}
+            </div>
+          </section>
+        </ReactModal>
+      </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return state.entities.users;
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchUser: (id) => dispatch(fetchUser(id)),
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(FollowModal);
+export default FollowModal;

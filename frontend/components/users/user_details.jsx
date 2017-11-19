@@ -15,9 +15,11 @@ const UserDetails = ({ user, dateToFormat, bookmark, bio, image }) => {
   }
 
   let imageSource;
+  let userImageSize = "user-avatar";
   if (image === "small") {
     imageSource = user.image_url_t;
   } else {
+    userImageSize = "user-avatar-m";
     imageSource = user.image_url_m;
   }
 
@@ -26,7 +28,7 @@ const UserDetails = ({ user, dateToFormat, bookmark, bio, image }) => {
       <div className="flex-row">
         <div className="post-item-avatar">
           <Link to={`/${user.id}`}>
-            <div className="user-avatar"><img src={imageSource}/></div>
+            <div className={userImageSize}><img src={imageSource}/></div>
           </Link>
         </div>
         <div className="post-item-details flex-col">
@@ -35,7 +37,7 @@ const UserDetails = ({ user, dateToFormat, bookmark, bio, image }) => {
               <p>{user.name}</p>
             </Link>
           </div>
-          { bio ? <p>{user.bio}</p> : '' }
+          { bio ? <p className="user-detail-bio">{user.bio}</p> : '' }
           { date }
         </div>
       </div>
