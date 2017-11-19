@@ -11,12 +11,19 @@ class SessionForm extends React.Component {
       mode: props.formType,
     };
 
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
   }
 
   componentWillUnmount() {
     this.props.clearSessionErrors();
+  }
+
+  componentWillReceiveProps(newProps) {
+    if(this.state.mode !== newProps.formType) {
+      this.setState({mode: newProps.formType });
+    }
   }
 
   handleSubmit(e) {
@@ -92,7 +99,6 @@ class SessionForm extends React.Component {
     let loginMessage;
     let signupMessage;
     let padding = "login-form-container";
-
      if (mode === "signup") {
        text = "Sign Up";
        greeting = "Join Channel.";

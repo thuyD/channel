@@ -112,7 +112,6 @@ class UserProfile extends React.Component {
             </div>
             {normButton}
           </section>
-          {nav}
         </main>
       );
     } else {
@@ -142,10 +141,6 @@ class UserProfile extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="follows">
-              <FollowModalContainer follow="following" userId={this.props.match.params.userId} />  ·
-              <FollowModalContainer follow="followers" userId={this.props.match.params.userId}/>
-            </div>
             <div>
               <button className="gen-button">Save</button>
               <button
@@ -153,7 +148,6 @@ class UserProfile extends React.Component {
                 onClick={this.handleCancel}>Cancel</button>
             </div>
           </form>
-          {nav}
         </main>
       );
     }

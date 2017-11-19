@@ -5,8 +5,8 @@ import { fetchUser } from '../../actions/user_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let user = {
-    name: '',
-    bio: '',
+    name: ' ',
+    bio: ' ',
     followeeIds: [],
     followerIds: [],
     imageFile: null,
