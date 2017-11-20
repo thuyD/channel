@@ -55,7 +55,7 @@ class UserProfile extends React.Component {
     const formData = new FormData();
     formData.append("user[name]", this.state.name);
     formData.append("user[bio]", this.state.bio);
-    if (this.state.imageFile) formData.append("user[image]", this.state.imageFile);
+    if (this.state.imageFile) formData.append("user[avatar]", this.state.imageFile);
 
     this.props.updateUser(formData).then(
       () => this.setState({ formType: "norm" })

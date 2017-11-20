@@ -46,7 +46,7 @@ const PostIndexItem = ({ post }) => {
             </div>
           </div>
 
-          <i className="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
+
         </div>
       </div>
     </div>
