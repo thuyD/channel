@@ -1,5 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
+const plugins = [];
+const devPlugins = [];
 
 var prodPlugins = [
   new webpack.DefinePlugin({
@@ -16,7 +18,7 @@ var prodPlugins = [
 
 plugins = plugins.concat(
   process.env.NODE_ENV === 'production' ? prodPlugins : devPlugins
-)
+);
 
 module.exports = {
   context: __dirname,
