@@ -3,20 +3,19 @@ import UserProfileNavContainer from './user_profile_nav_container';
 import UserFolloweeDetails from './user_followee_details.jsx';
 import ToggleFollowContainer from './toggle_follow_container';
 import FollowModalContainer from './follow_modal_container.js';
+import ContributedContent from './contributed_content.jsx';
 
 class UserProfile extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.user;
     this.state.formType = 'norm';
-    this.state.content = 'stories';
 
     this.handleCancel = this.handleCancel.bind(this);
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateFile = this.updateFile.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
-    this.handleNav = this.handleNav.bind(this);
   }
 
   //componentDidMount for users that was not fetched yet by post show
@@ -36,12 +35,6 @@ class UserProfile extends React.Component {
 
   handleEdit() {
     this.setState({ formType: "edit" });
-  }
-
-  handleNav(field) {
-    return () => {
-      this.setState({ content: field });
-    };
   }
 
   update(field) {
@@ -79,18 +72,6 @@ class UserProfile extends React.Component {
   }
 
   render() {
-    const nav = (
-      <section className="user-profile-nav-container">
-        <div className="user-profile-nav-list">
-          <p onClick={this.handleNav("stories")}>Stories</p>
-          <p onClick={this.handleNav("responses")}>Responses</p>
-          <p onClick={this.handleNav("likes")}>Claps</p>
-        </div>
-        <section className="user-profile-content">
-          <UserProfileNavContainer type={this.state.content} />
-        </section>
-      </section>
-    );
 
     if (this.state.formType === "norm") {
       const normButton = this.props.currentUserId === this.props.user.id ?
@@ -112,6 +93,8 @@ class UserProfile extends React.Component {
             </div>
             {normButton}
           </section>
+
+          <ContributedContent userId={this.props.match.params.userId} />
         </main>
       );
     } else {
@@ -148,6 +131,8 @@ class UserProfile extends React.Component {
                 onClick={this.handleCancel}>Cancel</button>
             </div>
           </form>
+
+          <ContributedContent userId={this.props.match.params.userId} />
         </main>
       );
     }
