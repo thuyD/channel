@@ -22,7 +22,12 @@ class SessionForm extends React.Component {
 
   componentWillReceiveProps(newProps) {
     if(this.state.mode !== newProps.formType) {
-      this.setState({mode: newProps.formType });
+      this.props.clearSessionErrors();
+      this.setState({
+        username: "",
+        password: "",
+        name: "",
+        mode: newProps.formType });
     }
   }
 

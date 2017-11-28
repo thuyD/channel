@@ -13,8 +13,7 @@ const mapStateToProps = (state, { location }) => {
     formType = location.pathname.slice(1);
     shouldNavigate = true;
   }
-  console.log(formType, shouldNavigate);
-  
+
   return {
     errors: state.errors.session,
     modalState,
