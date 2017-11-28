@@ -7,7 +7,7 @@ const About = () => {
       <ul>
         <li><a href="https://github.com/thuyD/channel"><i className="fa fa-github" aria-hidden="true"></i></a></li>
         <li><a href="https://www.linkedin.com/in/thuy-dao/"><i className="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
-        <li><i className="fa fa-grav" aria-hidden="true"></i></li>
+        <li><a href="https://thuydao.me/"><i className="fa fa-grav" aria-hidden="true"></i></a></li>
       </ul>
     </section>
   );
