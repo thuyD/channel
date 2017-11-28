@@ -54,6 +54,26 @@ class PostShow extends React.Component {
     this.props.toggleModal(false);
   }
 
+  getLikeHtml() {
+    const likeIcon = this.state.liked ? "fa fa-heart fa-lg" : "fa fa-heart-o fa-lg";
+    if (this.props.currentUser) {
+      return (
+        <div className="claps-container">
+          <div className="claps" onClick={this.handleLikes}>
+            <i className={likeIcon} aria-hidden="true"></i>
+          </div>
+          <div className="unclap" onClick={this.handleUnlikes}>✕</div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="claps" onClick={this.openModal}>
+          <i className={likeIcon} aria-hidden="true"></i>
+        </div>
+      );
+    }
+  }
+
   render() {
     let comments = '';
     if (this.props.comments.length) {
@@ -65,31 +85,11 @@ class PostShow extends React.Component {
       });
     }
 
-    //like
-    let likeIcon = this.state.liked ? "fa fa-heart fa-lg" : "fa fa-heart-o fa-lg";
-    let like;
-    if (this.props.currentUser) {
-      like = (
-        <div className="claps-container">
-          <div className="claps" onClick={this.handleLikes}>
-            <i className={likeIcon} aria-hidden="true"></i>
-          </div>
-          <div className="unclap" onClick={this.handleUnlikes}>✕</div>
-        </div>
-      );
-    } else {
-      like = (
-        <div className="claps" onClick={this.openModal}>
-          <i className={likeIcon} aria-hidden="true"></i>
-        </div>
-      );
-    }
-
+    const like = this.getLikeHtml()
     if (this.props.post) {
       const richText = () => ({__html: this.props.post.body});
       const dateToFormat = this.props.post.created_at;
-      const followButton = <ToggleFollowContainer followeeId={this.props.post.author_id}/>;
-
+      const followButton = <ToggleFollowContainer followeeId={this.props.post.author_id} />;
       return (
         <main className="post-show-container">
           <section className="post-show-details-container">

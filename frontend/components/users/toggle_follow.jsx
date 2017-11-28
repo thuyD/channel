@@ -17,13 +17,29 @@ class ToggleFollow extends React.Component {
     this.openModal = this.openModal.bind(this);
   }
 
+  componentWillReceiveProps(newProps) {
+    const oldFolloweeIds = this.props.currentUser.followeeIds.length;
+    const newFolloweeIds = newProps.currentUser.followeeIds.length;
+    if (newFolloweeIds !== oldFolloweeIds) {
+      if (newFolloweeIds && newProps.currentUser.followeeIds.some(
+        (el) => el === newProps.followeeId)
+      ) {
+        this.setState({ following: true });
+      } else {
+        this.setState({ following: false });
+      }
+    }
+  }
+
   handleFollowing() {
     if (this.state.following) {
-      this.props.unfollowUser(this.props.followeeId);
-      this.setState({ following: false });
+      this.props.unfollowUser(this.props.followeeId).then(() => {
+        this.setState({ following: false });
+      });
     } else {
-      this.props.followUser(this.props.followeeId);
-      this.setState({ following: true });
+      this.props.followUser(this.props.followeeId).then(() => {
+        this.setState({ following: true });
+      });
     }
   }
 
@@ -46,12 +62,10 @@ class ToggleFollow extends React.Component {
           <ReactModal
             isOpen={this.props.modalState.openModal}
             onRequestClose={this.closeModal.bind(this)}
-              className="Modal"
-              overlayClassName="Overlay"
-              >
-
-              <SessionFormContainer />
-            </ReactModal>
+            className="Modal"
+            overlayClassName="Overlay">
+            <SessionFormContainer />
+          </ReactModal>
         </div>
       );
     } else {
