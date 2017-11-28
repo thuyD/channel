@@ -53,6 +53,8 @@ class FollowModal extends React.Component {
           </div>
         );
       });
+    } else {
+      followees = <div className="follows-place-holder">No one yet...</div>;
     }
 
     let followers = "";
@@ -68,6 +70,8 @@ class FollowModal extends React.Component {
           </div>
         );
       });
+    } else {
+      followers = <div className="follows-place-holder">No one yet...</div>;
     }
 
     const follows = this.props.mode === "following" ? followees : followers;
@@ -84,7 +88,7 @@ class FollowModal extends React.Component {
           overlayClassName="FollowModalOverlay"
           >
           <section className="follow-modal flex-col">
-            <div className="follow-modal-title flex-center-hor"><h3 >{this.props.user.name} {title}</h3></div>
+            <div className="follow-modal-title flex-center-hor"><h3>{this.props.user.name} {title}</h3></div>
             <div className="follow-users flex-col">
               {follows}
             </div>
