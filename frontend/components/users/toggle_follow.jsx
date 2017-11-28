@@ -18,8 +18,14 @@ class ToggleFollow extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    const oldFolloweeIds = this.props.currentUser.followeeIds.length;
-    const newFolloweeIds = newProps.currentUser.followeeIds.length;
+    let oldFolloweeIds = 0;
+    let newFolloweeIds = 0;
+    
+    if (this.props.currentUser.followeeIds && newProps.currentUser.followeeIds) {
+      oldFolloweeIds = this.props.currentUser.followeeIds.length;
+      newFolloweeIds = newProps.currentUser.followeeIds.length;
+    }
+
     if (newFolloweeIds !== oldFolloweeIds) {
       if (newFolloweeIds && newProps.currentUser.followeeIds.some(
         (el) => el === newProps.followeeId)
