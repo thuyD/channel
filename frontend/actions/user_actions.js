@@ -8,9 +8,10 @@ const receiveFollowing = (users) => ({
   users
 });
 
-const receiveUser = (user) => ({
+const receiveUser = (payload) => ({
   type: RECEIVE_USER,
-  user: user.user
+  user: payload.user,
+  posts: payload.posts,
 });
 
 export const followUser = (id) => (dispatch) => {
@@ -27,7 +28,7 @@ export const unfollowUser = (id) => (dispatch) => {
 
 export const fetchUser = (id) => (dispatch) =>  {
   return ApiUserUtil.fetchUser(id).then(
-    (user) => dispatch(receiveUser(user))
+    (payload) => dispatch(receiveUser(payload))
   );
 };
 
