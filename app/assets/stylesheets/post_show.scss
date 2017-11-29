@@ -5,11 +5,12 @@
 }
 
 .post-show-body {
-  width: 75%;
+  width: 70%;
   margin: 0 auto;
-  line-height: 170%;
-  font-size: 18px;
+  line-height: 175%;
+  font-size: 20px;
   margin-top: 50px;
+  max-width: 800px;
 }
 
 .post-show-title {
@@ -86,8 +87,17 @@
   border: 1px solid #595959;
   border-radius: 50%;
   display: inline-block;
-  padding: 10px;
+  // padding: 10px;
   color: $dark-mint;
+  min-width: 43px;
+  min-height: 43px;
+  position: relative;
+}
+
+i.fa.fa-heart-o.fa-lg {
+  position: absolute;
+  top: 35%;
+  left: 26%;
 }
 
 .claps:hover {
@@ -102,6 +112,8 @@
   color: #595959;
   padding: 0px 25px;
   position: absolute;
+  margin-top: 5%;
+  margin-left: 5%;
 }
 
 .sidebar {

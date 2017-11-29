@@ -24,17 +24,14 @@
   width: 270px;
   box-sizing: border-box;
   margin: 0;
+  padding: 15px;
+  justify-content: space-between;
 }
 
 .post-item-photo img {
   height: 100%;
   width: 100%;
   object-fit: cover;
-}
-
-.post-item-info {
-  padding: 15px 10px;
-  justify-content: space-between;
 }
 
 .post-item-summary h3 {
