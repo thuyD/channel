@@ -15,15 +15,17 @@ post_body = 'This document assumes that one is familiar with the workings
  systems on an Ethernet not connected to anywhere else).
  Appendix A contains remedial information to get one to this
  point.  Its purpose is to get that person, familiar with a
- simple net, versed in the "oral tradition" of the Internet
+ simple net, versed in the <bold>"oral tradition"</bold> of the Internet
  to the point that that net can be connected to the Internet
- with little danger to either.  It is not a tutorial, it
+ with little danger to either.  It is <u>not a tutorial<u/>, it
  consists of pointers to other places, literature, and hints
  which are not normally documented.  Since the Internet is a
  dynamic environment, changes to this document will be made
  regularly.  The author welcomes comments and suggestions.
  This is especially true of terms for the glossary (definitions
- are not necessary).
+ are not necessary).<br><br>
+
+ <h3>Internet Protocol</h3><br>
 
  In the beginning there was the ARPAnet, a wide area
  experimental network connecting hosts and terminal servers
@@ -35,19 +37,19 @@ post_body = 'This document assumes that one is familiar with the workings
  (Internet Protocol).  Over time other groups created long haul
  IP based networks (NASA, NSF, states...).  These nets, too,
  interoperate because of IP.  The collection of all of these
- interoperating networks is the Internet.
+ interoperating networks is the Internet.<br><br>
 
  Two groups do much of the research and information work of
- the Internet (ISI and SRI).  ISI (the Informational Sciences
+ the Internet (ISI and SRI).  <u>ISI (the Informational Sciences
  Institute) does much of the research, standardization, and
- allocation work of the Internet.  SRI International provides
+ allocation work of the Internet.</u>  SRI International provides
  information services for the Internet.  In fact, after you
  are connected to the Internet most of the information in
  this document can be retrieved from the Network Information
  Center (NIC) run by SRI.
 
 
- Operating the Internet
+ <h3>Operating the Internet</h3><br>
 
  Each network, be it the ARPAnet, NSFnet or a regional network,
  has its own operations center.  The ARPAnet is run by
@@ -68,7 +70,7 @@ post_body = 'This document assumes that one is familiar with the workings
  regional network operations center.
 
 
- RFCs
+ <h3>RFCs</h3>
 
  The internal workings of the Internet are defined by a set
  of documents called RFCs (Request for Comments).  The general
@@ -93,14 +95,14 @@ post_body = 'This document assumes that one is familiar with the workings
  the specific application (RFC-937 The Post Office Protocol) or
  that, although technically superior, ran against other pervasive
  approaches (RFC-891 Hello).  It is suggested that should the
- facility be required by a particular site, animplementation
+ facility be required by a particular site, <bold>animplementation</bold>
  be done in accordance with the RFC.  This insures that, should
  the idea be one whose time has come, the implementation will be
  in accordance with some standard and will be generally usable.
  Informational RFCs contain factual information about the
  Internet and its operation (RFC-990, Assigned Numbers).
  Finally, as the Internet and technology have grown, some
- RFCs have become unnecessary.  These obsolete RFCs cannot
+ RFCs have become unnecessary.  These <u>obsolete RFCs</u> cannot
  be ignored, however.  Frequently when a change is made to
  some RFC that causes a new one to be issued obsoleting others,
  the new RFC only contains explanations and motivations for the
@@ -108,7 +110,7 @@ post_body = 'This document assumes that one is familiar with the workings
  is based may involve reading the original and subsequent RFCs
  on the topic.
 
- All titles for the articles are taken from the Outline. Please go to their website if you want to learn more.'
+ All titles for the articles are taken from the Outline. Please go to their website if you want to read more.'
 
 first = User.create!(
   username: "Chirps",
@@ -146,7 +148,23 @@ user_images = [
   user_ids << new_user.id
 end
 
-
+user_ids.each do |id|
+  follows = {}
+  follows[id] = []
+  Random.new.rand(8).times do
+    followee = user_ids.sample
+    next if followee == id
+    next if follows[id].include?(followee)
+    if follows[followee]
+      next if follows[followee].include?(id)
+    end
+    follows[id] << followee
+    Follow.create!(
+      followee_id: followee,
+      follower_id: id
+    )
+  end
+end
 
 titles = [
   "When Men Fear Women",
@@ -226,7 +244,7 @@ end
 
 
 post_ids.each do |id|
-  Random.new.rand(15).times do
+  Random.new.rand(20).times do
     Like.create!(
       post_id: id,
       user_id: user_ids.sample
