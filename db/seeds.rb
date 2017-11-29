@@ -15,9 +15,9 @@ post_body = 'This document assumes that one is familiar with the workings
  systems on an Ethernet not connected to anywhere else).
  Appendix A contains remedial information to get one to this
  point.  Its purpose is to get that person, familiar with a
- simple net, versed in the <bold>"oral tradition"</bold> of the Internet
+ simple net, versed in the <b>"oral tradition"</b> of the Internet
  to the point that that net can be connected to the Internet
- with little danger to either.  It is <u>not a tutorial<u/>, it
+ with little danger to either.  It is <u>not a tutorial</u>, it
  consists of pointers to other places, literature, and hints
  which are not normally documented.  Since the Internet is a
  dynamic environment, changes to this document will be made
@@ -25,7 +25,7 @@ post_body = 'This document assumes that one is familiar with the workings
  This is especially true of terms for the glossary (definitions
  are not necessary).<br><br>
 
- <h3>Internet Protocol</h3><br>
+ <b>Internet Protocol</b><br><br>
 
  In the beginning there was the ARPAnet, a wide area
  experimental network connecting hosts and terminal servers
@@ -46,10 +46,9 @@ post_body = 'This document assumes that one is familiar with the workings
  information services for the Internet.  In fact, after you
  are connected to the Internet most of the information in
  this document can be retrieved from the Network Information
- Center (NIC) run by SRI.
+ Center (NIC) run by SRI.<br><br>
 
-
- <h3>Operating the Internet</h3><br>
+ <b>Operating the Internet</b><br><br>
 
  Each network, be it the ARPAnet, NSFnet or a regional network,
  has its own operations center.  The ARPAnet is run by
@@ -57,7 +56,6 @@ post_body = 'This document assumes that one is familiar with the workings
  called the Network Operations Center or NOC.  Cornell
  University temporarily operates NSFnet (called the Network
  Information Service Center, NISC).  It goes on to the
-
  regionals having similar facilities to monitor and keep
  watch over the goings on of their portion of the Internet.
  In addition, they all should have some knowledge of what is
@@ -67,10 +65,9 @@ post_body = 'This document assumes that one is familiar with the workings
  is, if you are connected to a regional network (which is
  gatewayed to the NSFnet, which is connected to the
  ARPAnet...)  and have a problem, you should contact your
- regional network operations center.
+ regional network operations center.<br><br>
 
-
- <h3>RFCs</h3>
+ <b>RFCs</b><br><br>
 
  The internal workings of the Internet are defined by a set
  of documents called RFCs (Request for Comments).  The general
@@ -81,7 +78,7 @@ post_body = 'This document assumes that one is familiar with the workings
  to take part in the discussion (electronically of course).
  It may go through multiple revisions.  Should it be generally
  accepted as a good idea, it will be assigned a number and
- filed with the RFCs.
+ filed with the RFCs.<br><br>
 
  The RFCs can be divided into five groups: required, suggested,
  directional, informational and obsolete.  Required RFCs (e.g.
@@ -94,8 +91,10 @@ post_body = 'This document assumes that one is familiar with the workings
  come into wide use.  This may be due to the lack of wide need for
  the specific application (RFC-937 The Post Office Protocol) or
  that, although technically superior, ran against other pervasive
- approaches (RFC-891 Hello).  It is suggested that should the
- facility be required by a particular site, <bold>animplementation</bold>
+ approaches (RFC-891 Hello).<br><br>
+
+ It is suggested that should the facility be required by a particular site,
+ <b>animplementation</b>
  be done in accordance with the RFC.  This insures that, should
  the idea be one whose time has come, the implementation will be
  in accordance with some standard and will be generally usable.
@@ -108,9 +107,10 @@ post_body = 'This document assumes that one is familiar with the workings
  the new RFC only contains explanations and motivations for the
  change.  Understanding the model on which the whole facility
  is based may involve reading the original and subsequent RFCs
- on the topic.
+ on the topic.<br><br>
 
- All titles for the articles are taken from the Outline. Please go to their website if you want to read more.'
+ All titles for the articles are taken from the Outline.
+ Please go to their website if you want to read more.'
 
 first = User.create!(
   username: "Chirps",
