@@ -5,10 +5,19 @@ import { deleteComment } from '../../actions/comment_actions';
 import { deleteLike } from '../../actions/like_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  // const user = state.entities.users[ownProps.match.params.userId]
-  let posts = {};
-  let likes = {};
-  let responses = {};
+  const user = state.entities.users[ownProps.userId];
+  let posts = [];
+
+  if(user) {
+    const postIds = user.posts;
+    console.log("id:", posts)
+    postIds.forEach((id) => {
+      posts.push(state.entities.posts[id]);
+    });
+  }
+  console.log("posts:", posts)
+  let likes = [];
+  let responses = [];
 
   return { posts, likes, responses };
 };

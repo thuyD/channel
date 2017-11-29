@@ -3,6 +3,7 @@ import { RECEIVE_ALL_POSTS,
          REMOVE_POST } from '../../actions/post_actions';
 import { RECEIVE_COMMENT } from '../../actions/comment_actions';
 import { RECEIVE_LIKE } from '../../actions/like_actions';
+import { RECEIVE_USER } from '../../actions/user_actions';
 import merge from 'lodash/merge';
 
 const PostsReducer = (oldState = {}, action) => {
@@ -28,6 +29,8 @@ const PostsReducer = (oldState = {}, action) => {
       postId = action.like.post_id;
       newState[postId].totalLikes += 1;
       return newState;
+    case RECEIVE_USER:
+      return merge({}, oldState, action.posts);
     default:
       return oldState;
   }
