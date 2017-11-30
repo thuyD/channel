@@ -6,20 +6,20 @@ const mapStateToProps = (state) => {
   let currentUser = false;
 
   if (state.session.currentUser) {
-    currentUser = state.session.currentUser.id;
+    currentUser = state.entities.users[state.session.currentUser.id];
   }
 
   let posts = Object.values(state.entities.posts);
 
   if (currentUser) {
-    const feedPostIds = state.entities.users[currentUser].feedPostIds;
+    const feedPostIds = currentUser.feedPostIds;
     if (feedPostIds && feedPostIds.length > 0) {
       posts = feedPostIds.map((id) => {
         return state.entities.posts[id];
       });
     }
   }
-
+  
   return {
     posts: posts,
     currentUser

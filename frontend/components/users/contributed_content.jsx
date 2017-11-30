@@ -23,8 +23,6 @@ class ContributedContent extends React.Component {
       <section className="user-profile-nav-container">
         <div className="user-profile-nav-list">
           <p onClick={this.handleNav("stories")}>Stories</p>
-          <p onClick={this.handleNav("responses")}>Responses</p>
-          <p onClick={this.handleNav("likes")}>Claps</p>
         </div>
         <section className="user-profile-content">
           <UserProfileNavContainer type={this.state.content} userId={this.props.userId} />

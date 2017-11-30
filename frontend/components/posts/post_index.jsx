@@ -10,15 +10,16 @@ class PostIndex extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.currentUser) {
-      this.props.fetchFeed(this.props.currentUser);
+    const currentUser = this.props.currentUser;
+    if (currentUser && currentUser.followeeIds.length > 0) {
+      this.props.fetchFeed(this.props.currentUser.id);
     } else {
       this.props.fetchPosts();
     }
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.currentUser !== this.props.currentUser) {
+    if (newProps.currentUser.id !== this.props.currentUser.id) {
       this.props.fetchPosts();
     }
   }
