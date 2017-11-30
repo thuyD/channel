@@ -10,16 +10,19 @@ const mapStateToProps = (state, ownProps) => {
 
   if(user) {
     const postIds = user.posts;
-    console.log("id:", posts)
-    postIds.forEach((id) => {
-      posts.push(state.entities.posts[id]);
-    });
+    const retrievedPosts = [];
+    for (let i = 0; i < postIds.length; i++) {
+      const post = state.entities.posts[postIds[i]];
+      if (!post) { break; }
+      retrievedPosts.push(post);
+    }
+    posts = retrievedPosts;
   }
-  console.log("posts:", posts)
+
   let likes = [];
   let responses = [];
 
-  return { posts, likes, responses };
+  return { posts, likes, responses, user };
 };
 
 const mapDispatchToProps = (dispatch) => {
