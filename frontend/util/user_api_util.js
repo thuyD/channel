@@ -42,3 +42,10 @@ export const fetchFollowees = (id) => (
     url: `api/users/${id}/followees`
   })
 );
+
+export const fetchFeed = (id) => (
+  $.ajax({
+    method: 'get',
+    url: `api/users/${id}/feed`
+  })
+);

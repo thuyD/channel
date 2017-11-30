@@ -85,7 +85,7 @@ class UserProfile extends React.Component {
                 <h2>{this.props.user.name}</h2>
                 <p>{this.props.user.bio}</p>
               </div>
-              <div className="user-avatar-m"><img src={this.props.user.image_url_m} /></div>
+              <div className="user-avatar-l"><img src={this.props.user.image_url_l} /></div>
             </div>
             <div className="follows">
               <FollowModalContainer follow="following" userId={this.props.match.params.userId} />  ·

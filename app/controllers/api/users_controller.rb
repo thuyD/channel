@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  before_action :require_logged_in, only: [:follow, :unfollow, :update]
+  before_action :require_logged_in, only: [:follow, :unfollow, :update, :feed]
 
   def create
     @user = User.new(user_params)
@@ -54,6 +54,13 @@ class Api::UsersController < ApplicationController
     user = User.find(params[:id])
     @users = user.followees
     render :index
+  end
+
+  def feed
+    user = User.find(params[:id])
+    followee_ids = user.followees.map(&:id)
+    @posts = Post.where('author_id IN (?)', followee_ids)
+    render 'api/posts/index'
   end
 
   private

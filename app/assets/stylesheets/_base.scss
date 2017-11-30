@@ -70,7 +70,7 @@ html {
   padding: 17px;
 }
 
-.user-avatar, .user-avatar-m{
+.user-avatar, .user-avatar-m, .user-avatar-l {
   cursor: pointer;
   border-radius: 50%;
   overflow: hidden;
@@ -84,7 +84,7 @@ html {
   width: 32px;
 }
 
-.user-avatar img, .user-avatar-m img {
+.user-avatar img, .user-avatar-m img, .user-avatar-l img {
   display: block;
   height: 100%;
   width: 100%;
@@ -95,4 +95,9 @@ html {
   min-width: 60px;
   height: 60px;
   width: 60px;
+}
+
+.user-avatar-l {
+  height: 100px;
+  width: 100px;
 }

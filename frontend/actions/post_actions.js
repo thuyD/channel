@@ -1,4 +1,5 @@
 import * as PostApiUtil from '../util/post_api_util';
+import * as ApiUserUtil from '../util/user_api_util';
 
 export const RECEIVE_ALL_POSTS = 'RECEIVE_ALL_POSTS';
 export const RECEIVE_POST = "RECEIVE_POST";
@@ -57,5 +58,11 @@ export const deletePost = (postId) => (dispatch) => (
   PostApiUtil.deletePost(postId).then(
     () => dispatch(removePost(postId)),
     (errors) => dispatch(receivePostErrors(errors.responseJSON))
+  )
+);
+
+export const fetchFeed = (userId) => (dispatch) => (
+  ApiUserUtil.fetchFeed(userId).then(
+    (posts) => dispatch(receiveAllPosts(posts))
   )
 );
