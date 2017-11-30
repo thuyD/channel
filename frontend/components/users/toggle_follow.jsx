@@ -20,7 +20,7 @@ class ToggleFollow extends React.Component {
   componentWillReceiveProps(newProps) {
     let oldFolloweeIds = 0;
     let newFolloweeIds = 0;
-    
+
     if (this.props.currentUser.followeeIds && newProps.currentUser.followeeIds) {
       oldFolloweeIds = this.props.currentUser.followeeIds.length;
       newFolloweeIds = newProps.currentUser.followeeIds.length;
@@ -76,8 +76,10 @@ class ToggleFollow extends React.Component {
       );
     } else {
       return (
-        <div onClick={this.handleFollowing} className="gen-button flex-center-ver follow-button">
-          {followState}
+        <div>
+          <div onClick={this.handleFollowing} className="gen-button flex-center-ver follow-button">
+            {followState}
+          </div>
         </div>
       );
     }

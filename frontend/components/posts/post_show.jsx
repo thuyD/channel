@@ -85,7 +85,7 @@ class PostShow extends React.Component {
       });
     }
 
-    const like = this.getLikeHtml()
+    const like = this.getLikeHtml();
     if (this.props.post) {
       const richText = () => ({__html: this.props.post.body});
       const dateToFormat = this.props.post.created_at;
@@ -115,13 +115,12 @@ class PostShow extends React.Component {
           <section className="post-show-title flex-center-hor">
             <h1>{this.props.post.title}</h1>
           </section>
-
             <section className="post-show-hero">
               <img src={this.props.post.image_url_reg} />
             </section>
 
             <StickyContainer style={{display: "flex"}}>
-            <Sticky>
+            <Sticky bottomOffset={60}>
               {
                 ({style}) => {
                   return(
@@ -144,7 +143,6 @@ class PostShow extends React.Component {
               <div dangerouslySetInnerHTML={richText()}/>
             </section>
           </StickyContainer>
-
           <section className="post-show-menu flex-center-ver">
             <div className="post-show-claps-container flex-center-ver">
               {like}
