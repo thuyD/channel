@@ -10,7 +10,17 @@ class PostIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchPosts();
+    if (this.props.currentUser) {
+      this.props.fetchFeed(this.props.currentUser);
+    } else {
+      this.props.fetchPosts();
+    }
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.currentUser !== this.props.currentUser) {
+      this.props.fetchPosts();
+    }
   }
 
   handleClick(field) {

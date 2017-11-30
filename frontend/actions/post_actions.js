@@ -6,10 +6,13 @@ export const RECEIVE_POST = "RECEIVE_POST";
 export const REMOVE_POST = "REMOVE_POST";
 export const RECEIVE_POST_ERRORS = "RECEIVE_ERRORS";
 
-const receiveAllPosts = ({ posts }) => {
+const receiveAllPosts = ({ posts, feed_post_ids, current_user_id }) => {
+
   return {
     type: RECEIVE_ALL_POSTS,
-    posts
+    posts,
+    feedPostIds: feed_post_ids,
+    currentUserId: current_user_id
   };
 };
 

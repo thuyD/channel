@@ -60,6 +60,8 @@ class Api::UsersController < ApplicationController
     user = User.find(params[:id])
     followee_ids = user.followees.map(&:id)
     @posts = Post.where('author_id IN (?)', followee_ids)
+    @post_ids = @posts.map(&:id)
+    @current_user_id = params[:id]
     render 'api/posts/index'
   end
 

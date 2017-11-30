@@ -1,4 +1,4 @@
-import { RECEIVE_POST } from '../../actions/post_actions';
+import { RECEIVE_POST, RECEIVE_ALL_POSTS } from '../../actions/post_actions';
 import { RECEIVE_CURRENT_USER } from '../../actions/session_actions';
 import { RECEIVE_FOLLOWING, RECEIVE_USER } from '../../actions/user_actions';
 
@@ -17,6 +17,13 @@ const UsersReducer = (oldState = {}, action) => {
         newState = merge({}, oldState,
           { [action.currentUser.id]: action.currentUser }
         );
+      }
+      return newState;
+    case RECEIVE_ALL_POSTS:
+      if (action.currentUserId) {
+        const currentUser = merge({}, oldState[action.currentUserId]);
+        currentUser.feedPostIds = action.feedPostIds;
+        newState = merge({}, oldState, { [action.currentUserId]: currentUser });
       }
       return newState;
     case RECEIVE_USER:
