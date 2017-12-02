@@ -20,7 +20,11 @@ class UserProfile extends React.Component {
 
   //componentDidMount for users that was not fetched yet by post show
   componentDidMount() {
-    this.props.fetchUser(this.props.match.params.userId);
+    this.props.fetchUser(this.props.match.params.userId).then(null, ({status}) => {
+      if (status === "404") {
+        
+      };
+    });
   }
 
   componentWillReceiveProps(newProps) {
@@ -63,7 +67,7 @@ class UserProfile extends React.Component {
     const file = e.target.files[0];
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
-      this.setState({ imageFile: file, image_url_m: fileReader.result });
+      this.setState({ imageFile: file, image_url_l: fileReader.result });
     };
 
     if (file) {
@@ -115,12 +119,12 @@ class UserProfile extends React.Component {
                   placeholder="Background information..."/>
               </div>
               <div className="user-profile-edit-photo">
-                <label className="user-avatar-m user-profile-add-file">
+                <label className="user-avatar-l user-profile-add-file">
                   <i className="fa fa-camera" aria-hidden="true"></i>
                   <input type="file" onChange={this.updateFile}/>
                 </label>
-                <div className="user-avatar-m">
-                  <img src={this.state.image_url_m} />
+                <div className="user-avatar-l">
+                  <img src={this.state.image_url_l} />
                 </div>
               </div>
             </div>

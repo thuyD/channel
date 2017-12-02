@@ -39,13 +39,21 @@
 
 .user-name-bio input, textarea {
   border: none;
+  font-family: inherit;
 }
 
 .user-name-bio textarea, .user-name-bio p {
-  width: 90%;
   min-height: 55px;
   font-size: 15px;
   line-height: 125%;
+}
+
+.user-name-bio p {
+  width: 63%;
+}
+
+.user-name-bio textarea {
+  width: 89%;
 }
 
 .user-profile-edit, .user-profile-cancel {
@@ -81,8 +89,8 @@
 
 .user-profile-add-file {
   text-align: center;
-  max-width: 60px;
-  max-height: 60px;
+  max-width: 100px;
+  max-height: 100px;
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.4);
   display: flex;

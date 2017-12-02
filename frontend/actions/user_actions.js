@@ -2,6 +2,8 @@ import * as ApiUserUtil from '../util/user_api_util';
 
 export const RECEIVE_FOLLOWING = "RECEIVE_FOLLOWING";
 export const RECEIVE_USER = "RECEIVE_USER";
+export const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
+export const CLEAR_USER_ERRORS = "CLEAR_USER_ERRORS";
 
 const receiveFollowing = (users) => ({
   type: RECEIVE_FOLLOWING,
@@ -12,6 +14,15 @@ const receiveUser = (payload) => ({
   type: RECEIVE_USER,
   user: payload.user,
   posts: payload.posts,
+});
+
+const receiveUserErrors = ({status}) => ({
+  type: RECEIVE_USER_ERRORS,
+  errors: status
+});
+
+const clearUserErrors = () => ({
+  type: CLEAR_USER_ERRORS
 });
 
 export const followUser = (id) => (dispatch) => {
@@ -28,7 +39,8 @@ export const unfollowUser = (id) => (dispatch) => {
 
 export const fetchUser = (id) => (dispatch) =>  {
   return ApiUserUtil.fetchUser(id).then(
-    (payload) => dispatch(receiveUser(payload))
+    (payload) => dispatch(receiveUser(payload)),
+    (errors) => dispatch(receiveUserErrors(errors))
   );
 };
 

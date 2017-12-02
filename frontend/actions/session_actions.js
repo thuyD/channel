@@ -18,18 +18,14 @@ const receiveCurrentUser = (currentUser) => {
   });
 };
 
-const receiveSessionErrors = (errors) => {
-  return ({
-    type: RECEIVE_SESSION_ERRORS,
-    errors
-  });
-};
+const receiveSessionErrors = (errors) => ({
+  type: RECEIVE_SESSION_ERRORS,
+  errors
+});
 
-export const clearSessionErrors = () => {
-  return ({
-    type: CLEAR_SESSION_ERRORS,
-  });
-};
+export const clearSessionErrors = () => ({
+  type: CLEAR_SESSION_ERRORS,
+});
 
 
 export const login = (credentials) => dispatch => {
