@@ -35,13 +35,15 @@ const topLinks = (props) => {
   return (
     <header className="main-inner-header">
       <div className="main-logo flex-center-ver">
-        <Link to="/about">About</Link>
-        <div className="logo-container"><Link id="logo" to="/">Channel</Link></div>
+        <div className="main-header-left"><Link to="/about">About</Link></div>
+        <Link id="logo" to="/">Channel</Link>
+        <div className="main-header-right">
         {
           currentUser ?
           userMenu(props.logout, currentUser, props.ownPost) :
           sessionLinks()
         }
+      </div>
       </div>
     </header>
   );

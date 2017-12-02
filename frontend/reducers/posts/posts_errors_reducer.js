@@ -1,7 +1,8 @@
 import { RECEIVE_ALL_POSTS,
          RECEIVE_POST,
          REMOVE_POST,
-         RECEIVE_POST_ERRORS} from '../../actions/post_actions';
+         RECEIVE_POST_ERRORS,
+         CLEAR_POST_ERRORS } from '../../actions/post_actions';
 
 const initialState = [];
 
@@ -9,6 +10,7 @@ const PostsErrorsReducer = (oldState = initialState, action) => {
   switch(action.type) {
     case RECEIVE_ALL_POSTS:
     case RECEIVE_POST:
+    case CLEAR_POST_ERRORS:
       return initialState;
     case RECEIVE_POST_ERRORS:
       return action.errors;
