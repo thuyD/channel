@@ -8,6 +8,7 @@ import SessionFormContainer from '../session/session_form_container';
 import ToggleFollowContainer from '../users/toggle_follow_container';
 import { Link } from 'react-router-dom';
 import PostReadingTime from './post_reading_time.jsx';
+import NotFound from '../errors/not_found.jsx';
 
 class PostShow extends React.Component {
   constructor(props) {
@@ -19,7 +20,9 @@ class PostShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchPost(this.props.match.params.postId);
+    this.props.fetchPost(this.props.match.params.postId).then(() => {
+      this.props.clearPostErrors();
+    });
     this.props.likedPost(this.props.match.params.postId).then(
       (res) => {
         this.setState({ liked: res.likedPost });
@@ -75,6 +78,7 @@ class PostShow extends React.Component {
   }
 
   render() {
+    if (this.props.errors.status === 404) { return <NotFound item="Post" />; }
     let comments = '';
     if (this.props.comments.length) {
       comments = this.props.comments.map((comment) => {

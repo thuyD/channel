@@ -5,6 +5,7 @@ export const RECEIVE_ALL_POSTS = 'RECEIVE_ALL_POSTS';
 export const RECEIVE_POST = "RECEIVE_POST";
 export const REMOVE_POST = "REMOVE_POST";
 export const RECEIVE_POST_ERRORS = "RECEIVE_ERRORS";
+export const CLEAR_POST_ERRORS = "CLEAR_POST_ERRORS";
 
 const receiveAllPosts = ({ posts, feed_post_ids, current_user_id }) => {
 
@@ -31,6 +32,10 @@ const receivePostErrors = errors => ({
   errors
 });
 
+export const clearPostErrors = () => ({
+  type: CLEAR_POST_ERRORS
+});
+
 export const fetchPosts = () => (dispatch) => (
   PostApiUtil.fetchPosts().then(
     (posts) => dispatch(receiveAllPosts(posts))
@@ -39,7 +44,8 @@ export const fetchPosts = () => (dispatch) => (
 
 export const fetchPost = (id) => (dispatch) => (
   PostApiUtil.fetchPost(id).then(
-    (payload) => dispatch(receivePost(payload))
+    (payload) => dispatch(receivePost(payload)),
+    (errors) => dispatch(receivePostErrors(errors))
   )
 );
 

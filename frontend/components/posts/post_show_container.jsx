@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import PostShow from './post_show';
-import { fetchPost } from '../../actions/post_actions';
+import { fetchPost, clearPostErrors } from '../../actions/post_actions';
 import { createLike, deleteLike, likedPost } from '../../actions/like_actions';
 import { toggleModal } from '../../actions/modal_actions';
 
@@ -37,10 +37,11 @@ const mapStateToProps = (state, ownProps) => {
   }
 
   let currentUser = false;
-
   if (state.session.currentUser) { currentUser = true; }
 
-  return { post, comments, commentUsers, totalLikes, currentUser };
+  let errors = state.errors.post;
+
+  return { post, comments, commentUsers, totalLikes, currentUser, errors };
 };
 
 const mapDispatchToProps = (dispatch) => ({
@@ -49,6 +50,7 @@ const mapDispatchToProps = (dispatch) => ({
   deleteLike: (id) => dispatch(deleteLike(id)),
   likedPost: (id) => dispatch(likedPost(id)),
   toggleModal: (state) => dispatch(toggleModal(state)),
+  clearPostErrors: () => dispatch(clearPostErrors()),
 });
 
 export default connect(
