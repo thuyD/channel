@@ -1,0 +1,29 @@
+@import 'base';
+
+.not-found-container {
+  display: flex;
+  justify-content: center;
+}
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  font-family: inherit;
+  font-size: 30px;
+  margin-top: 50px;
+  border: 1px solid black;
+  padding: 48px 60px;
+  border-radius: 5px;
+  background-color: white
+}
+
+.not-found p {
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+.not-found p:first-child {
+  font-size: 50px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}

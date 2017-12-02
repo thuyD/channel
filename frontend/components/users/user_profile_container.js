@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import UserProfile from './user_profile';
 import { updateUser } from '../../actions/session_actions';
-import { fetchUser } from '../../actions/user_actions';
+import { fetchUser, clearUserErrors } from '../../actions/user_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let user = {
@@ -31,13 +31,16 @@ const mapStateToProps = (state, ownProps) => {
     currentUserId = state.session.currentUser.id;
   }
 
-  return { currentUserId, user, followees };
+  let errors = state.errors.user;
+
+  return { currentUserId, user, followees, errors };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     updateUser: (formData) => dispatch(updateUser(formData)),
-    fetchUser: (id) => dispatch(fetchUser(id))
+    fetchUser: (id) => dispatch(fetchUser(id)),
+    clearUserErrors: () => dispatch(clearUserErrors()),
   };
 };
 

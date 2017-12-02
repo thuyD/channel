@@ -4,6 +4,7 @@ import UserFolloweeDetails from './user_followee_details.jsx';
 import ToggleFollowContainer from './toggle_follow_container';
 import FollowModalContainer from './follow_modal_container.js';
 import ContributedContent from './contributed_content.jsx';
+import NotFound from '../errors/not_found.jsx';
 
 class UserProfile extends React.Component {
   constructor(props) {
@@ -20,11 +21,9 @@ class UserProfile extends React.Component {
 
   //componentDidMount for users that was not fetched yet by post show
   componentDidMount() {
-    this.props.fetchUser(this.props.match.params.userId).then(null, ({status}) => {
-      if (status === "404") {
-        
-      };
-    });
+    this.props.fetchUser(this.props.match.params.userId).then(
+      this.props.clearUserErrors()
+    );
   }
 
   componentWillReceiveProps(newProps) {
@@ -76,7 +75,7 @@ class UserProfile extends React.Component {
   }
 
   render() {
-
+    if (this.props.errors === 404) { return <NotFound item="User"/>}
     if (this.state.formType === "norm") {
       const normButton = this.props.currentUserId === this.props.user.id ?
         (<button className="gen-button user-profile-edit" onClick={this.handleEdit}>Edit</button>) :

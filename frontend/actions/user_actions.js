@@ -21,7 +21,7 @@ const receiveUserErrors = ({status}) => ({
   errors: status
 });
 
-const clearUserErrors = () => ({
+export const clearUserErrors = () => ({
   type: CLEAR_USER_ERRORS
 });
 
