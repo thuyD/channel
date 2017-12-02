@@ -12,16 +12,19 @@
   border-bottom: 1px solid $light-grey;
 }
 
-.logo-container {
-  width: 220px;
-  display: flex;
-  justify-content: flex-end;
-}
-
 .main-logo #logo {
   font-family: $playfair;
   font-size: 35px;
   color: $black;
+}
+
+.main-header-left, .main-header-right {
+  display: flex;
+  flex: 1;
+}
+
+.main-header-right {
+  justify-content: flex-end;
 }
 
 .main-logo a {
