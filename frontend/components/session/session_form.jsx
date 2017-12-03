@@ -36,11 +36,11 @@ class SessionForm extends React.Component {
     const user = Object.assign({}, this.state);
     if (this.state.mode === "signup") {
       this.props.signup(user).then(
-        () => { this.props.toggleModal(false); }
+        () => { this.props.toggleModal("session"); }
       );
     } else {
       this.props.login(user).then(
-        () => { this.props.toggleModal(false); }
+        () => { this.props.toggleModal(null); }
       );
     }
   }
@@ -56,7 +56,7 @@ class SessionForm extends React.Component {
     this.props.demoUserInfo(
       {username: "Chirps", password: "catnip"}
     ).then(
-      () => { this.props.toggleModal(false); }
+      () => { this.props.toggleModal(null); }
     );
   }
 

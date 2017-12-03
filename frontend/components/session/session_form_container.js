@@ -4,7 +4,7 @@ import { login, signup, clearSessionErrors, demoUserInfo } from '../../actions/s
 import { toggleModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, { location }) => {
-  const modalState = state.ui;
+  const isModalVisible = state.ui.name === 'session';
 
   let formType = "signup";
   let shouldNavigate = false;
@@ -16,7 +16,7 @@ const mapStateToProps = (state, { location }) => {
 
   return {
     errors: state.errors.session,
-    modalState,
+    isModalVisible,
     formType,
     shouldNavigate,
   };
