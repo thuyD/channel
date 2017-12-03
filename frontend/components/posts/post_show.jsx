@@ -34,7 +34,12 @@ class PostShow extends React.Component {
     const oldPropsPostId = this.props.match.params.postId;
     if (newProps.match.params.postId !== oldPropsPostId) {
       this.props.fetchPost(newProps.match.params.postId);
+      this.closeModal();
     }
+  }
+
+  componentWillUnmount() {
+    this.closeModal();
   }
 
   handleLikes() {
@@ -50,11 +55,11 @@ class PostShow extends React.Component {
   }
 
   openModal() {
-    this.props.toggleModal(true);
+    this.props.toggleModal("session");
   }
 
   closeModal() {
-    this.props.toggleModal(false);
+    this.props.toggleModal(null);
   }
 
   getLikeHtml() {
@@ -153,7 +158,7 @@ class PostShow extends React.Component {
               <p>{this.props.totalLikes}</p>
 
               <ReactModal
-                isOpen={this.state.openModal}
+                isOpen={this.props.isModalVisible}
                 onRequestClose={this.closeModal.bind(this)}
                 className="Modal"
                 overlayClassName="Overlay"

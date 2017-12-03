@@ -41,7 +41,9 @@ const mapStateToProps = (state, ownProps) => {
 
   let errors = state.errors.post;
 
-  return { post, comments, commentUsers, totalLikes, currentUser, errors };
+  const isModalVisible = state.ui.name === "session";
+
+  return { post, comments, commentUsers, totalLikes, currentUser, errors, isModalVisible };
 };
 
 const mapDispatchToProps = (dispatch) => ({
