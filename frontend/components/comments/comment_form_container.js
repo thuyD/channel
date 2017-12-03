@@ -9,7 +9,8 @@ const mapStateToProps = (state) => {
     currentUser = state.session.currentUser;
   }
 
-  return { currentUser };
+  const isModalVisible = state.ui.name === "session";
+  return { currentUser, isModalVisible };
 };
 
 const mapDispatchToProps = (dispatch) => {

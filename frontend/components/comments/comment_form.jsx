@@ -25,11 +25,11 @@ class CommentForm extends React.Component {
   }
 
   openModal() {
-    this.props.toggleModal(true);
+    this.props.toggleModal("session");
   }
 
   closeModal() {
-    this.props.toggleModal(false);
+    this.props.toggleModal(null);
   }
 
   expand() {
@@ -95,7 +95,7 @@ class CommentForm extends React.Component {
           </div>
 
           <ReactModal
-            isOpen={this.state.openModal}
+            isOpen={this.props.isModalVisible}
             onRequestClose={this.closeModal.bind(this)}
             className="Modal"
             overlayClassName="Overlay"
