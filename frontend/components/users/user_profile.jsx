@@ -10,7 +10,8 @@ import ReactModal from 'react-modal';
 class UserProfile extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { formType: 'norm' };
+    this.state = this.props.user;
+    this.state.formType = 'norm';
 
     this.handleCancel = this.handleCancel.bind(this);
     this.update = this.update.bind(this);
