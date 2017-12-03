@@ -148,6 +148,8 @@ user_images = [
   user_ids << new_user.id
 end
 
+user_ids << first.id
+
 user_ids.each do |id|
   follows = {}
   follows[id] = []
