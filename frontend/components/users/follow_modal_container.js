@@ -7,6 +7,7 @@ const mapStateToProps = (state, ownProps) => {
   const users = state.entities.users;
   const user = users[ownProps.userId] || {};
   const mode = ownProps.follow;
+  
   let followees = [];
   const followeeIds = user.followeeIds || [];
   for( let i = 0; i < followeeIds.length; i++ ) {
@@ -17,7 +18,6 @@ const mapStateToProps = (state, ownProps) => {
     }
   }
 
-
   let followers = [];
   const followerIds = user.followerIds || [];
   for( let i = 0; i < followerIds.length; i++ ) {
@@ -27,6 +27,7 @@ const mapStateToProps = (state, ownProps) => {
       break;
     }
   }
+
   return { user, mode, followees, followers };
 };
 
