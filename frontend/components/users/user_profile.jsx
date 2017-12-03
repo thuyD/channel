@@ -95,7 +95,6 @@ class UserProfile extends React.Component {
       modalVisibility = this.props.isFollowersModalVisible;
     }
 
-
     return (
       <div>
         <p className="user-profile-following" onClick={() => this.openModal(mode)}>
