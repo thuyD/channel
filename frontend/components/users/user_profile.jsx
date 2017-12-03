@@ -5,18 +5,19 @@ import ToggleFollowContainer from './toggle_follow_container';
 import FollowModalContainer from './follow_modal_container.js';
 import ContributedContent from './contributed_content.jsx';
 import NotFound from '../errors/not_found.jsx';
+import ReactModal from 'react-modal';
 
 class UserProfile extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.user;
-    this.state.formType = 'norm';
+    this.state = { formType: 'norm' };
 
     this.handleCancel = this.handleCancel.bind(this);
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateFile = this.updateFile.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
+    this.openModal = this.openModal.bind(this);
   }
 
   //componentDidMount for users that was not fetched yet by post show
@@ -28,12 +29,13 @@ class UserProfile extends React.Component {
 
   componentWillReceiveProps(newProps) {
     if (this.props.match.params.userId !== newProps.match.params.userId) {
-      this.props.fetchUser(newProps.match.params.userId).then((user) => {
-        this.setState(user);
-      });
-    } else {
-      this.setState(newProps.user);
+      this.props.fetchUser(newProps.match.params.userId);
+      this.closeModal();
     }
+  }
+
+  componentWillUnmount() {
+    this.closeModal();
   }
 
   handleEdit() {
@@ -74,8 +76,45 @@ class UserProfile extends React.Component {
     }
   }
 
+  openModal(name) {
+    this.props.toggleModal(name);
+  }
+
+  closeModal() {
+    this.props.toggleModal(null);
+  }
+
+  toggleModal(mode) {
+    let count = "";
+    let modalVisibility = false;
+    if (mode === "followees") {
+      count = `${this.props.user.followeeIds.length} Following`;
+      modalVisibility = this.props.isFolloweesModalVisible;
+    } else {
+      count = `${this.props.user.followerIds.length} Followers`;
+      modalVisibility = this.props.isFollowersModalVisible;
+    }
+
+
+    return (
+      <div>
+        <p className="user-profile-following" onClick={() => this.openModal(mode)}>
+          {count}
+        </p>
+        <ReactModal
+          isOpen={modalVisibility}
+          onRequestClose={this.closeModal.bind(this)}
+          className="FollowModal"
+          overlayClassName="FollowModalOverlay"
+          >
+          <FollowModalContainer follow={mode} userId={this.props.match.params.userId}/>
+        </ReactModal>
+      </div>
+    );
+  }
+
   render() {
-    if (this.props.errors === 404) { return <NotFound item="User"/>}
+    if (this.props.errors === 404) { return <NotFound item="User"/>; }
     if (this.state.formType === "norm") {
       const normButton = this.props.currentUserId === this.props.user.id ?
         (<button className="gen-button user-profile-edit" onClick={this.handleEdit}>Edit</button>) :
@@ -91,12 +130,10 @@ class UserProfile extends React.Component {
               <div className="user-avatar-l"><img src={this.props.user.image_url_l} /></div>
             </div>
             <div className="follows">
-              <FollowModalContainer follow="following" userId={this.props.match.params.userId} />  ·
-              <FollowModalContainer follow="followers" userId={this.props.match.params.userId}/>
+              {this.toggleModal("followees")}  ·  {this.toggleModal("followers")}
             </div>
             {normButton}
           </section>
-
           <ContributedContent userId={this.props.match.params.userId} />
         </main>
       );
@@ -134,7 +171,6 @@ class UserProfile extends React.Component {
                 onClick={this.handleCancel}>Cancel</button>
             </div>
           </form>
-
           <ContributedContent userId={this.props.match.params.userId} />
         </main>
       );

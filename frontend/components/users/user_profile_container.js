@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import UserProfile from './user_profile';
 import { updateUser } from '../../actions/session_actions';
 import { fetchUser, clearUserErrors } from '../../actions/user_actions';
+import { toggleModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let user = {
@@ -31,9 +32,13 @@ const mapStateToProps = (state, ownProps) => {
     currentUserId = state.session.currentUser.id;
   }
 
-  let errors = state.errors.user;
+  const errors = state.errors.user;
+  const modal = state.ui.openModal;
 
-  return { currentUserId, user, followees, errors };
+  const isFollowersModalVisible = state.ui.name === "followers";
+  const isFolloweesModalVisible = state.ui.name === "followees";
+
+  return { currentUserId, user, followees, errors, modal, isFollowersModalVisible, isFolloweesModalVisible};
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -41,6 +46,7 @@ const mapDispatchToProps = (dispatch) => {
     updateUser: (formData) => dispatch(updateUser(formData)),
     fetchUser: (id) => dispatch(fetchUser(id)),
     clearUserErrors: () => dispatch(clearUserErrors()),
+    toggleModal: (state) => dispatch(toggleModal(state)),
   };
 };
 
