@@ -5,60 +5,28 @@ import SessionFormContainer from '../session/session_form_container';
 class ToggleFollow extends React.Component {
   constructor(props) {
     super(props);
-    const followeeIds = this.props.currentUser.followeeIds;
-    if (followeeIds && followeeIds.some(
-      (el) => el === this.props.followeeId)
-    ) {
-      this.state = { following: true };
-    } else {
-      this.state = { following: false };
-    }
     this.handleFollowing = this.handleFollowing.bind(this);
     this.openModal = this.openModal.bind(this);
   }
 
-  componentWillReceiveProps(newProps) {
-    let oldFolloweeIds = 0;
-    let newFolloweeIds = 0;
-
-    if (this.props.currentUser.followeeIds && newProps.currentUser.followeeIds) {
-      oldFolloweeIds = this.props.currentUser.followeeIds.length;
-      newFolloweeIds = newProps.currentUser.followeeIds.length;
-    }
-
-    if (newFolloweeIds !== oldFolloweeIds) {
-      if (newFolloweeIds && newProps.currentUser.followeeIds.some(
-        (el) => el === newProps.followeeId)
-      ) {
-        this.setState({ following: true });
-      } else {
-        this.setState({ following: false });
-      }
-    }
-  }
-
   handleFollowing() {
-    if (this.state.following) {
-      this.props.unfollowUser(this.props.followeeId).then(() => {
-        this.setState({ following: false });
-      });
+    if (this.props.following) {
+      this.props.unfollowUser(this.props.followeeId);
     } else {
-      this.props.followUser(this.props.followeeId).then(() => {
-        this.setState({ following: true });
-      });
+      this.props.followUser(this.props.followeeId);
     }
   }
 
   openModal() {
-    this.props.toggleModal(true);
+    this.props.toggleModal("session");
   }
 
   closeModal() {
-    this.props.toggleModal(false);
+    this.props.toggleModal(null);
   }
 
   render() {
-    const followState = this.state.following ? "Unfollow" : "Follow";
+    const followState = this.props.following ? "Unfollow" : "Follow";
     if (Object.keys(this.props.currentUser).length === 0) {
       return (
         <div>
@@ -66,7 +34,7 @@ class ToggleFollow extends React.Component {
             <p>Follow</p>
           </div>
           <ReactModal
-            isOpen={this.props.modalState.openModal}
+            isOpen={this.props.isModalVisible}
             onRequestClose={this.closeModal.bind(this)}
             className="Modal"
             overlayClassName="Overlay">
@@ -83,7 +51,6 @@ class ToggleFollow extends React.Component {
         </div>
       );
     }
-
   }
 }
 
