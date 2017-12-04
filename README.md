@@ -61,7 +61,10 @@ Channel uses:
 
 ![alt text](app/assets/images/channel_post.gif)
 
-* Using a rich text editor, users can create a more visually engaging post. The picture uploading feature is handled by Paperclip and stored in AWS. Users can also edit the post using the edit link at the top of the post show page. The edit link takes users back to the same form used to create the post with all the details of the post prefilled for their convenience.  
+* Using a rich text editor, users can create a more visually engaging post. The picture uploading feature is handled by Paperclip and stored in AWS. 
+* The post_reading_time component estimate how long a post is based on the average words per minute for a typical reader
+* Users can also edit the post using the edit link at the top of the post show page. The edit link takes users back to the same form used to create the post with all the details of the post prefilled for their convenience.
+
 
 ## New Features Queue
 
