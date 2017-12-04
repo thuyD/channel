@@ -40,27 +40,28 @@ Channel uses:
 
 ### User Authentication:
 
-![Alt Text](https://github.com/thuyD/channel/raw/master/path/to/channel_login.gif)
+![alt text](app/assets/images/channel_login.gif)
 * Login/signup is one component that can be rendered by the route or on another page as a modal. For instance, if a user is not logged in but tried to like/comment on a post or follow a user, a modal would pop up, prompting the user to login/signup. While the user's profile page is not private, the edit form is protected via backend and frontend authentication. It's recommended to log in using the demo to experience all the functionalities of the app.
 
-### :
+### Follows, Likes and Comments:
 
 ![alt text](app/assets/images/channel_follow.gif)
 
+* There are several pages in which user can follow/unfollow another: post show and user show page. The button is rendered based on whether the user has followed/unfollowed the author and re-rendered when the component receives new props. On the user show page, one can look at who the user follows and who is following that user. Although the followees and followers are rendered by the same component, by keeping track of the modal state in the redux store, it is easy to distinguish which modal should be opened at any one time so that they don't overlap.
 
-Post show page where you can like the post and follow/unfollow the author:
+![alt text](app/assets/images/channel_like.gif)
 
-![Post show page where you can like the post and follow/unfollow the author](app/assets/images/like_and_follow.png)
+* A unique feature to Channel is a post can be liked many times similar to how clap works on Medium. Once users change their mind. They can undo all the claps at once. To implement this feature, instead of toggling the like button, the component is allowed to make as many POST requests as the users want and when hover over the like button, an unlike button shows up, allowing the users undo the likes.
 
+![alt text](app/assets/images/channel_comment.gif)
 
-Post show page where you can comment on the post:
+* My favorite part of comment is that it expands when you click on it and collapses when you click outside of it. It also auto focus on the text area, allowing for a seamless user experience. 
 
-![Post show page where you can comment on the post](app/assets/images/comments.png)
+### Posts:
 
+![alt text](app/assets/images/channel_post.gif)
 
-User profile page where you can update user information:
-
-![Update user profile](app/assets/images/user_profile.png)
+* Using a rich text editor, users can create a more visually engaging post. The picture uploading feature is handled by Paperclip and stored in AWS. Users can also edit the post using the edit link at the top of the post show page. The edit link takes users back to the same form used to create the post with all the details of the post prefilled for their convenience.  
 
 ## New Features Queue
 
