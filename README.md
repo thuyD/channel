@@ -40,7 +40,7 @@ Channel uses:
 
 ### User Authentication:
 
-![alt text](app/assets/images/channel_login.gif)
+![Alt Text](https://github.com/thuyD/channel/raw/master/path/to/channel_login.gif)
 * Login/signup is one component that can be rendered by the route or on another page as a modal. For instance, if a user is not logged in but tried to like/comment on a post or follow a user, a modal would pop up, prompting the user to login/signup. While the user's profile page is not private, the edit form is protected via backend and frontend authentication. It's recommended to log in using the demo to experience all the functionalities of the app.
 
 ### :
