@@ -55,7 +55,7 @@ Channel uses:
 
 ![alt text](app/assets/images/channel_comment.gif)
 
-* My favorite part of comment is that it expands when you click on it and collapses when you click outside of it. It also auto focus on the text area, allowing for a seamless user experience. 
+* My favorite part of comment is that it expands when you click on it and collapses when you click outside of it. It also auto focus on the text area, allowing for a seamless user experience.
 
 ### Posts:
 
